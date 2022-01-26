@@ -49,7 +49,7 @@ def draw_robot(x: float, y: float, theta: float):
         dx, dy = p(*rotate_vector(
             m.get_current_velocity() * motor_vel_scale,
             0,
-            m.get_current_angle_raw() - m.motor_sensor_offset + theta_off + theta
+            m.get_current_angle_raw() + theta_off + theta
         ))
         x2, y2 = x1 + dx, y1 + dy
         cv2.line(img, c(x1, y1), c(x2, y2), (0, 0, 255) if not m.motor_reversed else (255, 0, 0), 3)
@@ -66,8 +66,8 @@ def draw_robot(x: float, y: float, theta: float):
     draw_motor(drivetrain.n_11, *pts[2], 0)
 
 
-time_scale = 0.005
-frame_scale = 50
+time_scale = 0.1
+frame_scale = 1
 
 
 def deadzone(v: float, dz_amt: float = 0.1) -> float:
@@ -100,4 +100,4 @@ while cv2.waitKey(int(20 * frame_scale)) != ord("q"):
     robot_y -= (drivetrain.axis_dy.val / 3) * time_scale * frame_scale
     draw_robot(robot_x, robot_y, drivetrain.odometry.angle_radians)
     cv2.imshow("swerve", img)
-    logger.info("-------------------------------")
+    # logger.info("-------------------------------")

@@ -28,13 +28,11 @@ class SwerveNode:
     def _set_angle_radians(self, target_radians: float, initial_radians: float):
         target_sensor_angle, flipped, flip_sensor_offset = SwerveNode._resolve_angles(target_radians, initial_radians)
 
-        logger.info(f"sensor_offset_1={self.motor_sensor_offset}")
+        target_sensor_angle -= self.motor_sensor_offset
 
         if flipped:
             self.motor_reversed = not self.motor_reversed
             self.motor_sensor_offset += flip_sensor_offset
-
-        logger.info(f"sensor_offset_2={self.motor_sensor_offset}")
 
         self.set_angle_raw(target_sensor_angle)
 
