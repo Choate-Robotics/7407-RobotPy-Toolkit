@@ -39,7 +39,7 @@ class _Talon(PIDMotor):
         self._motor.set(ctre.ControlMode.PercentOutput, x)
 
     def set_target_position(self, pos: float):
-        self._motor.set(ctre.ControlMode.MotionMagic, pos)
+        self._motor.set(ctre.ControlMode.Position, pos)
 
     def set_target_velocity(self, vel: float):
         self._motor.set(ctre.ControlMode.Velocity, vel)
@@ -51,15 +51,15 @@ class _Talon(PIDMotor):
         if config is None:
             return
         if config.k_P is not None:
-            self._motor.config_kP(1, config.k_P)
+            self._motor.config_kP(0, config.k_P)
         if config.k_I is not None:
-            self._motor.config_kI(1, config.k_I)
+            self._motor.config_kI(0, config.k_I)
         if config.k_D is not None:
-            self._motor.config_kD(1, config.k_D)
+            self._motor.config_kD(0, config.k_D)
         if config.k_F is not None:
-            self._motor.config_kF(1, config.k_F)
+            self._motor.config_kF(0, config.k_F)
         if config.closed_loop_peak_output is not None:
-            self._motor.configClosedLoopPeakOutput(1, config.closed_loop_peak_output)
+            self._motor.configClosedLoopPeakOutput(0, config.closed_loop_peak_output)
         if config.motion_cruise_velocity is not None:
             self._motor.configMotionCruiseVelocity(config.motion_cruise_velocity)
         if config.motion_acceleration is not None:

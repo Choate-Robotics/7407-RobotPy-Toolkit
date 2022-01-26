@@ -3,53 +3,61 @@ import math
 from robotpy_toolkit_7407.oi.joysticks import JoystickAxis
 from robotpy_toolkit_7407.subsystem import Subsystem
 from robotpy_toolkit_7407.utils import logger
-from robotpy_toolkit_7407.utils.math import rotate_vector
+from robotpy_toolkit_7407.utils.math import rotate_vector, bounded_angle_diff
 
 
 class SwerveNode:
     motor_reversed: bool
-    motor_flip_diff: float
+    motor_sensor_offset: float
 
     def init(self):
         self.motor_reversed = False
-        self.motor_flip_diff = 0
+        self.motor_sensor_offset = 0
 
     def set(self, vel_tw_per_second: float, angle_radians: float):
-        self.set_angle_radians(angle_radians, self.get_current_angle_raw() + self.motor_flip_diff)
+        self._set_angle_radians(angle_radians, self.get_current_angle_raw() + self.motor_sensor_offset)
         self.set_velocity_raw(vel_tw_per_second)
 
-    # pos=0 - facing right, counter-clockwise around, pos=1 - facing right
+    # OVERRIDDEN FUNCTIONS
     def set_angle_raw(self, pos: float): ...
-
     def get_current_angle_raw(self) -> float: ...
+    def set_velocity_raw(self, vel_tw_per_second: float): ...
+    def get_current_velocity(self) -> float: ...
 
     # 0 degrees is facing right
-    def set_angle_radians(self, target_radians: float, initial_radians: float):
-        # Actual angle difference in radians
-        diff = math.fmod(target_radians, 2 * math.pi) - math.fmod(initial_radians, 2 * math.pi)
-        while diff > math.pi:
-            diff -= 2 * math.pi
-        while diff < -math.pi:
-            diff += 2 * math.pi
+    def _set_angle_radians(self, target_radians: float, initial_radians: float):
+        target_sensor_angle, flipped, flip_sensor_offset = SwerveNode._resolve_angles(target_radians, initial_radians)
 
-        # Should we flip the motor
-        if abs(diff) > math.pi / 2:
-            if diff < 0:
-                self.motor_flip_diff += math.pi
-                diff += math.pi
-            else:
-                self.motor_flip_diff -= math.pi
-                diff -= math.pi
+        logger.info(f"sensor_offset_1={self.motor_sensor_offset}")
+
+        if flipped:
             self.motor_reversed = not self.motor_reversed
+            self.motor_sensor_offset += flip_sensor_offset
 
-        # Add diff to theta f
-        theta_f = initial_radians + diff
+        logger.info(f"sensor_offset_2={self.motor_sensor_offset}")
 
-        self.set_angle_raw(theta_f - self.motor_flip_diff)
+        self.set_angle_raw(target_sensor_angle)
 
-    def set_velocity_raw(self, vel_tw_per_second: float): ...
+    @staticmethod
+    def _resolve_angles(target_angle, initial_angle) -> (float, bool, float):
+        """
+        :param target_angle: Target node angle
+        :param initial_angle: Initial node sensor angle
+        :return: (target_sensor_angle, flipped, flip_sensor_offset)
+        """
 
-    def get_current_velocity(self) -> float: ...
+        # Actual angle difference in radians
+        diff = bounded_angle_diff(initial_angle, target_angle)
+
+        # Should we flip
+        if abs(diff) > 0.65 * math.pi:
+            logger.info(f"FLIPPED initial={initial_angle} target={target_angle} diff={diff}")
+            flip_sensor_offset = math.pi if diff > 0 else -math.pi
+            diff -= flip_sensor_offset
+            return diff + initial_angle, True, flip_sensor_offset
+
+        logger.info(f"initial={initial_angle} target={target_angle} diff={diff}")
+        return diff + initial_angle, False, 0
 
 
 class SwerveOdometry:
@@ -96,8 +104,8 @@ class SwerveDrivetrain(Subsystem):
             return
 
         self.n_00.set(*self._swerve_displacement(-1, -1, vel_tw_per_second[0], vel_tw_per_second[1], angular_vel, 0))
-        self.n_01.set(*self._swerve_displacement(-1, 1, vel_tw_per_second[0], vel_tw_per_second[1], angular_vel, math.pi))
-        self.n_10.set(*self._swerve_displacement(1, -1, vel_tw_per_second[0], vel_tw_per_second[1], angular_vel, math.pi))
+        self.n_01.set(*self._swerve_displacement(-1, 1, vel_tw_per_second[0], vel_tw_per_second[1], angular_vel, 0))
+        self.n_10.set(*self._swerve_displacement(1, -1, vel_tw_per_second[0], vel_tw_per_second[1], angular_vel, 0))
         self.n_11.set(*self._swerve_displacement(1, 1, vel_tw_per_second[0], vel_tw_per_second[1], angular_vel, 0))
 
     def stop(self):
