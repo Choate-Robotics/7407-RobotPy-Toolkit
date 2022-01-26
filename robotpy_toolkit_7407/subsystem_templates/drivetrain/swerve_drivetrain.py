@@ -49,12 +49,12 @@ class SwerveNode:
 
         # Should we flip
         if abs(diff) > 0.65 * math.pi:
-            logger.info(f"FLIPPED initial={initial_angle} target={target_angle} diff={diff}")
+            # logger.info(f"FLIPPED initial={initial_angle} target={target_angle} diff={diff}")
             flip_sensor_offset = math.pi if diff > 0 else -math.pi
             diff -= flip_sensor_offset
             return diff + initial_angle, True, flip_sensor_offset
 
-        logger.info(f"initial={initial_angle} target={target_angle} diff={diff}")
+        # logger.info(f"initial={initial_angle} target={target_angle} diff={diff}")
         return diff + initial_angle, False, 0
 
 
