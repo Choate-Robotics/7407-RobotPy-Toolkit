@@ -20,7 +20,7 @@ class DefaultButton(Button):
             return commands._impl.button.Button(
                 lambda: Joysticks.joysticks[self.controller_id].getRawAxis(-self.button_id) > 0.8
             )
-        return commands._impl.button.Button.JoystickButton(Joysticks.joysticks[self.controller_id], self.button_id)
+        return commands._impl.button.JoystickButton(Joysticks.joysticks[self.controller_id], self.button_id)
 
 
 @dataclass
