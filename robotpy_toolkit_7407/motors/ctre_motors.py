@@ -41,7 +41,7 @@ class _Talon(PIDMotor):
         self._motor.set(ctre.ControlMode.PercentOutput, x)
 
     def set_target_position(self, pos: float):
-        self._motor.set(ctre.ControlMode.Position, pos)
+        self._motor.set(ctre.ControlMode.MotionMagic, pos)
 
     def set_target_velocity(self, vel: float):
         self._motor.set(ctre.ControlMode.Velocity, vel)
