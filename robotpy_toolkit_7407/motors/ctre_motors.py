@@ -18,6 +18,8 @@ class TalonConfig:
     motion_cruise_velocity: Optional[float] = None
     motion_acceleration: Optional[float] = None
     neutral_brake: Optional[bool] = None
+    integral_zone: Optional[float] = None
+    max_integral_accumulator: Optional[float] = None
 
 
 class _Talon(PIDMotor):
@@ -66,6 +68,10 @@ class _Talon(PIDMotor):
             self._motor.configMotionAcceleration(config.motion_acceleration)
         if config.neutral_brake is not None:
             self._motor.setNeutralMode(ctre.NeutralMode.Brake if config.neutral_brake else ctre.NeutralMode.Coast)
+        if config.integral_zone is not None:
+            self._motor.config_IntegralZone(0, config.integral_zone)
+        if config.max_integral_accumulator is not None:
+            self._motor.configMaxIntegralAccumulator(0, config.max_integral_accumulator)
 
 
 class TalonFX(_Talon):
