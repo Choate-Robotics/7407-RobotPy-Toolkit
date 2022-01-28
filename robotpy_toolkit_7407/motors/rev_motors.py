@@ -21,9 +21,10 @@ class SparkMax(PIDMotor):
     __pid_controller: rev.SparkMaxPIDController
     __encoder: rev.SparkMaxRelativeEncoder
 
-    def __init__(self, can_id: int, brushless: bool = True, config: SparkMaxConfig = None):
+    def __init__(self, can_id: int, inverted: bool = True, brushless: bool = True, config: SparkMaxConfig = None):
         super().__init__()
         self._can_id = can_id
+        self._inverted = inverted
         self._brushless = brushless
         self._config = config
 
@@ -32,6 +33,7 @@ class SparkMax(PIDMotor):
             self._can_id,
             rev.CANSparkMax.MotorType.kBrushless if self._brushless else rev.CANSparkMax.MotorType.kBrushed
         )
+        self._motor.setInverted(self._inverted)
         self.__pid_controller = self._motor.getPIDController()
         self.__encoder = self._motor.getEncoder()
         self._set_config(self._config)
