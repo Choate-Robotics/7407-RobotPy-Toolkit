@@ -57,6 +57,9 @@ class TestMotor(PIDMotor):
     def get_sensor_position(self) -> float:
         return self.current_pos
 
+    def set_sensor_position(self, pos: float):
+        self.current_pos = pos
+
     def get_sensor_velocity(self) -> float:
         if self.control_mode == self.ControlMode.VELOCITY:
             return self.current_vel

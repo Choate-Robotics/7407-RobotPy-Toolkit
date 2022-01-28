@@ -34,6 +34,9 @@ class _Talon(PIDMotor):
     def get_sensor_position(self) -> float:
         return self._motor.getSelectedSensorPosition(0)
 
+    def set_sensor_position(self, pos: float):
+        self._motor.setSelectedSensorPosition(pos)
+
     def get_sensor_velocity(self) -> float:
         return self._motor.getSelectedSensorVelocity(0)
 
@@ -121,6 +124,9 @@ class TalonGroup(PIDMotor):
 
     def get_sensor_position(self) -> float:
         return self.motors[self._leader_idx].get_sensor_position()
+
+    def set_sensor_position(self, pos: float):
+        self.motors[self._leader_idx].set_sensor_position(pos)
 
     def get_sensor_velocity(self) -> float:
         return self.motors[self._leader_idx].get_sensor_velocity()

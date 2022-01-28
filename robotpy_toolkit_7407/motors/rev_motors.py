@@ -50,6 +50,9 @@ class SparkMax(PIDMotor):
     def get_sensor_position(self) -> float:
         return self.__encoder.getPosition()
 
+    def set_sensor_position(self, pos: float):
+        self.__encoder.setPosition(pos)
+
     def get_sensor_velocity(self) -> float:
         return self.__encoder.getVelocity()
 
