@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 from typing import Optional
 
-import rev
+from rev import CANSparkMax, SparkMaxPIDController, SparkMaxRelativeEncoder
+from unum import Unum
 
 from robotpy_toolkit_7407.motor import PIDMotor
+from robotpy_toolkit_7407.utils.units import rev, minute
 
 
 @dataclass
@@ -13,13 +15,13 @@ class SparkMaxConfig:
     k_D: Optional[float] = None
     k_F: Optional[float] = None
     output_range: Optional[tuple[float, float]] = None
-    idle_mode: Optional[rev.CANSparkMax.IdleMode] = None
+    idle_mode: Optional[CANSparkMax.IdleMode] = None
 
 
 class SparkMax(PIDMotor):
-    _motor: rev.CANSparkMax
-    __pid_controller: rev.SparkMaxPIDController
-    __encoder: rev.SparkMaxRelativeEncoder
+    _motor: CANSparkMax
+    __pid_controller: SparkMaxPIDController
+    __encoder: SparkMaxRelativeEncoder
 
     def __init__(self, can_id: int, inverted: bool = True, brushless: bool = True, config: SparkMaxConfig = None):
         super().__init__()
@@ -29,9 +31,9 @@ class SparkMax(PIDMotor):
         self._config = config
 
     def init(self):
-        self._motor = rev.CANSparkMax(
+        self._motor = CANSparkMax(
             self._can_id,
-            rev.CANSparkMax.MotorType.kBrushless if self._brushless else rev.CANSparkMax.MotorType.kBrushed
+            CANSparkMax.MotorType.kBrushless if self._brushless else CANSparkMax.MotorType.kBrushed
         )
         self._motor.setInverted(self._inverted)
         self.__pid_controller = self._motor.getPIDController()
@@ -41,20 +43,20 @@ class SparkMax(PIDMotor):
     def set_raw_output(self, x: float):
         self._motor.set(x)
 
-    def set_target_position(self, pos: float):
-        self.__pid_controller.setReference(pos, rev.CANSparkMax.ControlType.kPosition)
+    def set_target_position(self, pos: Unum):
+        self.__pid_controller.setReference(pos.asNumber(rev), CANSparkMax.ControlType.kPosition)
 
-    def set_target_velocity(self, vel: float):
-        self.__pid_controller.setReference(vel, rev.CANSparkMax.ControlType.kVelocity)
+    def set_target_velocity(self, vel: Unum):
+        self.__pid_controller.setReference(vel.asNumber(rev / minute), CANSparkMax.ControlType.kVelocity)
 
-    def get_sensor_position(self) -> float:
-        return self.__encoder.getPosition()
+    def get_sensor_position(self) -> Unum:
+        return self.__encoder.getPosition() * rev
 
-    def set_sensor_position(self, pos: float):
-        self.__encoder.setPosition(pos)
+    def set_sensor_position(self, pos: Unum):
+        self.__encoder.setPosition(pos.asNumber(rev))
 
-    def get_sensor_velocity(self) -> float:
-        return self.__encoder.getVelocity()
+    def get_sensor_velocity(self) -> Unum:
+        return self.__encoder.getVelocity() * (rev / minute)
 
     def _set_config(self, config: SparkMaxConfig):
         if config is None:

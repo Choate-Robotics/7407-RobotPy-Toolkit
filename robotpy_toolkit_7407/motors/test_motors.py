@@ -1,5 +1,8 @@
+from unum import Unum
+
 from robotpy_toolkit_7407.motor import PIDMotor
 from robotpy_toolkit_7407.utils.math import clamp
+from robotpy_toolkit_7407.utils.units import rev, s
 
 
 class TestMotor(PIDMotor):
@@ -8,12 +11,12 @@ class TestMotor(PIDMotor):
         POSITION = 1
         VELOCITY = 2
 
-    control_mode: float
-    set_point: float
-    current_pos: float
-    current_vel: float
-    prev_pos: float
-    prev_dt: float
+    control_mode: int
+    set_point: Unum | float
+    current_pos: Unum
+    current_vel: Unum
+    prev_pos: Unum
+    prev_dt: Unum
 
     def __init__(self, max_vel: float = 1000, max_accel: float = 50):
         self.max_vel = max_vel
@@ -22,12 +25,12 @@ class TestMotor(PIDMotor):
     def init(self):
         self.control_mode = self.ControlMode.PERCENT
         self.set_point = 0
-        self.current_pos = 0
-        self.current_vel = 0
-        self.prev_pos = 0
-        self.prev_dt = 0
+        self.current_pos = 0 * rev
+        self.current_vel = 0 * rev / s
+        self.prev_pos = 0 * rev
+        self.prev_dt = 0 * s
 
-    def update(self, dt=0.02):
+    def update(self, dt: Unum = 0.02 * s):
         self.prev_pos = self.current_pos
         self.prev_dt = dt
         if self.control_mode == self.ControlMode.PERCENT:
@@ -46,23 +49,23 @@ class TestMotor(PIDMotor):
         self.control_mode = self.ControlMode.PERCENT
         self.set_point = x
 
-    def set_target_position(self, pos: float):
+    def set_target_position(self, pos: Unum):
         self.control_mode = self.ControlMode.POSITION
-        self.set_point = pos
+        self.set_point = pos.asUnit(rev)
 
-    def set_target_velocity(self, vel: float):
+    def set_target_velocity(self, vel: Unum):
         self.control_mode = self.ControlMode.VELOCITY
-        self.set_point = vel
+        self.set_point = vel.asUnit(rev / s)
 
-    def get_sensor_position(self) -> float:
+    def get_sensor_position(self) -> Unum:
         return self.current_pos
 
-    def set_sensor_position(self, pos: float):
-        self.current_pos = pos
+    def set_sensor_position(self, pos: Unum):
+        self.current_pos = pos.asUnit(rev)
 
-    def get_sensor_velocity(self) -> float:
+    def get_sensor_velocity(self) -> Unum:
         if self.control_mode == self.ControlMode.VELOCITY:
             return self.current_vel
         if self.prev_dt == 0:
-            return 0
+            return 0 * rev/s
         return (self.current_pos - self.prev_pos) / self.prev_dt
