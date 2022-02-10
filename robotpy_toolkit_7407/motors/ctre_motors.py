@@ -4,8 +4,10 @@ from dataclasses import dataclass
 from typing import Optional
 
 import ctre
+from unum import Unum
 
 from robotpy_toolkit_7407.motor import PIDMotor
+from robotpy_toolkit_7407.utils.units import rad, rev, s
 
 
 @dataclass
@@ -15,11 +17,17 @@ class TalonConfig:
     k_D: Optional[float] = None
     k_F: Optional[float] = None
     closed_loop_peak_output: Optional[float] = None
-    motion_cruise_velocity: Optional[float] = None
-    motion_acceleration: Optional[float] = None
+    motion_cruise_velocity: Optional[Unum] = None
+    motion_acceleration: Optional[Unum] = None
     neutral_brake: Optional[bool] = None
     integral_zone: Optional[float] = None
     max_integral_accumulator: Optional[float] = None
+
+
+talon_sensor_unit = Unum.unit("talon_sensor_u", rev / 2048, "talon sensor unit")
+hundred_ms = Unum.unit("100ms", s / 10, "100 milliseconds")
+talon_sensor_vel_unit = talon_sensor_unit / hundred_ms
+talon_sensor_accel_unit = talon_sensor_vel_unit / s
 
 
 class _Talon(PIDMotor):
@@ -31,23 +39,23 @@ class _Talon(PIDMotor):
         self._config = config
         self._inverted = inverted
 
-    def get_sensor_position(self) -> float:
-        return self._motor.getSelectedSensorPosition(0)
+    def get_sensor_position(self) -> Unum:
+        return self._motor.getSelectedSensorPosition(0) * talon_sensor_unit
 
-    def set_sensor_position(self, pos: float):
-        self._motor.setSelectedSensorPosition(pos)
+    def set_sensor_position(self, pos: Unum):
+        self._motor.setSelectedSensorPosition(pos.asNumber(talon_sensor_unit))
 
-    def get_sensor_velocity(self) -> float:
-        return self._motor.getSelectedSensorVelocity(0)
+    def get_sensor_velocity(self) -> Unum:
+        return self._motor.getSelectedSensorVelocity(0) * talon_sensor_vel_unit
 
     def set_raw_output(self, x: float):
         self._motor.set(ctre.ControlMode.PercentOutput, x)
 
-    def set_target_position(self, pos: float):
-        self._motor.set(ctre.ControlMode.MotionMagic, pos)
+    def set_target_position(self, pos: Unum):
+        self._motor.set(ctre.ControlMode.MotionMagic, pos.asNumber(talon_sensor_unit))
 
-    def set_target_velocity(self, vel: float):
-        self._motor.set(ctre.ControlMode.Velocity, vel)
+    def set_target_velocity(self, vel: Unum):
+        self._motor.set(ctre.ControlMode.Velocity, vel.asNumber(talon_sensor_vel_unit))
 
     def follow(self, master: _Talon):
         self._motor.follow(master._motor)
@@ -66,9 +74,9 @@ class _Talon(PIDMotor):
         if config.closed_loop_peak_output is not None:
             self._motor.configClosedLoopPeakOutput(0, config.closed_loop_peak_output)
         if config.motion_cruise_velocity is not None:
-            self._motor.configMotionCruiseVelocity(config.motion_cruise_velocity)
+            self._motor.configMotionCruiseVelocity(config.motion_cruise_velocity.asNumber(talon_sensor_vel_unit))
         if config.motion_acceleration is not None:
-            self._motor.configMotionAcceleration(config.motion_acceleration)
+            self._motor.configMotionAcceleration(config.motion_acceleration.asNumber(talon_sensor_accel_unit))
         if config.neutral_brake is not None:
             self._motor.setNeutralMode(ctre.NeutralMode.Brake if config.neutral_brake else ctre.NeutralMode.Coast)
         if config.integral_zone is not None:
@@ -122,20 +130,20 @@ class TalonGroup(PIDMotor):
             if idx != self._leader_idx:
                 motor.follow(self.motors[self._leader_idx])
 
-    def get_sensor_position(self) -> float:
+    def get_sensor_position(self) -> Unum:
         return self.motors[self._leader_idx].get_sensor_position()
 
-    def set_sensor_position(self, pos: float):
+    def set_sensor_position(self, pos: Unum):
         self.motors[self._leader_idx].set_sensor_position(pos)
 
-    def get_sensor_velocity(self) -> float:
+    def get_sensor_velocity(self) -> Unum:
         return self.motors[self._leader_idx].get_sensor_velocity()
 
     def set_raw_output(self, x: float):
         self.motors[self._leader_idx].set_raw_output(x)
 
-    def set_target_position(self, pos: float):
+    def set_target_position(self, pos: Unum):
         self.motors[self._leader_idx].set_target_position(pos)
 
-    def set_target_velocity(self, vel: float):
+    def set_target_velocity(self, vel: Unum):
         self.motors[self._leader_idx].set_target_velocity(vel)
