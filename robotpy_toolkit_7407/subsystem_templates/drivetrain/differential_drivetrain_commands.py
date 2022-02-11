@@ -1,6 +1,10 @@
+from unum import Unum
+
 from robotpy_toolkit_7407.command import SubsystemCommand, T
+from robotpy_toolkit_7407.motors.ctre_motors import talon_sensor_vel_unit
 from robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain import DifferentialDrivetrain
 from robotpy_toolkit_7407.utils.math import clamp, sensor_units_to_inches, inches_to_sensor_units
+from robotpy_toolkit_7407.utils.units import m, s
 
 
 class DriveArcade(SubsystemCommand[DifferentialDrivetrain]):
@@ -18,10 +22,10 @@ class DriveArcade(SubsystemCommand[DifferentialDrivetrain]):
 
         left, right = self._turn_radius_drive(x_axis, y_axis, self.track_width_inches)
 
-        self.subsystem.set_motor_velocity(left, -right)
+        self.subsystem.set_motor_velocity(left * talon_sensor_vel_unit, -right * talon_sensor_vel_unit)
 
     def end(self, interrupted: bool) -> None:
-        self.subsystem.set_motor_velocity(0, 0)
+        self.subsystem.set_motor_velocity(0 * m/s, 0 * m/s)
 
     def isFinished(self) -> bool:
         return False

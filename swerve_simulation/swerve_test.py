@@ -2,9 +2,11 @@ import math
 from typing import Union
 
 import cv2
+from unum import Unum
 
 from robotpy_toolkit_7407.utils import logger
 from robotpy_toolkit_7407.utils.math import rotate_vector
+from robotpy_toolkit_7407.utils.units import rad, s, m, ms
 
 from swerve_sim_subsystem import drivetrain, drive_command, TestSwerveNode
 
@@ -38,21 +40,21 @@ def c(x: float, y: float):
 
 def draw_robot(x: float, y: float, theta: float):
     pts = [
-        rotate_vector(-0.5, -0.5, theta),
-        rotate_vector(+0.5, -0.5, theta),
-        rotate_vector(+0.5, +0.5, theta),
-        rotate_vector(-0.5, +0.5, theta)
+        rotate_vector(-0.5, -0.5, theta * rad),
+        rotate_vector(+0.5, -0.5, theta * rad),
+        rotate_vector(+0.5, +0.5, theta * rad),
+        rotate_vector(-0.5, +0.5, theta * rad)
     ]
 
-    def draw_motor(m: TestSwerveNode, px: float, py: float, theta_off: float):
+    def draw_motor(motor: TestSwerveNode, px: float, py: float, theta_off: float):
         x1, y1 = p(x + px, y + py)
         dx, dy = p(*rotate_vector(
-            m.get_current_velocity() * motor_vel_scale,
+            (motor.get_motor_velocity() * motor_vel_scale).asNumber(m/s),
             0,
-            m.get_current_angle_raw() + theta_off + theta
+            (motor.get_current_motor_angle() + theta_off + theta) * rad
         ))
         x2, y2 = x1 + dx, y1 + dy
-        cv2.line(img, c(x1, y1), c(x2, y2), (0, 0, 255) if not m.motor_reversed else (255, 0, 0), 3)
+        cv2.line(img, c(x1, y1), c(x2, y2), (0, 0, 255) if not motor._motor_reversed else (255, 0, 0), 3)
 
     p_pts = []
     for a, b in pts:
@@ -66,24 +68,28 @@ def draw_robot(x: float, y: float, theta: float):
     draw_motor(drivetrain.n_11, *pts[2], 0)
 
 
-time_scale = 0.1
-frame_scale = 1
+frame = Unum.unit("frame", 0, "frame")
+update = Unum.unit("update", 0, "update")
+
+time_scale = (1/0.02) * update/s
+frame_scale = 1 * frame/update
 
 
 def deadzone(v: float, dz_amt: float = 0.1) -> float:
     return 0 if abs(v) < dz_amt else v
 
 
-while cv2.waitKey(int(20 * frame_scale)) != ord("q"):
+while cv2.waitKey(int((1 / (time_scale * frame_scale)).asNumber(ms/frame))) != ord("q"):
     drive_command.execute()
-    drivetrain.n_00.update(0.02 * time_scale)
-    drivetrain.n_01.update(0.02 * time_scale)
-    drivetrain.n_10.update(0.02 * time_scale)
-    drivetrain.n_11.update(0.02 * time_scale)
+    dt = 1 * update / time_scale
+    drivetrain.n_00.update(dt)
+    drivetrain.n_01.update(dt)
+    drivetrain.n_10.update(dt)
+    drivetrain.n_11.update(dt)
     img.fill(0)
-    # drivetrain.axis_dx.val = math.sin(x)
+    drivetrain.axis_dx.val = 0.3
     # drivetrain.axis_dy.val = math.cos(x)
-    # drivetrain.axis_rotation.val = math.sin(x)
+    drivetrain.axis_rotation.val = 0.05
     try:
         pygame.event.pump()
         joystick = pygame.joystick.Joystick(0)
@@ -95,9 +101,9 @@ while cv2.waitKey(int(20 * frame_scale)) != ord("q"):
         drivetrain.axis_rotation.val = deadzone(joystick.get_axis(3))
     except pygame.error:
         joystick_init = False
-    drivetrain.odometry.angle_radians -= (drivetrain.axis_rotation.val / (4 * math.pi / 3)) * time_scale * frame_scale
-    robot_x += (drivetrain.axis_dx.val / 3) * time_scale * frame_scale
-    robot_y -= (drivetrain.axis_dy.val / 3) * time_scale * frame_scale
+    drivetrain.odometry.angle_radians += drivetrain.axis_rotation.val * drivetrain.max_angular_vel * dt
+    robot_x += (drivetrain.axis_dx.val * drivetrain.max_vel * dt).asNumber(m)
+    robot_y -= (drivetrain.axis_dy.val * drivetrain.max_vel * dt).asNumber(m)
     draw_robot(robot_x, robot_y, drivetrain.odometry.angle_radians)
     cv2.imshow("swerve", img)
     # logger.info("-------------------------------")

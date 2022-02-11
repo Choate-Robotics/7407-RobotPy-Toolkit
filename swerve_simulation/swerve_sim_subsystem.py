@@ -1,9 +1,12 @@
 import math
 
+from unum import Unum
+
 from robotpy_toolkit_7407.motors import TestMotor
 from robotpy_toolkit_7407.oi import JoystickAxis
 from robotpy_toolkit_7407.subsystem_templates.drivetrain import SwerveNode, SwerveOdometry, SwerveDrivetrain, \
     DriveSwerve
+from robotpy_toolkit_7407.utils.units import rad, m, s
 
 
 #   ----   DIRECT CONTROL   ----
@@ -36,13 +39,16 @@ from robotpy_toolkit_7407.subsystem_templates.drivetrain import SwerveNode, Swer
 
 
 #   ----   REALISTIC CONTROL   ----
+
+
 class TestSwerveNode(SwerveNode):
     m_turn: TestMotor
     m_move: TestMotor
-    angle_offset: float
+    angle_offset: Unum
+    gear_ratio: Unum = 1 * rad/m
 
-    def __init__(self, angle_offset: float = 0, max_angular_vel: float = 20,
-                 max_vel: float = 5, max_accel: float = 50):
+    def __init__(self, angle_offset: Unum = 0 * rad, max_angular_vel: Unum = 20 * rad/s,
+                 max_vel: Unum = 5 * rad/s, max_accel: Unum = 50 * rad/s**2):
         self.angle_offset = angle_offset
         self.m_turn = TestMotor(max_angular_vel)
         self.m_move = TestMotor(max_vel, max_accel)
@@ -52,37 +58,34 @@ class TestSwerveNode(SwerveNode):
         self.m_turn.init()
         self.m_move.init()
 
-    def update(self, dt=0.02):
+    def update(self, dt=0.02*s):
         self.m_turn.update(dt)
         self.m_move.update(dt)
 
-    def set_angle_raw(self, pos: float):
+    def set_motor_angle(self, pos: Unum):
         self.m_turn.set_target_position(pos - self.angle_offset)
 
-    def set_velocity_raw(self, vel_tw_per_second: float):
-        if self.motor_reversed:
-            self.m_move.set_target_velocity(-vel_tw_per_second)
-        else:
-            self.m_move.set_target_velocity(vel_tw_per_second)
+    def set_motor_velocity(self, vel: Unum):
+        self.m_move.set_target_velocity(vel * self.gear_ratio)
 
-    def get_current_angle_raw(self) -> float:
+    def get_current_motor_angle(self) -> Unum:
         return self.m_turn.get_sensor_position() + self.angle_offset
 
-    def get_current_velocity(self) -> float:
-        return self.m_move.get_sensor_velocity()
+    def get_motor_velocity(self) -> Unum:
+        return self.m_move.get_sensor_velocity() / self.gear_ratio
 
 
 class TestOdometry(SwerveOdometry):
-    angle_radians: float
+    angle_radians: Unum
 
     def init(self):
-        self.angle_radians = 0
+        self.angle_radians = 0 * rad
 
-    def get_robot_angle_degrees(self) -> float:
-        return self.angle_radians * (180 / math.pi)
+    def get_robot_heading(self) -> Unum:
+        return self.angle_radians
 
     def reset_angle(self):
-        self.angle_radians = 0
+        self.angle_radians = 0 * rad
 
 
 class TestJoystickAxis(JoystickAxis):
@@ -95,14 +98,15 @@ class TestJoystickAxis(JoystickAxis):
 
 
 class Drivetrain(SwerveDrivetrain):
-    n_00 = TestSwerveNode(0)
-    n_01 = TestSwerveNode(0)
-    n_10 = TestSwerveNode(0)
-    n_11 = TestSwerveNode(0)
+    n_00 = TestSwerveNode()
+    n_01 = TestSwerveNode()
+    n_10 = TestSwerveNode()
+    n_11 = TestSwerveNode()
     axis_dx = TestJoystickAxis()
     axis_dy = TestJoystickAxis()
     axis_rotation = TestJoystickAxis()
     odometry = TestOdometry()
+    max_vel = 3 * m/s
 
 
 drivetrain = Drivetrain()

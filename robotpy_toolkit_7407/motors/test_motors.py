@@ -2,7 +2,7 @@ from unum import Unum
 
 from robotpy_toolkit_7407.motor import PIDMotor
 from robotpy_toolkit_7407.utils.math import clamp
-from robotpy_toolkit_7407.utils.units import rev, s
+from robotpy_toolkit_7407.utils.units import rev, s, minute, rad
 
 
 class TestMotor(PIDMotor):
@@ -18,7 +18,7 @@ class TestMotor(PIDMotor):
     prev_pos: Unum
     prev_dt: Unum
 
-    def __init__(self, max_vel: float = 1000, max_accel: float = 50):
+    def __init__(self, max_vel: Unum = 100 * rad/s, max_accel: Unum = 10 * rad/s**2):
         self.max_vel = max_vel
         self.max_accel = max_accel
 
