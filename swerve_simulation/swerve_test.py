@@ -79,9 +79,11 @@ def deadzone(v: float, dz_amt: float = 0.1) -> float:
     return 0 if abs(v) < dz_amt else v
 
 
-while cv2.waitKey(int((1 / (time_scale * frame_scale)).asNumber(ms/frame))) != ord("q"):
+wait_duration = int((1 / (time_scale * frame_scale)).asNumber(ms/frame))
+dt = 1 * update / time_scale
+
+while cv2.waitKey(wait_duration) != ord("q"):
     drive_command.execute()
-    dt = 1 * update / time_scale
     drivetrain.n_00.update(dt)
     drivetrain.n_01.update(dt)
     drivetrain.n_10.update(dt)
