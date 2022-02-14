@@ -23,9 +23,7 @@ class DriveSwerve(SubsystemCommand[SwerveDrivetrain]):
         dx *= self.subsystem.max_vel.asUnit(m/s)
         dy *= -self.subsystem.max_vel.asUnit(m/s)
 
-        d_theta *= self.subsystem.max_angular_vel
-
-        self.subsystem.set((dx, dy), d_theta)
+        self.subsystem.set((dx, dy), d_theta * self.subsystem.max_angular_vel)
 
     def end(self, interrupted: bool) -> None:
         self.subsystem.stop()
