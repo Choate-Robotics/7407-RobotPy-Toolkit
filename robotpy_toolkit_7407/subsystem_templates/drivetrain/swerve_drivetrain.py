@@ -1,12 +1,15 @@
 import math
 
 from unum import Unum
+from wpimath.geometry import Rotation2d, Pose2d
+from wpimath.kinematics import SwerveDrive4Odometry, SwerveDrive4Kinematics, SwerveModuleState
 
 from robotpy_toolkit_7407.oi.joysticks import JoystickAxis
 from robotpy_toolkit_7407.subsystem import Subsystem
 from robotpy_toolkit_7407.utils import logger
 from robotpy_toolkit_7407.utils.math import rotate_vector, bounded_angle_diff
 from robotpy_toolkit_7407.utils.units import s, m, deg, rad, hour, mile, rev
+from swerve_simulation.swerve_sim_trajectory import translation
 
 
 class SwerveNode:
@@ -62,7 +65,7 @@ class SwerveNode:
         return (diff + initial_rad) * rad, False, 0 * rad
 
 
-class SwerveOdometry:
+class SwerveGyro:
     def init(self): ...
     def get_robot_heading(self) -> Unum: ...
     def reset_angle(self): ...
@@ -73,7 +76,7 @@ class SwerveDrivetrain(Subsystem):
     n_01: SwerveNode  # Bottom Left
     n_10: SwerveNode  # Top Right
     n_11: SwerveNode  # Bottom Right
-    odometry: SwerveOdometry
+    gyro: SwerveGyro
     axis_dx: JoystickAxis
     axis_dy: JoystickAxis
     axis_rotation: JoystickAxis
@@ -82,6 +85,13 @@ class SwerveDrivetrain(Subsystem):
     max_angular_vel: Unum = 4 * rev/s
     deadzone_velocity: Unum = 0.05 * m/s
     deadzone_angular_velocity: Unum = 5 * deg/s
+    start_pose: Pose2d = Pose2d(0, 0, 0)
+
+    def __init__(self):
+        super().__init__()
+        self.kinematics: SwerveDrive4Kinematics | None = None
+        self.odometry: SwerveDrive4Odometry | None = None
+        self._omega = 0 * rad/s
 
     def init(self):
         logger.info("initializing swerve drivetrain", "[swerve_drivetrain]")
@@ -89,14 +99,24 @@ class SwerveDrivetrain(Subsystem):
         self.n_01.init()
         self.n_10.init()
         self.n_11.init()
-        self.odometry.init()
+        self.gyro.init()
+        logger.info("initializing odometry", "[swerve_drivetrain]")
+        self.kinematics = SwerveDrive4Kinematics(
+            translation(-.5 * self.track_width, -.5 * self.track_width),
+            translation(-.5 * self.track_width, .5 * self.track_width),
+            translation(.5 * self.track_width, -.5 * self.track_width),
+            translation(.5 * self.track_width, .5 * self.track_width)
+        )
+        self.odometry = SwerveDrive4Odometry(
+            self.kinematics,
+            Rotation2d(self.gyro.get_robot_heading().asNumber(rad)),
+            self.start_pose
+        )
         logger.info("initialization complete", "[swerve_drivetrain]")
 
     def set(self, vel: (Unum, Unum), angular_vel: Unum):
-        vel = rotate_vector(vel[0], vel[1], -self.odometry.get_robot_heading())
-
-        # logger.info(f"ROBOT AT {self.odometry.get_robot_angle_degrees()} degrees offset")
-        # logger.info(f"({vel_tw_per_second[0]} tw/sec, {vel_tw_per_second[1]} tw/sec, {angular_vel} rad/sec)")
+        self._omega = angular_vel  # For simulation
+        vel = rotate_vector(vel[0], vel[1], -self.gyro.get_robot_heading())
 
         if abs(vel[0]) < self.deadzone_velocity and abs(vel[1]) < self.deadzone_velocity and \
                 abs(angular_vel) < self.deadzone_angular_velocity:
@@ -104,24 +124,31 @@ class SwerveDrivetrain(Subsystem):
             self.n_01.set_motor_velocity(0 * m/s)
             self.n_10.set_motor_velocity(0 * m/s)
             self.n_11.set_motor_velocity(0 * m/s)
-            return
+        else:
+            self.n_00.set(*self._calculate_swerve_node(
+                -.5 * self.track_width, -.5 * self.track_width,
+                vel[0], vel[1], angular_vel
+            ))
+            self.n_01.set(*self._calculate_swerve_node(
+                -.5 * self.track_width, .5 * self.track_width,
+                vel[0], vel[1], angular_vel
+            ))
+            self.n_10.set(*self._calculate_swerve_node(
+                .5 * self.track_width, -.5 * self.track_width,
+                vel[0], vel[1], angular_vel
+            ))
+            self.n_11.set(*self._calculate_swerve_node(
+                .5 * self.track_width, .5 * self.track_width,
+                vel[0], vel[1], angular_vel
+            ))
 
-        self.n_00.set(*self._calculate_swerve_node(
-            -.5 * self.track_width, -.5 * self.track_width,
-            vel[0], vel[1], angular_vel
-        ))
-        self.n_01.set(*self._calculate_swerve_node(
-            -.5 * self.track_width, .5 * self.track_width,
-            vel[0], vel[1], angular_vel
-        ))
-        self.n_10.set(*self._calculate_swerve_node(
-            .5 * self.track_width, -.5 * self.track_width,
-            vel[0], vel[1], angular_vel
-        ))
-        self.n_11.set(*self._calculate_swerve_node(
-            .5 * self.track_width, .5 * self.track_width,
-            vel[0], vel[1], angular_vel
-        ))
+        self.odometry.update(
+            Rotation2d(self.gyro.get_robot_heading().asNumber(rad)),
+            SwerveModuleState(self.n_00.get_motor_velocity().asNumber(m/s), Rotation2d(self.n_00.get_current_motor_angle().asNumber(rad))),
+            SwerveModuleState(self.n_01.get_motor_velocity().asNumber(m/s), Rotation2d(self.n_01.get_current_motor_angle().asNumber(rad))),
+            SwerveModuleState(self.n_10.get_motor_velocity().asNumber(m/s), Rotation2d(self.n_10.get_current_motor_angle().asNumber(rad))),
+            SwerveModuleState(self.n_11.get_motor_velocity().asNumber(m/s), Rotation2d(self.n_11.get_current_motor_angle().asNumber(rad)))
+        )
 
     def stop(self):
         self.n_00.set(0 * m/s, 0 * rad/s)

@@ -1,10 +1,11 @@
 import math
 
 from unum import Unum
+from wpimath.geometry import Pose2d
 
 from robotpy_toolkit_7407.motors import TestMotor
 from robotpy_toolkit_7407.oi import JoystickAxis
-from robotpy_toolkit_7407.subsystem_templates.drivetrain import SwerveNode, SwerveOdometry, SwerveDrivetrain, \
+from robotpy_toolkit_7407.subsystem_templates.drivetrain import SwerveNode, SwerveGyro, SwerveDrivetrain, \
     DriveSwerve
 from robotpy_toolkit_7407.utils.units import rad, m, s, rev, mile, hour
 
@@ -75,7 +76,7 @@ class TestSwerveNode(SwerveNode):
         return self.m_move.get_sensor_velocity() / self.gear_ratio
 
 
-class TestOdometry(SwerveOdometry):
+class TestGyro(SwerveGyro):
     orientation: Unum
 
     def init(self):
@@ -97,7 +98,7 @@ class TestJoystickAxis(JoystickAxis):
         return self.val
 
 
-class TestDrivetrain(SwerveDrivetrain):
+class SimDrivetrain(SwerveDrivetrain):
     n_00 = TestSwerveNode()
     n_01 = TestSwerveNode()
     n_10 = TestSwerveNode()
@@ -105,7 +106,8 @@ class TestDrivetrain(SwerveDrivetrain):
     axis_dx = TestJoystickAxis()
     axis_dy = TestJoystickAxis()
     axis_rotation = TestJoystickAxis()
-    odometry = TestOdometry()
+    gyro = TestGyro()
     max_vel = 20 * mile/hour
     max_angular_vel = 2 * rev/s
+    start_pose = Pose2d(2, 2, 0)
 
