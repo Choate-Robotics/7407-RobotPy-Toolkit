@@ -6,7 +6,7 @@ from robotpy_toolkit_7407.motors import TestMotor
 from robotpy_toolkit_7407.oi import JoystickAxis
 from robotpy_toolkit_7407.subsystem_templates.drivetrain import SwerveNode, SwerveOdometry, SwerveDrivetrain, \
     DriveSwerve
-from robotpy_toolkit_7407.utils.units import rad, m, s
+from robotpy_toolkit_7407.utils.units import rad, m, s, rev, mile, hour
 
 
 #   ----   DIRECT CONTROL   ----
@@ -76,16 +76,16 @@ class TestSwerveNode(SwerveNode):
 
 
 class TestOdometry(SwerveOdometry):
-    angle_radians: Unum
+    orientation: Unum
 
     def init(self):
-        self.angle_radians = 0 * rad
+        self.orientation = 0 * rad
 
     def get_robot_heading(self) -> Unum:
-        return self.angle_radians
+        return self.orientation
 
     def reset_angle(self):
-        self.angle_radians = 0 * rad
+        self.orientation = 0 * rad
 
 
 class TestJoystickAxis(JoystickAxis):
@@ -97,7 +97,7 @@ class TestJoystickAxis(JoystickAxis):
         return self.val
 
 
-class Drivetrain(SwerveDrivetrain):
+class TestDrivetrain(SwerveDrivetrain):
     n_00 = TestSwerveNode()
     n_01 = TestSwerveNode()
     n_10 = TestSwerveNode()
@@ -106,12 +106,6 @@ class Drivetrain(SwerveDrivetrain):
     axis_dy = TestJoystickAxis()
     axis_rotation = TestJoystickAxis()
     odometry = TestOdometry()
-    max_vel = 3 * m/s
-
-
-drivetrain = Drivetrain()
-drivetrain.init()
-
-drive_command = DriveSwerve(drivetrain)
-drive_command.initialize()
+    max_vel = 20 * mile/hour
+    max_angular_vel = 2 * rev/s
 

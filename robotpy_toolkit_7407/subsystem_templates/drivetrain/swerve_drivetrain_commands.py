@@ -2,6 +2,7 @@ import math
 
 from robotpy_toolkit_7407.command import SubsystemCommand
 from robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain import SwerveDrivetrain
+from robotpy_toolkit_7407.utils import logger
 from robotpy_toolkit_7407.utils.units import m, s
 
 
@@ -23,7 +24,7 @@ class DriveSwerve(SubsystemCommand[SwerveDrivetrain]):
         dx *= self.subsystem.max_vel.asUnit(m/s)
         dy *= -self.subsystem.max_vel.asUnit(m/s)
 
-        self.subsystem.set((dx, dy), d_theta * self.subsystem.max_angular_vel)
+        self.subsystem.set((dx, dy), -d_theta * self.subsystem.max_angular_vel)
 
     def end(self, interrupted: bool) -> None:
         self.subsystem.stop()
