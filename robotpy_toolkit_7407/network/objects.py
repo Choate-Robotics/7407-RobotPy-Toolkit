@@ -20,11 +20,11 @@ class Sendable(Generic[TObj]):
     def network_update(self, data: TObj): ...
 
 
-class MotorNetworkObject(BaseModel):
+class MotorNetworkObject(NetworkObject):
     name: str
 
 
-class SubsystemNetworkObject(BaseModel):
+class SubsystemNetworkObject(NetworkObject):
     name: str
     motors: list[MotorNetworkObject]
 

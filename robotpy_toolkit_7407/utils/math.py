@@ -1,6 +1,6 @@
 import math
 
-from unum import Unum
+from robotpy_toolkit_7407.unum import Unum
 
 from robotpy_toolkit_7407.utils.units import rad
 

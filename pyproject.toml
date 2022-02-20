@@ -8,7 +8,6 @@ authors = ["Ethan Chapman <ethan.chapman0@outlook.com>"]
 python = "^3.10"
 robotpy = {extras = ["commands2", "ctre", "rev"], version = "^2022.0.54"}
 pydantic = "^1.9.0"
-Unum = "^4.2.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

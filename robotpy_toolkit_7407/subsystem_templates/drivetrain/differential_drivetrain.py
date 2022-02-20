@@ -1,4 +1,4 @@
-from unum import Unum
+from robotpy_toolkit_7407.unum import Unum
 
 from robotpy_toolkit_7407.motor import PIDMotor
 from robotpy_toolkit_7407.oi.joysticks import JoystickAxis

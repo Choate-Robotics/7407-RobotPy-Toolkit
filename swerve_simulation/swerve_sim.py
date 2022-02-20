@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import pygame
 from numpy import ndarray
-from unum import Unum
+from robotpy_toolkit_7407.unum import Unum
 
 from wpimath.geometry import Pose2d, Translation2d
 from wpimath.trajectory import TrajectoryGenerator, TrajectoryConfig, Trajectory
@@ -11,7 +11,7 @@ from robotpy_toolkit_7407.subsystem_templates.drivetrain import DriveSwerve
 from robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands import FollowPath
 from robotpy_toolkit_7407.utils import logger
 from robotpy_toolkit_7407.utils.math import rotate_vector
-from robotpy_toolkit_7407.utils.units import m, s, ms, rad
+from robotpy_toolkit_7407.utils.units import m, s, ms, rad, mile, hour
 from swerve_simulation.swerve_sim_subsystem import SimDrivetrain, TestSwerveNode
 from swerve_simulation.swerve_sim_trajectory import SimTrajectory, TrajectoryEndpoint, translation
 
@@ -184,7 +184,7 @@ test_trajectory = SimTrajectory.generate_trajectory(
         translation(4.05 * m, 8.40 * m)
     ],
     TrajectoryEndpoint(1.27 * m, 7.02 * m, 2.88 * rad),
-    10 * m/s, 1 * m/(s**2)
+    20 * mile/hour, (20 * mile/hour) / (3 * s)
 )
 
 # drive_command = DriveSwerve(drivetrain)

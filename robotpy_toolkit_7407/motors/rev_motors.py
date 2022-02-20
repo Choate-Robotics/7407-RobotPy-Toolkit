@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from rev import CANSparkMax, SparkMaxPIDController, SparkMaxRelativeEncoder
-from unum import Unum
+from robotpy_toolkit_7407.unum import Unum
 
 from robotpy_toolkit_7407.motor import PIDMotor
 from robotpy_toolkit_7407.utils.units import rev, minute

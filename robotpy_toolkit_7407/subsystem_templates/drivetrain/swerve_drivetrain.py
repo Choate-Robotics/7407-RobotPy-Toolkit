@@ -1,6 +1,6 @@
 import math
 
-from unum import Unum
+from robotpy_toolkit_7407.unum import Unum
 from wpimath.geometry import Rotation2d, Pose2d
 from wpimath.kinematics import SwerveDrive4Odometry, SwerveDrive4Kinematics, SwerveModuleState
 
