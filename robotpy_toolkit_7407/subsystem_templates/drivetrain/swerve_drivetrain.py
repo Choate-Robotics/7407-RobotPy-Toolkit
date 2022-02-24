@@ -1,7 +1,7 @@
 import math
 
 from robotpy_toolkit_7407.unum import Unum
-from wpimath.geometry import Rotation2d, Pose2d
+from wpimath.geometry import Rotation2d, Pose2d, Translation2d
 from wpimath.kinematics import SwerveDrive4Odometry, SwerveDrive4Kinematics, SwerveModuleState
 
 from robotpy_toolkit_7407.oi.joysticks import JoystickAxis
@@ -9,7 +9,10 @@ from robotpy_toolkit_7407.subsystem import Subsystem
 from robotpy_toolkit_7407.utils import logger
 from robotpy_toolkit_7407.utils.math import rotate_vector, bounded_angle_diff
 from robotpy_toolkit_7407.utils.units import s, m, deg, rad, hour, mile, rev
-from swerve_simulation.swerve_sim_trajectory import translation
+
+
+def translation(x: Unum, y: Unum) -> Translation2d:
+    return Translation2d(x.asNumber(m), y.asNumber(m))
 
 
 class SwerveNode:
@@ -151,10 +154,10 @@ class SwerveDrivetrain(Subsystem):
         )
 
     def stop(self):
-        self.n_00.set(0 * m/s, 0 * rad/s)
-        self.n_01.set(0 * m/s, 0 * rad/s)
-        self.n_10.set(0 * m/s, 0 * rad/s)
-        self.n_11.set(0 * m/s, 0 * rad/s)
+        self.n_00.set(0 * m/s, 0 * rad)
+        self.n_01.set(0 * m/s, 0 * rad)
+        self.n_10.set(0 * m/s, 0 * rad)
+        self.n_11.set(0 * m/s, 0 * rad)
 
     @staticmethod
     def _calculate_swerve_node(node_x: Unum, node_y: Unum, dx: Unum, dy: Unum, d_theta: Unum) -> (Unum, Unum):

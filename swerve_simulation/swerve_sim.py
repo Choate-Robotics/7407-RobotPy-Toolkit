@@ -1,3 +1,5 @@
+import math
+
 import cv2
 import numpy as np
 import pygame
@@ -10,8 +12,9 @@ from wpimath.trajectory import TrajectoryGenerator, TrajectoryConfig, Trajectory
 from robotpy_toolkit_7407.subsystem_templates.drivetrain import DriveSwerve
 from robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands import FollowPath
 from robotpy_toolkit_7407.utils import logger
-from robotpy_toolkit_7407.utils.math import rotate_vector
+from robotpy_toolkit_7407.utils.math import rotate_vector, bounded_angle_diff
 from robotpy_toolkit_7407.utils.units import m, s, ms, rad, mile, hour
+from swerve_simulation.swerve_sim_aim import DriveSwerveAim
 from swerve_simulation.swerve_sim_subsystem import SimDrivetrain, TestSwerveNode
 from swerve_simulation.swerve_sim_trajectory import SimTrajectory, TrajectoryEndpoint, translation
 
@@ -21,9 +24,11 @@ update = Unum.unit("update", 0, "update")
 
 
 class Simulation:
-    def __init__(self, command: DriveSwerve, subsystem: SimDrivetrain, trajectory: Trajectory):
+    def __init__(self, command: DriveSwerve, subsystem: SimDrivetrain,
+                 trajectory: Trajectory = None, hub_pos: tuple[Unum, Unum] = None):
         self.drive_command = command
         self.subsystem = subsystem
+        self.hub_pos = hub_pos
 
         pygame.init()
         pygame.joystick.init()
@@ -33,7 +38,10 @@ class Simulation:
         self.img_w = 800
         self.img_h = 600
         self.img = np.zeros((self.img_h, self.img_w, 3))
-        self.draw_trajectory(trajectory, (255, 0, 0), (0, 255, 255))
+        if trajectory is not None:
+            self.draw_trajectory(trajectory, (255, 255, 0), (0, 255, 255))
+        if hub_pos is not None:
+            self.circle(hub_pos, 0.2 * m, (128, 255, 128))
         self.bg_img: ndarray = self.img.copy()
 
         self.robot_x = 0 * m
@@ -50,7 +58,11 @@ class Simulation:
 
     def run(self):
         while cv2.waitKey(self.wait_duration) != ord("q"):
-            # Execute command and update swerve nodes
+            if isinstance(self.drive_command, DriveSwerveAim):
+                dx = self.hub_pos[0] - self.robot_x
+                dy = self.hub_pos[1] - self.robot_y
+                theta = math.atan2(dy.asNumber(m), dx.asNumber(m))
+                self.drive_command.offset = bounded_angle_diff(self.subsystem.odometry.getPose().rotation().radians() + math.pi / 2, theta) * rad
             self.drive_command.execute()
             self.subsystem.n_00.update(self.dt)
             self.subsystem.n_01.update(self.dt)
@@ -97,7 +109,7 @@ class Simulation:
             x2, y2 = x1 + dx * self.vel_multiplier, y1 + dy * self.vel_multiplier
             self.line((x1, y1), (x2, y2), (0, 0, 255) if not motor._motor_reversed else (255, 0, 0))
 
-        self.poly(pts, (128, 128, 0))
+        self.poly(pts, (255, 128, 0))
 
         draw_motor(self.subsystem.n_00, *pts[0])
         draw_motor(self.subsystem.n_10, *pts[1])
@@ -125,6 +137,7 @@ class Simulation:
                 logger.info("joystick disconnected")
 
     def line(self, pt1: tuple[Unum, Unum], pt2: tuple[Unum, Unum], color: tuple[int, int, int], thickness: int = 3):
+        color = tuple(i / 255 for i in color)
         cv2.line(
             self.img,
             (int(pt1[0].asNumber(pixel)), self.img_h - int(pt1[1].asNumber(pixel))),
@@ -132,7 +145,17 @@ class Simulation:
             color, thickness
         )
 
+    def circle(self, pos: tuple[Unum, Unum], radius: Unum, color: tuple[int, int, int]):
+        color = tuple(i / 255 for i in color)
+        cv2.circle(
+            self.img,
+            (int(pos[0].asNumber(pixel)), self.img_h - int(pos[1].asNumber(pixel))),
+            int(radius.asNumber(pixel)),
+            color, -1
+        )
+
     def poly(self, pts: list[tuple[Unum, Unum]], color: tuple[int, int, int]):
+        color = tuple(i / 255 for i in color)
         p_pts = []
         for a, b in pts:
             p_pts.append((
@@ -143,6 +166,7 @@ class Simulation:
         cv2.fillPoly(self.img, [np.array(p_pts)], color)
 
     def text(self, text: str, x: Unum, y: Unum, color: tuple[int, int, int], scale: float = 0.5, thickness: float = 1):
+        color = tuple(i / 255 for i in color)
         cv2.putText(
             self.img, text,
             (int(x.asNumber(pixel)), self.img_h - int(y.asNumber(pixel))),
@@ -157,9 +181,9 @@ class Simulation:
 
         def interp(x):
             return (
-                int(color2[0] * x + color1[0] * (1 - x)),
-                int(color2[1] * x + color1[1] * (1 - x)),
-                int(color2[2] * x + color1[2] * (1 - x))
+                color2[0] * x + color1[0] * (1 - x),
+                color2[1] * x + color1[1] * (1 - x),
+                color2[2] * x + color1[2] * (1 - x)
             )
 
         while t < total_time:
@@ -187,12 +211,16 @@ test_trajectory = SimTrajectory.generate_trajectory(
     20 * mile/hour, (20 * mile/hour) / (3 * s)
 )
 
-# drive_command = DriveSwerve(drivetrain)
-# drive_command.initialize()
-
 drive_command = FollowPath(drivetrain, test_trajectory)
 drive_command.initialize()
+sim = Simulation(drive_command, drivetrain, trajectory=test_trajectory)
 
-sim = Simulation(drive_command, drivetrain, test_trajectory)
+# drive_command = DriveSwerve(drivetrain)
+# drive_command.initialize()
+# sim = Simulation(drive_command, drivetrain, hub_pos=(4 * m, 4 * m))
+
+# drive_command = DriveSwerveAim(drivetrain)
+# drive_command.initialize()
+# sim = Simulation(drive_command, drivetrain, hub_pos=(4 * m, 4 * m))
 
 sim.run()

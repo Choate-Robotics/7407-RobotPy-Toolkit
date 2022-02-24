@@ -43,7 +43,7 @@ class DriveSwerve(SubsystemCommand[SwerveDrivetrain]):
 
 
 class FollowPath(SubsystemCommand[SwerveDrivetrain]):
-    def __init__(self, subsystem: SwerveDrivetrain, trajectory: Trajectory):
+    def __init__(self, subsystem: SwerveDrivetrain, trajectory: Trajectory, period: float = 0.02):
         super().__init__(subsystem)
         self.trajectory = trajectory
         self.controller = HolonomicDriveController(
@@ -53,7 +53,7 @@ class FollowPath(SubsystemCommand[SwerveDrivetrain]):
                 8, 0, 0, TrapezoidProfileRadians.Constraints(
                     subsystem.max_angular_vel.asNumber(rad/s),
                     (subsystem.max_angular_vel / (.01 * s)).asNumber(rad/(s**2))
-                )
+                ), period
             )
         )
         self.start_time = 0
