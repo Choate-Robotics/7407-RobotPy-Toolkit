@@ -211,16 +211,16 @@ test_trajectory = SimTrajectory.generate_trajectory(
     20 * mile/hour, (20 * mile/hour) / (3 * s)
 )
 
-drive_command = FollowPath(drivetrain, test_trajectory)
-drive_command.initialize()
-sim = Simulation(drive_command, drivetrain, trajectory=test_trajectory)
+# drive_command = FollowPath(drivetrain, test_trajectory)
+# drive_command.initialize()
+# sim = Simulation(drive_command, drivetrain, trajectory=test_trajectory)
 
 # drive_command = DriveSwerve(drivetrain)
 # drive_command.initialize()
 # sim = Simulation(drive_command, drivetrain, hub_pos=(4 * m, 4 * m))
 
-# drive_command = DriveSwerveAim(drivetrain)
-# drive_command.initialize()
-# sim = Simulation(drive_command, drivetrain, hub_pos=(4 * m, 4 * m))
+drive_command = DriveSwerveAim(drivetrain)
+drive_command.initialize()
+sim = Simulation(drive_command, drivetrain, hub_pos=(4 * m, 4 * m))
 
 sim.run()
