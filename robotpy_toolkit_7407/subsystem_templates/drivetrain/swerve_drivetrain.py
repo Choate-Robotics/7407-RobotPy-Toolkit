@@ -2,7 +2,7 @@ import math
 
 from robotpy_toolkit_7407.unum import Unum
 from wpimath.geometry import Rotation2d, Pose2d, Translation2d
-from wpimath.kinematics import SwerveDrive4Odometry, SwerveDrive4Kinematics, SwerveModuleState
+from wpimath.kinematics import SwerveDrive4Odometry, SwerveDrive4Kinematics, SwerveModuleState, ChassisSpeeds
 
 from robotpy_toolkit_7407.oi.joysticks import JoystickAxis
 from robotpy_toolkit_7407.subsystem import Subsystem
@@ -94,6 +94,7 @@ class SwerveDrivetrain(Subsystem):
         super().__init__()
         self.kinematics: SwerveDrive4Kinematics | None = None
         self.odometry: SwerveDrive4Odometry | None = None
+        self.chassis_speeds: ChassisSpeeds | None = None
         self._omega = 0 * rad/s
 
     def init(self):
@@ -145,13 +146,24 @@ class SwerveDrivetrain(Subsystem):
                 vel[0], vel[1], angular_vel
             ))
 
-        self.odometry.update(
-            Rotation2d(self.gyro.get_robot_heading().asNumber(rad)),
-            SwerveModuleState(self.n_00.get_motor_velocity().asNumber(m/s), Rotation2d(self.n_00.get_current_motor_angle().asNumber(rad))),
-            SwerveModuleState(self.n_01.get_motor_velocity().asNumber(m/s), Rotation2d(self.n_01.get_current_motor_angle().asNumber(rad))),
-            SwerveModuleState(self.n_10.get_motor_velocity().asNumber(m/s), Rotation2d(self.n_10.get_current_motor_angle().asNumber(rad))),
-            SwerveModuleState(self.n_11.get_motor_velocity().asNumber(m/s), Rotation2d(self.n_11.get_current_motor_angle().asNumber(rad)))
+        module_states = (
+            SwerveModuleState(
+                self.n_00.get_motor_velocity().asNumber(m / s),
+                Rotation2d(self.n_00.get_current_motor_angle().asNumber(rad))
+            ), SwerveModuleState(
+                self.n_01.get_motor_velocity().asNumber(m / s),
+                Rotation2d(self.n_01.get_current_motor_angle().asNumber(rad))
+            ), SwerveModuleState(
+                self.n_10.get_motor_velocity().asNumber(m / s),
+                Rotation2d(self.n_10.get_current_motor_angle().asNumber(rad))
+            ), SwerveModuleState(
+                self.n_11.get_motor_velocity().asNumber(m / s),
+                Rotation2d(self.n_11.get_current_motor_angle().asNumber(rad))
+            )
         )
+
+        self.odometry.update(Rotation2d(self.gyro.get_robot_heading().asNumber(rad)), *module_states)
+        self.chassis_speeds = self.kinematics.toChassisSpeeds(module_states)
 
     def stop(self):
         self.n_00.set(0 * m/s, 0 * rad)
