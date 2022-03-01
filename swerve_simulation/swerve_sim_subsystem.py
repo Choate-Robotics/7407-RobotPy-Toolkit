@@ -1,6 +1,6 @@
 import math
 
-from robotpy_toolkit_7407.unum import Unum
+from fast_unit import Unum
 from wpimath.geometry import Pose2d
 
 from robotpy_toolkit_7407.motors import TestMotor

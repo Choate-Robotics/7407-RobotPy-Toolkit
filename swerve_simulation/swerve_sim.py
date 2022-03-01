@@ -3,8 +3,8 @@ import math
 import cv2
 import numpy as np
 import pygame
+from fast_unit import Unum, add_unit
 from numpy import ndarray
-from robotpy_toolkit_7407.unum import Unum
 
 from wpimath.geometry import Pose2d, Translation2d
 from wpimath.trajectory import TrajectoryGenerator, TrajectoryConfig, Trajectory
@@ -18,9 +18,9 @@ from swerve_simulation.swerve_sim_aim import DriveSwerveAim
 from swerve_simulation.swerve_sim_subsystem import SimDrivetrain, TestSwerveNode
 from swerve_simulation.swerve_sim_trajectory import SimTrajectory, TrajectoryEndpoint, translation
 
-pixel = Unum.unit("px", m/50, "pixel")
-frame = Unum.unit("frame", 0, "frame")
-update = Unum.unit("update", 0, "update")
+pixel = m/50
+frame = add_unit("frame", "frame")
+update = add_unit("update", "update")
 
 
 class Simulation:
@@ -50,7 +50,7 @@ class Simulation:
         self.time_scale = (1 / 0.02) * update/s
         self.frame_scale = 1 * frame/update
 
-        self.wait_duration = int((1 / (self.time_scale * self.frame_scale)).asNumber(ms/frame))
+        self.wait_duration = int((1 / (self.time_scale * self.frame_scale)).as_number(ms/frame))
         self.dt = 1 * update/self.time_scale
 
         self.max_vel_arrow_length = 0.5 * self.subsystem.track_width
@@ -61,7 +61,7 @@ class Simulation:
             if isinstance(self.drive_command, DriveSwerveAim):
                 dx = self.hub_pos[0] - self.robot_x
                 dy = self.hub_pos[1] - self.robot_y
-                theta = math.atan2(dy.asNumber(m), dx.asNumber(m))
+                theta = math.atan2(dy.as_number(m), dx.as_number(m))
                 self.drive_command.offset = bounded_angle_diff(self.subsystem.odometry.getPose().rotation().radians() + math.pi / 2, theta) * rad
             self.drive_command.execute()
             self.subsystem.n_00.update(self.dt)
@@ -81,8 +81,8 @@ class Simulation:
 
             self.draw_robot()
 
-            def format_num(n: Unum, unit: Unum, decimal_places: int = 2) -> str:
-                return f"{n.asNumber(unit):.2f} {unit.strUnit()}"
+            # def format_num(n: Unum, unit: Unum, decimal_places: int = 2) -> str:
+            #     return f"{n.as_number(unit):.2f} {unit.strUnit()}"
 
             self.text(
                 # f"v=({format_num(vx, m/s)}, {format_num(vy, m/s)}, {format_num(vr, rad/s)})",
@@ -140,8 +140,8 @@ class Simulation:
         color = tuple(i / 255 for i in color)
         cv2.line(
             self.img,
-            (int(pt1[0].asNumber(pixel)), self.img_h - int(pt1[1].asNumber(pixel))),
-            (int(pt2[0].asNumber(pixel)), self.img_h - int(pt2[1].asNumber(pixel))),
+            (int(pt1[0].as_number(pixel)), self.img_h - int(pt1[1].as_number(pixel))),
+            (int(pt2[0].as_number(pixel)), self.img_h - int(pt2[1].as_number(pixel))),
             color, thickness
         )
 
@@ -149,8 +149,8 @@ class Simulation:
         color = tuple(i / 255 for i in color)
         cv2.circle(
             self.img,
-            (int(pos[0].asNumber(pixel)), self.img_h - int(pos[1].asNumber(pixel))),
-            int(radius.asNumber(pixel)),
+            (int(pos[0].as_number(pixel)), self.img_h - int(pos[1].as_number(pixel))),
+            int(radius.as_number(pixel)),
             color, -1
         )
 
@@ -159,8 +159,8 @@ class Simulation:
         p_pts = []
         for a, b in pts:
             p_pts.append((
-                int((a + self.robot_x).asNumber(pixel)),
-                self.img_h - int((b + self.robot_y).asNumber(pixel))
+                int((a + self.robot_x).as_number(pixel)),
+                self.img_h - int((b + self.robot_y).as_number(pixel))
             ))
 
         cv2.fillPoly(self.img, [np.array(p_pts)], color)
@@ -169,7 +169,7 @@ class Simulation:
         color = tuple(i / 255 for i in color)
         cv2.putText(
             self.img, text,
-            (int(x.asNumber(pixel)), self.img_h - int(y.asNumber(pixel))),
+            (int(x.as_number(pixel)), self.img_h - int(y.as_number(pixel))),
             cv2.FONT_HERSHEY_SIMPLEX, scale, color, thickness
         )
 
@@ -211,16 +211,16 @@ test_trajectory = SimTrajectory.generate_trajectory(
     20 * mile/hour, (20 * mile/hour) / (3 * s)
 )
 
-# drive_command = FollowPath(drivetrain, test_trajectory)
-# drive_command.initialize()
-# sim = Simulation(drive_command, drivetrain, trajectory=test_trajectory)
+drive_command = FollowPath(drivetrain, test_trajectory)
+drive_command.initialize()
+sim = Simulation(drive_command, drivetrain, trajectory=test_trajectory)
 
 # drive_command = DriveSwerve(drivetrain)
 # drive_command.initialize()
 # sim = Simulation(drive_command, drivetrain, hub_pos=(4 * m, 4 * m))
 
-drive_command = DriveSwerveAim(drivetrain)
-drive_command.initialize()
-sim = Simulation(drive_command, drivetrain, hub_pos=(4 * m, 4 * m))
+# drive_command = DriveSwerveAim(drivetrain)
+# drive_command.initialize()
+# sim = Simulation(drive_command, drivetrain, hub_pos=(4 * m, 4 * m))
 
 sim.run()

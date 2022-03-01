@@ -1,6 +1,6 @@
 import math
 
-from robotpy_toolkit_7407.unum import Unum
+from fast_unit import Unum
 
 from robotpy_toolkit_7407.utils.units import rad
 
@@ -18,7 +18,7 @@ def bounded_angle_diff(theta_from: float, theta_too: float) -> float:
 
 
 def rotate_vector(x: Unum | float, y: Unum | float, theta: Unum) -> tuple[Unum, Unum]:
-    theta_rad = theta.asNumber(rad)
+    theta_rad = theta.as_number(rad)
 
     return (
         x * math.cos(theta_rad) - y * math.sin(theta_rad),

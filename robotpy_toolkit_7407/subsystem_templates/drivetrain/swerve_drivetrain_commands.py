@@ -27,8 +27,8 @@ class DriveSwerve(SubsystemCommand[SwerveDrivetrain]):
         #     d_theta = 0
 
         # TODO normalize this to circle somehow
-        dx *= self.subsystem.max_vel.asUnit(m/s)
-        dy *= -self.subsystem.max_vel.asUnit(m/s)
+        dx *= self.subsystem.max_vel
+        dy *= -self.subsystem.max_vel
 
         self.subsystem.set((dx, dy), -d_theta * self.subsystem.max_angular_vel)
 
@@ -51,8 +51,8 @@ class FollowPath(SubsystemCommand[SwerveDrivetrain]):
             PIDController(1, 0, 0),
             ProfiledPIDControllerRadians(
                 8, 0, 0, TrapezoidProfileRadians.Constraints(
-                    subsystem.max_angular_vel.asNumber(rad/s),
-                    (subsystem.max_angular_vel / (.01 * s)).asNumber(rad/(s**2))
+                    subsystem.max_angular_vel.as_number(rad/s),
+                    (subsystem.max_angular_vel / (.01 * s)).as_number(rad/(s**2))
                 ), period
             )
         )
@@ -61,7 +61,7 @@ class FollowPath(SubsystemCommand[SwerveDrivetrain]):
         self.duration = trajectory.totalTime()
         self.theta_i = trajectory.initialPose().rotation().radians() * rad
         self.theta_f = trajectory.sample(self.duration).pose.rotation().radians() * rad
-        self.theta_diff = bounded_angle_diff(self.theta_i.asNumber(rad), self.theta_f.asNumber(rad)) * rad
+        self.theta_diff = bounded_angle_diff(self.theta_i.as_number(rad), self.theta_f.as_number(rad)) * rad
         self.omega = self.theta_diff / (self.duration * s)
 
     def initialize(self) -> None:
@@ -73,7 +73,7 @@ class FollowPath(SubsystemCommand[SwerveDrivetrain]):
             self.t = self.duration
         goal = self.trajectory.sample(self.t)
         goal_theta = self.theta_i + self.omega * self.t * s
-        speeds = self.controller.calculate(self.subsystem.odometry.getPose(), goal, Rotation2d(goal_theta.asNumber(rad)))
+        speeds = self.controller.calculate(self.subsystem.odometry.getPose(), goal, Rotation2d(goal_theta.as_number(rad)))
         vx, vy = rotate_vector(
             speeds.vx * m/s, speeds.vy * m/s,
             self.subsystem.odometry.getPose().rotation().radians() * rad

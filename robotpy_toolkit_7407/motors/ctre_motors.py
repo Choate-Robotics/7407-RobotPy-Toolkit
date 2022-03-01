@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 import ctre
-from robotpy_toolkit_7407.unum import Unum
+from fast_unit import Unum
 
 from robotpy_toolkit_7407.motor import PIDMotor
 from robotpy_toolkit_7407.utils.units import rad, rev, s
@@ -24,8 +24,8 @@ class TalonConfig:
     max_integral_accumulator: Optional[float] = None
 
 
-talon_sensor_unit = Unum.unit("talon_sensor_u", rev / 2048, "talon sensor unit")
-hundred_ms = Unum.unit("100ms", s / 10, "100 milliseconds")
+talon_sensor_unit = rev / 2048
+hundred_ms = s / 10
 talon_sensor_vel_unit = talon_sensor_unit / hundred_ms
 talon_sensor_accel_unit = talon_sensor_vel_unit / s
 
@@ -43,7 +43,7 @@ class _Talon(PIDMotor):
         return self._motor.getSelectedSensorPosition(0) * talon_sensor_unit
 
     def set_sensor_position(self, pos: Unum):
-        self._motor.setSelectedSensorPosition(pos.asNumber(talon_sensor_unit))
+        self._motor.setSelectedSensorPosition(pos.as_number(talon_sensor_unit))
 
     def get_sensor_velocity(self) -> Unum:
         return self._motor.getSelectedSensorVelocity(0) * talon_sensor_vel_unit
@@ -52,10 +52,10 @@ class _Talon(PIDMotor):
         self._motor.set(ctre.ControlMode.PercentOutput, x)
 
     def set_target_position(self, pos: Unum):
-        self._motor.set(ctre.ControlMode.MotionMagic, pos.asNumber(talon_sensor_unit))
+        self._motor.set(ctre.ControlMode.MotionMagic, pos.as_number(talon_sensor_unit))
 
     def set_target_velocity(self, vel: Unum):
-        self._motor.set(ctre.ControlMode.Velocity, vel.asNumber(talon_sensor_vel_unit))
+        self._motor.set(ctre.ControlMode.Velocity, vel.as_number(talon_sensor_vel_unit))
 
     def follow(self, master: _Talon):
         self._motor.follow(master._motor)
@@ -74,9 +74,9 @@ class _Talon(PIDMotor):
         if config.closed_loop_peak_output is not None:
             self._motor.configClosedLoopPeakOutput(0, config.closed_loop_peak_output)
         if config.motion_cruise_velocity is not None:
-            self._motor.configMotionCruiseVelocity(config.motion_cruise_velocity.asNumber(talon_sensor_vel_unit))
+            self._motor.configMotionCruiseVelocity(config.motion_cruise_velocity.as_number(talon_sensor_vel_unit))
         if config.motion_acceleration is not None:
-            self._motor.configMotionAcceleration(config.motion_acceleration.asNumber(talon_sensor_accel_unit))
+            self._motor.configMotionAcceleration(config.motion_acceleration.as_number(talon_sensor_accel_unit))
         if config.neutral_brake is not None:
             self._motor.setNeutralMode(ctre.NeutralMode.Brake if config.neutral_brake else ctre.NeutralMode.Coast)
         if config.integral_zone is not None:

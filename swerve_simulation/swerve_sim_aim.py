@@ -1,9 +1,9 @@
+from fast_unit import Unum
 from wpimath.controller import ProfiledPIDControllerRadians
 from wpimath.trajectory import TrapezoidProfileRadians
 
 from robotpy_toolkit_7407.command import SubsystemCommand
 from robotpy_toolkit_7407.subsystem_templates.drivetrain import SwerveDrivetrain
-from robotpy_toolkit_7407.unum import Unum
 from robotpy_toolkit_7407.utils.units import rad, s, m
 
 
@@ -30,13 +30,13 @@ class DriveSwerveAim(SubsystemCommand[SwerveDrivetrain]):
 
     def execute(self) -> None:
         dx, dy = self.subsystem.axis_dx.value, self.subsystem.axis_dy.value
-        omega = self.controller.calculate(0, self.offset.asNumber(rad)) * rad/s
+        omega = self.controller.calculate(0, self.offset.as_number(rad)) * rad/s
 
         dx = curve(dx)
         dy = curve(dy)
 
-        dx *= self.subsystem.max_vel.asUnit(m/s)
-        dy *= -self.subsystem.max_vel.asUnit(m/s)
+        dx *= self.subsystem.max_vel
+        dy *= -self.subsystem.max_vel
 
         self.subsystem.set((dx, dy), omega)
 

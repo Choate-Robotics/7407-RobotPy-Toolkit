@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import Optional
 
+from fast_unit import Unum
 from rev import CANSparkMax, SparkMaxPIDController, SparkMaxRelativeEncoder
-from robotpy_toolkit_7407.unum import Unum
 
 from robotpy_toolkit_7407.motor import PIDMotor
 from robotpy_toolkit_7407.utils.units import rev, minute
@@ -44,16 +44,16 @@ class SparkMax(PIDMotor):
         self._motor.set(x)
 
     def set_target_position(self, pos: Unum):
-        self.__pid_controller.setReference(pos.asNumber(rev), CANSparkMax.ControlType.kPosition)
+        self.__pid_controller.setReference(pos.as_number(rev), CANSparkMax.ControlType.kPosition)
 
     def set_target_velocity(self, vel: Unum):
-        self.__pid_controller.setReference(vel.asNumber(rev / minute), CANSparkMax.ControlType.kVelocity)
+        self.__pid_controller.setReference(vel.as_number(rev / minute), CANSparkMax.ControlType.kVelocity)
 
     def get_sensor_position(self) -> Unum:
         return self.__encoder.getPosition() * rev
 
     def set_sensor_position(self, pos: Unum):
-        self.__encoder.setPosition(pos.asNumber(rev))
+        self.__encoder.setPosition(pos.as_number(rev))
 
     def get_sensor_velocity(self) -> Unum:
         return self.__encoder.getVelocity() * (rev / minute)

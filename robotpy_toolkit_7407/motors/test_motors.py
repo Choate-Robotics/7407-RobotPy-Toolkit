@@ -1,4 +1,4 @@
-from robotpy_toolkit_7407.unum import Unum
+from fast_unit import Unum
 
 from robotpy_toolkit_7407.motor import PIDMotor
 from robotpy_toolkit_7407.utils.math import clamp
@@ -51,17 +51,17 @@ class TestMotor(PIDMotor):
 
     def set_target_position(self, pos: Unum):
         self.control_mode = self.ControlMode.POSITION
-        self.set_point = pos.asUnit(rev)
+        self.set_point = pos
 
     def set_target_velocity(self, vel: Unum):
         self.control_mode = self.ControlMode.VELOCITY
-        self.set_point = vel.asUnit(rev / s)
+        self.set_point = vel
 
     def get_sensor_position(self) -> Unum:
         return self.current_pos
 
     def set_sensor_position(self, pos: Unum):
-        self.current_pos = pos.asUnit(rev)
+        self.current_pos = pos
 
     def get_sensor_velocity(self) -> Unum:
         if self.control_mode == self.ControlMode.VELOCITY:

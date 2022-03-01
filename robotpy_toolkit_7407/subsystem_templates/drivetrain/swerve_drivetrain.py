@@ -1,6 +1,6 @@
 import math
 
-from robotpy_toolkit_7407.unum import Unum
+from fast_unit import Unum
 from wpimath.geometry import Rotation2d, Pose2d, Translation2d
 from wpimath.kinematics import SwerveDrive4Odometry, SwerveDrive4Kinematics, SwerveModuleState, ChassisSpeeds
 
@@ -12,7 +12,7 @@ from robotpy_toolkit_7407.utils.units import s, m, deg, rad, hour, mile, rev
 
 
 def translation(x: Unum, y: Unum) -> Translation2d:
-    return Translation2d(x.asNumber(m), y.asNumber(m))
+    return Translation2d(x.as_number(m), y.as_number(m))
 
 
 class SwerveNode:
@@ -53,8 +53,8 @@ class SwerveNode:
         :return: (target_sensor_angle, flipped, flip_sensor_offset)
         """
 
-        target_rad = target_angle.asNumber(rad)
-        initial_rad = initial_angle.asNumber(rad)
+        target_rad = target_angle.as_number(rad)
+        initial_rad = initial_angle.as_number(rad)
 
         # Actual angle difference in radians
         diff = bounded_angle_diff(initial_rad, target_rad)
@@ -113,7 +113,7 @@ class SwerveDrivetrain(Subsystem):
         )
         self.odometry = SwerveDrive4Odometry(
             self.kinematics,
-            Rotation2d(self.gyro.get_robot_heading().asNumber(rad)),
+            Rotation2d(self.gyro.get_robot_heading().as_number(rad)),
             self.start_pose
         )
         logger.info("initialization complete", "[swerve_drivetrain]")
@@ -148,21 +148,21 @@ class SwerveDrivetrain(Subsystem):
 
         module_states = (
             SwerveModuleState(
-                self.n_00.get_motor_velocity().asNumber(m / s),
-                Rotation2d(self.n_00.get_current_motor_angle().asNumber(rad))
+                self.n_00.get_motor_velocity().as_number(m / s),
+                Rotation2d(self.n_00.get_current_motor_angle().as_number(rad))
             ), SwerveModuleState(
-                self.n_01.get_motor_velocity().asNumber(m / s),
-                Rotation2d(self.n_01.get_current_motor_angle().asNumber(rad))
+                self.n_01.get_motor_velocity().as_number(m / s),
+                Rotation2d(self.n_01.get_current_motor_angle().as_number(rad))
             ), SwerveModuleState(
-                self.n_10.get_motor_velocity().asNumber(m / s),
-                Rotation2d(self.n_10.get_current_motor_angle().asNumber(rad))
+                self.n_10.get_motor_velocity().as_number(m / s),
+                Rotation2d(self.n_10.get_current_motor_angle().as_number(rad))
             ), SwerveModuleState(
-                self.n_11.get_motor_velocity().asNumber(m / s),
-                Rotation2d(self.n_11.get_current_motor_angle().asNumber(rad))
+                self.n_11.get_motor_velocity().as_number(m / s),
+                Rotation2d(self.n_11.get_current_motor_angle().as_number(rad))
             )
         )
 
-        self.odometry.update(Rotation2d(self.gyro.get_robot_heading().asNumber(rad)), *module_states)
+        self.odometry.update(Rotation2d(self.gyro.get_robot_heading().as_number(rad)), *module_states)
         self.chassis_speeds = self.kinematics.toChassisSpeeds(module_states)
 
     def stop(self):
@@ -174,7 +174,7 @@ class SwerveDrivetrain(Subsystem):
     @staticmethod
     def _calculate_swerve_node(node_x: Unum, node_y: Unum, dx: Unum, dy: Unum, d_theta: Unum) -> (Unum, Unum):
         tangent_x, tangent_y = -node_y, node_x
-        tangent_m = math.sqrt(tangent_x.asNumber(m)**2 + tangent_y.asNumber(m)**2) * m
+        tangent_m = math.sqrt(tangent_x.as_number(m)**2 + tangent_y.as_number(m)**2) * m
         tangent_x /= tangent_m / m
         tangent_y /= tangent_m / m
 
@@ -182,8 +182,8 @@ class SwerveDrivetrain(Subsystem):
         sx = dx + r * d_theta * tangent_x
         sy = dy + r * d_theta * tangent_y
 
-        sx_u = sx.asNumber(m/s)
-        sy_u = sy.asNumber(m/s)
+        sx_u = sx.as_number(m/s)
+        sy_u = sy.as_number(m/s)
 
         theta = math.atan2(sy_u, sx_u) * rad
         magnitude = math.sqrt(sx_u ** 2 + sy_u ** 2) * m/s
