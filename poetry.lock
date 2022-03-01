@@ -87,7 +87,7 @@ test = ["pytest (>=6.2.0)", "pytest-cov", "pytest-subtests", "pytest-xdist", "pr
 
 [[package]]
 name = "fast-unit"
-version = "0.1.0"
+version = "0.5.0"
 description = ""
 category = "main"
 optional = false
@@ -488,7 +488,7 @@ robotpy-wpiutil = ">=2022.3.1.0,<2023.0.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "c101bd824ce5bd9868727413e4247c3d65addd0d77668dda70b1c965ece824ba"
+content-hash = "7b4562ba3e6ea502c1ddec91dc407a2fc913787ae8e64fbf94be32e47cc2237a"
 
 [metadata.files]
 atomicwrites = [
@@ -594,14 +594,13 @@ cryptography = [
     {file = "cryptography-36.0.1.tar.gz", hash = "sha256:53e5c1dc3d7a953de055d77bef2ff607ceef7a2aac0353b5d630ab67f7423638"},
 ]
 fast-unit = [
-    {file = "fast_unit-0.1.0-cp310-cp310-linux_armv7l.whl", hash = "sha256:21af8240d90de7bfb4a5242379dd08ca057d8d71496a3181afca83f3f3ead1f6"},
-    {file = "fast_unit-0.1.0-cp310-cp310-manylinux_2_24_x86_64.whl", hash = "sha256:fe067e13a13d9a9be3352ba987c417fb2d9e2866df81b6af8a7e8a1937132927"},
-    {file = "fast_unit-0.1.0-cp36-cp36m-manylinux_2_24_x86_64.whl", hash = "sha256:d0d5d14b05e8aaef49289a2801db329b8e1927c8579767805c6b8506b9b67cf0"},
-    {file = "fast_unit-0.1.0-cp37-cp37m-manylinux_2_24_x86_64.whl", hash = "sha256:f13eb13fa623ce1245abc49ca3efe1ba21431c23dc499bf023b58b750cef2635"},
-    {file = "fast_unit-0.1.0-cp38-cp38-manylinux_2_24_x86_64.whl", hash = "sha256:5ad5ae61494cbf222c53d4a9d0053f0c8cf31bfc89d815c01fab74ed9118591d"},
-    {file = "fast_unit-0.1.0-cp39-cp39-manylinux_2_24_x86_64.whl", hash = "sha256:4ea5e8e56d86301811b1b1d39f8ce487c95d51aef891cb786e93dedf16116572"},
-    {file = "fast_unit-0.1.0-pp37-pypy37_pp73-manylinux_2_24_x86_64.whl", hash = "sha256:4a3b64774552f582a01c075f5bd1222950e0a1986cd9b74e4c5bc886b1467f9c"},
-    {file = "fast_unit-0.1.0.tar.gz", hash = "sha256:5ac5405229f7a2f131c9a97c9ad53b9aefb065995d6dfb0a5e7488879c834ceb"},
+    {file = "fast_unit-0.5.0-cp310-cp310-manylinux_2_24_x86_64.whl", hash = "sha256:7ce196a06882e89c15950cb5c695b929a9e12f2402a69b87bddcd6b866dee4e1"},
+    {file = "fast_unit-0.5.0-cp36-cp36m-manylinux_2_24_x86_64.whl", hash = "sha256:bca73957cf1ff5d6ac51429d8b036c755016326270fc3f5fe7b04cebf7382920"},
+    {file = "fast_unit-0.5.0-cp37-cp37m-manylinux_2_24_x86_64.whl", hash = "sha256:237e671d59af53bf11bf08ccba34a413b94b1e022e17ee6928f9f5602ac19455"},
+    {file = "fast_unit-0.5.0-cp38-cp38-manylinux_2_24_x86_64.whl", hash = "sha256:6b735b58061b282e57b36dfc0b17f711266f980cea5578168e3d05a60e4ee88c"},
+    {file = "fast_unit-0.5.0-cp39-cp39-manylinux_2_24_x86_64.whl", hash = "sha256:6c92213802ea83b0c1d00d3517f2af0c6f671b6b42b859eb8b6b091f80fa6db1"},
+    {file = "fast_unit-0.5.0-pp37-pypy37_pp73-manylinux_2_24_x86_64.whl", hash = "sha256:6654179940739b9585d921999d01279a24e801d728716779d9c943fd09bb7c26"},
+    {file = "fast_unit-0.5.0.tar.gz", hash = "sha256:7d2e3f10201042d40c99f44c458bacbbb8120c9736341cf6eddcd7b217dedb41"},
 ]
 iniconfig = [
     {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},

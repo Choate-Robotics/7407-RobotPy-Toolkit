@@ -1,6 +1,7 @@
 from fast_unit import units, add_unit, Unum
 
 m = units.m
+cm = m / 100
 ft = units.ft
 inch = units.inch
 mile = units.mile
