@@ -119,8 +119,11 @@ class SwerveDrivetrain(Subsystem):
         logger.info("initialization complete", "[swerve_drivetrain]")
 
     def set(self, vel: (Unum, Unum), angular_vel: Unum):
-        self._omega = angular_vel  # For simulation
         vel = rotate_vector(vel[0], vel[1], -self.gyro.get_robot_heading())
+        self.set_driver_centric(vel, angular_vel)
+
+    def set_driver_centric(self, vel: (Unum, Unum), angular_vel: Unum):
+        self._omega = angular_vel  # For simulation
 
         if abs(vel[0]) < self.deadzone_velocity and abs(vel[1]) < self.deadzone_velocity and \
                 abs(angular_vel) < self.deadzone_angular_velocity:

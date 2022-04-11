@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "robotpy-toolkit-7407"
-version = "0.3.3"
+version = "0.3.4"
 description = ""
 authors = ["Ethan Chapman <ethan.chapman0@outlook.com>"]
 
