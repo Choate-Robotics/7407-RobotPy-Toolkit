@@ -17,12 +17,10 @@ def bounded_angle_diff(theta_from: float, theta_too: float) -> float:
     return res
 
 
-def rotate_vector(x: Unum | float, y: Unum | float, theta: Unum) -> tuple[Unum, Unum]:
-    theta_rad = theta.asNumber(rad)
-
+def rotate_vector(x: float, y: float, theta: float) -> tuple[float, float]:
     return (
-        x * math.cos(theta_rad) - y * math.sin(theta_rad),
-        x * math.sin(theta_rad) + y * math.cos(theta_rad)
+        x * math.cos(theta) - y * math.sin(theta),
+        x * math.sin(theta) + y * math.cos(theta)
     )
 
 

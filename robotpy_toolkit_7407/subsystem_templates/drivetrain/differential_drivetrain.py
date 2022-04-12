@@ -4,7 +4,7 @@ from robotpy_toolkit_7407.motor import PIDMotor
 from robotpy_toolkit_7407.oi.joysticks import JoystickAxis
 from robotpy_toolkit_7407.subsystem import Subsystem
 from robotpy_toolkit_7407.utils import logger
-from robotpy_toolkit_7407.utils.units import rad, m
+from robotpy_toolkit_7407.utils.units import rad, m, radians_per_meter, meters_per_second
 
 
 class DifferentialDrivetrain(Subsystem):
@@ -12,7 +12,7 @@ class DifferentialDrivetrain(Subsystem):
     m_right: PIDMotor = None
     axis_x: JoystickAxis = None
     axis_y: JoystickAxis = None
-    gear_ratio: Unum = rad/m
+    gear_ratio: radians_per_meter
 
     def init(self):
         logger.info("initializing differential drivetrain", "[differential_drivetrain]")
@@ -24,6 +24,6 @@ class DifferentialDrivetrain(Subsystem):
         self.m_left.set_raw_output(left)
         self.m_right.set_raw_output(right)
 
-    def set_motor_velocity(self, left_vel: Unum, right_vel: Unum):
+    def set_motor_velocity(self, left_vel: meters_per_second, right_vel: meters_per_second):
         self.m_left.set_target_velocity(left_vel * self.gear_ratio)
         self.m_right.set_target_velocity(right_vel * self.gear_ratio)

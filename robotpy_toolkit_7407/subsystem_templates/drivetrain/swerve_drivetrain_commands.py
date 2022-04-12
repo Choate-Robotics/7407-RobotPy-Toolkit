@@ -51,18 +51,18 @@ class FollowPath(SubsystemCommand[SwerveDrivetrain]):
             PIDController(1, 0, 0),
             ProfiledPIDControllerRadians(
                 8, 0, 0, TrapezoidProfileRadians.Constraints(
-                    subsystem.max_angular_vel.asNumber(rad/s),
-                    (subsystem.max_angular_vel / (.01 * s)).asNumber(rad/(s**2))
+                    subsystem.max_angular_vel,
+                    subsystem.max_angular_vel / .01
                 ), period
             )
         )
         self.start_time = 0
         self.t = 0
         self.duration = trajectory.totalTime()
-        self.theta_i = trajectory.initialPose().rotation().radians() * rad
-        self.theta_f = trajectory.sample(self.duration).pose.rotation().radians() * rad
-        self.theta_diff = bounded_angle_diff(self.theta_i.asNumber(rad), self.theta_f.asNumber(rad)) * rad
-        self.omega = self.theta_diff / (self.duration * s)
+        self.theta_i = trajectory.initialPose().rotation().radians()
+        self.theta_f = trajectory.sample(self.duration).pose.rotation().radians()
+        self.theta_diff = bounded_angle_diff(self.theta_i, self.theta_f)
+        self.omega = self.theta_diff / self.duration
 
     def initialize(self) -> None:
         self.start_time = time.perf_counter()
@@ -72,13 +72,13 @@ class FollowPath(SubsystemCommand[SwerveDrivetrain]):
         if self.t > self.duration:
             self.t = self.duration
         goal = self.trajectory.sample(self.t)
-        goal_theta = self.theta_i + self.omega * self.t * s
-        speeds = self.controller.calculate(self.subsystem.odometry.getPose(), goal, Rotation2d(goal_theta.asNumber(rad)))
+        goal_theta = self.theta_i + self.omega * self.t
+        speeds = self.controller.calculate(self.subsystem.odometry.getPose(), goal, Rotation2d(goal_theta))
         vx, vy = rotate_vector(
-            speeds.vx * m/s, speeds.vy * m/s,
-            self.subsystem.odometry.getPose().rotation().radians() * rad
+            speeds.vx, speeds.vy,
+            self.subsystem.odometry.getPose().rotation().radians()
         )
-        self.subsystem.set((vx, vy), speeds.omega * rad/s)
+        self.subsystem.set((vx, vy), speeds.omega)
 
     def end(self, interrupted: bool) -> None:
         pass

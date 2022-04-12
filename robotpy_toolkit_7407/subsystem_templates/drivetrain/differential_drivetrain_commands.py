@@ -1,3 +1,4 @@
+from robotpy_toolkit_7407.motors import ctre_motors
 from robotpy_toolkit_7407.unum import Unum
 
 from robotpy_toolkit_7407.command import SubsystemCommand, T
@@ -23,10 +24,10 @@ class DriveArcade(SubsystemCommand[DifferentialDrivetrain]):
 
         left, right = self._turn_radius_drive(x_axis, y_axis, self.track_width_inches)
 
-        self.subsystem.set_motor_velocity(left * talon_sensor_vel_unit, -right * talon_sensor_vel_unit)
+        self.subsystem.set_motor_velocity(left * ctre_motors.k_sensor_vel_to_rad_per_sec, -right * ctre_motors.k_sensor_vel_to_rad_per_sec)
 
     def end(self, interrupted: bool) -> None:
-        self.subsystem.set_motor_velocity(0 * m/s, 0 * m/s)
+        self.subsystem.set_motor_velocity(0, 0)
 
     def isFinished(self) -> bool:
         return False

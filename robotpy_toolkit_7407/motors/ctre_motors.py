@@ -33,7 +33,7 @@ k_sensor_pos_to_radians = talon_sensor_unit.asNumber(rad)
 k_radians_to_sensor_pos = rad.asNumber(talon_sensor_unit)
 k_sensor_vel_to_rad_per_sec = talon_sensor_vel_unit.asNumber(rad/s)
 k_rad_per_sec_to_sensor_vel = (rad/s).asNumber(talon_sensor_unit/hundred_ms)
-k_sensor_accel_to_rad_per_sec_sq = talon_sensor_vel_unit.asNumber(rad/(s*s))
+k_sensor_accel_to_rad_per_sec_sq = talon_sensor_accel_unit.asNumber(rad/(s*s))
 k_rad_per_sec_sq_to_sensor_accel = (rad/(s*s)).asNumber(talon_sensor_unit/(s*hundred_ms))
 
 

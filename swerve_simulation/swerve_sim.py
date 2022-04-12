@@ -13,7 +13,7 @@ from robotpy_toolkit_7407.subsystem_templates.drivetrain import DriveSwerve
 from robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands import FollowPath
 from robotpy_toolkit_7407.utils import logger
 from robotpy_toolkit_7407.utils.math import rotate_vector, bounded_angle_diff
-from robotpy_toolkit_7407.utils.units import m, s, ms, rad, mile, hour
+from robotpy_toolkit_7407.utils.units import m, s, ms, rad, mile, hour, meters
 from swerve_simulation.swerve_sim_aim import DriveSwerveAim
 from swerve_simulation.swerve_sim_subsystem import SimDrivetrain, TestSwerveNode
 from swerve_simulation.swerve_sim_trajectory import SimTrajectory, TrajectoryEndpoint, translation
@@ -52,6 +52,7 @@ class Simulation:
 
         self.wait_duration = int((1 / (self.time_scale * self.frame_scale)).asNumber(ms/frame))
         self.dt = 1 * update/self.time_scale
+        self.dt_s = self.dt.asNumber(s)
 
         self.max_vel_arrow_length = 0.5 * self.subsystem.track_width
         self.vel_multiplier = self.max_vel_arrow_length / self.subsystem.max_vel
@@ -64,10 +65,10 @@ class Simulation:
                 theta = math.atan2(dy.asNumber(m), dx.asNumber(m))
                 self.drive_command.offset = bounded_angle_diff(self.subsystem.odometry.getPose().rotation().radians() + math.pi / 2, theta) * rad
             self.drive_command.execute()
-            self.subsystem.n_00.update(self.dt)
-            self.subsystem.n_01.update(self.dt)
-            self.subsystem.n_10.update(self.dt)
-            self.subsystem.n_11.update(self.dt)
+            self.subsystem.n_00.update(self.dt_s)
+            self.subsystem.n_01.update(self.dt_s)
+            self.subsystem.n_10.update(self.dt_s)
+            self.subsystem.n_11.update(self.dt_s)
 
             self.img = self.bg_img.copy()
 
@@ -77,7 +78,7 @@ class Simulation:
 
             self.robot_x = pose.X() * m
             self.robot_y = pose.Y() * m
-            self.subsystem.gyro.orientation += self.subsystem._omega * self.dt
+            self.subsystem.gyro.orientation += self.subsystem._omega * self.dt_s
 
             self.draw_robot()
 
@@ -100,13 +101,13 @@ class Simulation:
             rotate_vector(-0.5 * self.subsystem.track_width, +0.5 * self.subsystem.track_width, self.subsystem.gyro.orientation)
         ]
 
-        def draw_motor(motor: TestSwerveNode, px: Unum, py: Unum):
-            x1, y1 = self.robot_x + px, self.robot_y + py
+        def draw_motor(motor: TestSwerveNode, px: meters, py: meters):
+            x1, y1 = self.robot_x + px * m, self.robot_y + py * m
             dx, dy = rotate_vector(
-                motor.get_motor_velocity(), 0 * m/s,
+                motor.get_motor_velocity(), 0,
                 motor.get_current_motor_angle() + self.subsystem.gyro.orientation
             )
-            x2, y2 = x1 + dx * self.vel_multiplier, y1 + dy * self.vel_multiplier
+            x2, y2 = x1 + dx * m * self.vel_multiplier, y1 + dy * m * self.vel_multiplier
             self.line((x1, y1), (x2, y2), (0, 0, 255) if not motor._motor_reversed else (255, 0, 0))
 
         self.poly(pts, (255, 128, 0))
@@ -154,13 +155,13 @@ class Simulation:
             color, -1
         )
 
-    def poly(self, pts: list[tuple[Unum, Unum]], color: tuple[int, int, int]):
+    def poly(self, pts: list[tuple[meters, meters]], color: tuple[int, int, int]):
         color = tuple(i / 255 for i in color)
         p_pts = []
         for a, b in pts:
             p_pts.append((
-                int((a + self.robot_x).asNumber(pixel)),
-                self.img_h - int((b + self.robot_y).asNumber(pixel))
+                int((a * m + self.robot_x).asNumber(pixel)),
+                self.img_h - int((b * m + self.robot_y).asNumber(pixel))
             ))
 
         cv2.fillPoly(self.img, [np.array(p_pts)], color)
@@ -211,16 +212,16 @@ test_trajectory = SimTrajectory.generate_trajectory(
     20 * mile/hour, (20 * mile/hour) / (3 * s)
 )
 
-# drive_command = FollowPath(drivetrain, test_trajectory)
-# drive_command.initialize()
-# sim = Simulation(drive_command, drivetrain, trajectory=test_trajectory)
+drive_command = FollowPath(drivetrain, test_trajectory)
+drive_command.initialize()
+sim = Simulation(drive_command, drivetrain, trajectory=test_trajectory)
 
 # drive_command = DriveSwerve(drivetrain)
 # drive_command.initialize()
 # sim = Simulation(drive_command, drivetrain, hub_pos=(4 * m, 4 * m))
 
-drive_command = DriveSwerveAim(drivetrain)
-drive_command.initialize()
-sim = Simulation(drive_command, drivetrain, hub_pos=(4 * m, 4 * m))
+# drive_command = DriveSwerveAim(drivetrain)
+# drive_command.initialize()
+# sim = Simulation(drive_command, drivetrain, hub_pos=(4 * m, 4 * m))
 
 sim.run()
