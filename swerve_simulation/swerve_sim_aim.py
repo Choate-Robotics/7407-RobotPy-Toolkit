@@ -38,7 +38,7 @@ class DriveSwerveAim(SubsystemCommand[SwerveDrivetrain]):
         dx *= self.subsystem.max_vel
         dy *= -self.subsystem.max_vel
 
-        self.subsystem.set((dx, dy), omega)
+        self.subsystem.set_driver_centric((dx, dy), omega)
 
     def end(self, interrupted: bool) -> None:
         if not interrupted:

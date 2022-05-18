@@ -112,11 +112,11 @@ class SwerveDrivetrain(Subsystem):
         )
         logger.info("initialization complete", "[swerve_drivetrain]")
 
-    def set(self, vel: (meters_per_second, meters_per_second), angular_vel: radians_per_second):
-        vel = rotate_vector(vel[0], vel[1], -self.gyro.get_robot_heading())
-        self.set_driver_centric(vel, angular_vel)
-
     def set_driver_centric(self, vel: (meters_per_second, meters_per_second), angular_vel: radians_per_second):
+        vel = rotate_vector(vel[0], vel[1], -self.gyro.get_robot_heading())
+        self.set_robot_centric(vel, angular_vel)
+
+    def set_robot_centric(self, vel: (meters_per_second, meters_per_second), angular_vel: radians_per_second):
         self._omega = angular_vel  # For simulation
 
         if abs(vel[0]) < self.deadzone_velocity and abs(vel[1]) < self.deadzone_velocity and \
@@ -163,10 +163,10 @@ class SwerveDrivetrain(Subsystem):
         self.chassis_speeds = self.kinematics.toChassisSpeeds(module_states)
 
     def stop(self):
-        self.n_00.set(0 * m/s, 0 * rad)
-        self.n_01.set(0 * m/s, 0 * rad)
-        self.n_10.set(0 * m/s, 0 * rad)
-        self.n_11.set(0 * m/s, 0 * rad)
+        self.n_00.set(0, 0)
+        self.n_01.set(0, 0)
+        self.n_10.set(0, 0)
+        self.n_11.set(0, 0)
 
     @staticmethod
     def _calculate_swerve_node(node_x: meters, node_y: meters, dx: meters_per_second, dy: meters_per_second, d_theta: radians_per_second) -> (meters_per_second, radians):
