@@ -1,13 +1,14 @@
 [tool.poetry]
 name = "robotpy-toolkit-7407"
-version = "0.5.2"
-description = ""
-authors = ["Ethan Chapman <ethan.chapman0@outlook.com>"]
+version = "0.5.3"
+description = "FRC Wired Boars Team 7407's Toolkit for usage with RobotPy"
+authors = ["Ethan Chapman <ethan.chapman0@outlook.com>", "Sidharth Rao <sidharthmrao@gmail.com"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 robotpy = {extras = ["commands2", "ctre", "rev"], version = "^2022.4.8"}
 pydantic = "^1.9.0"
+pygame = "^2.1.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
