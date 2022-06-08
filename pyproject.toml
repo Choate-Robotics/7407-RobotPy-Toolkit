@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "robotpy-toolkit-7407"
-version = "0.5.2"
+version = "0.5.3"
 description = ""
-authors = ["Ethan Chapman <ethan.chapman0@outlook.com>"]
+authors = ["Ethan Chapman <ethan.chapman0@outlook.com>", "Sidharth Rao <sidharthmrao@gmail.com"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
