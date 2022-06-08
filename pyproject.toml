@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "robotpy-toolkit-7407"
 version = "0.5.3"
-description = ""
+description = "FRC Wired Boars Team 7407's Toolkit for usage with RobotPy"
 authors = ["Ethan Chapman <ethan.chapman0@outlook.com>", "Sidharth Rao <sidharthmrao@gmail.com"]
 
 [tool.poetry.dependencies]
