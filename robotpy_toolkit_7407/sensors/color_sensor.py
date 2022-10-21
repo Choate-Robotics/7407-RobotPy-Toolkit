@@ -3,21 +3,20 @@ from wpilib import I2C
 
 class ColorSensor:
     
-    
-    
-    def __init__(self, sensor_port, i2c_address: int = 0x71, threshold_blue = 500, threshold_red = 500, threshold_green = 400, debug=False):
+    def __init__(self, sensor_port, I2C_address: int = 0x71, threshold_blue = 500, threshold_red = 500, threshold_green = 400, debug=False):
         """WPILIB Color Sensor Wrapper for usage with I2C Multiplexer
         Args:
             sensor_port (_type_): Initialize with the sensor's port on multiplexer (0b0001, 0b0010, 0b0100, or 0b1000).
-            i2c_address (int, optional): I2C Address of the multiplexer on RoboRio. Defaults to 0x71.
+            I2C_address (int, optional): I2C Address of the multiplexer on RoboRio. Defaults to 0x71. Ranges from 0x70 to 0x77.
             threshold_blue (int, optional): Threshold for classification as Blue. Defaults to 500.
             threshold_red (int, optional): Threshold for classification as Red. Defaults to 500.
             threshold_green (int, optional): Used to counteract field lighting issues. Defaults to 400.
             debug (bool, optional): Use to enable debugging flags. Defaults to False.
         """
         
-        self.multiplexer = I2C(I2C.Port.kMXP, i2c_address)
+        self.multiplexer = I2C(I2C.Port.kMXP, I2C_address)
         self.port = sensor_port
+        self.I2C_address = I2C_address
         self.sensor = ColorSensorV3(I2C.Port.kMXP)
         
         self.threshold_blue = threshold_blue
@@ -47,9 +46,9 @@ class ColorSensor:
         
         if vals[0] == 0:
             if self.debug:
-                print("COLOR SENSOR NO WORK AHHHH REINITIALIZING...")
+                print("Values not found, reinitializing color sensor...")
             
-            self.multiplexer = I2C(I2C.Port.kMXP, 0x71)
+            self.multiplexer = I2C(I2C.Port.kMXP, self.I2C_address)
             self.sensor = ColorSensorV3(I2C.Port.kMXP)
             
         if vals[0]-vals[2]>self.threshold_red:
