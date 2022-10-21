@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from typing import Optional
 
 from rev import CANSparkMax, SparkMaxPIDController, SparkMaxRelativeEncoder
-from robotpy_toolkit_7407.unum import Unum
 
 from robotpy_toolkit_7407.motor import PIDMotor
 from robotpy_toolkit_7407.utils.units import rev, minute, radians, radians_per_second, rad, s
@@ -20,8 +19,8 @@ class SparkMaxConfig:
 
 k_sensor_pos_to_radians = rev.asNumber(rad)
 k_radians_to_sensor_pos = rad.asNumber(rev)
-k_sensor_vel_to_rad_per_sec = (rev/minute).asNumber(rad/s)
-k_rad_per_sec_to_sensor_vel = (rad/s).asNumber(rev/minute)
+k_sensor_vel_to_rad_per_sec = (rev / minute).asNumber(rad / s)
+k_rad_per_sec_to_sensor_vel = (rad / s).asNumber(rev / minute)
 
 
 class SparkMax(PIDMotor):

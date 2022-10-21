@@ -10,7 +10,7 @@ class Limelight:
         Args:
             cam_height (float): Height of the limelight camera from the ground in meters.
             cam_angle (float): Camera angle from the horizontal in degrees.
-            target_height (float): Height of the target from the ground in meters. Defaults to None. If not specified, the target height will be set to the camera height.
+            target_height (float, optional): Height of the target from the ground in meters. Defaults to None. If not specified, the target height will be set to the camera height.
         """
 
         NetworkTables.initialize()

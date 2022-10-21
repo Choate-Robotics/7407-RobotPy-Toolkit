@@ -1,9 +1,7 @@
 import math
-
-from robotpy_toolkit_7407.unum import Unum
 from wpilib import ADIS16448_IMU
 
-from robotpy_toolkit_7407.utils.units import deg, radians
+from robotpy_toolkit_7407.utils.units import radians
 
 
 class GyroADIS16448:
@@ -13,6 +11,10 @@ class GyroADIS16448:
 
     @property
     def angle(self) -> radians:
+        """
+        Returns:
+            theta: The angle of the robot in radians.
+        """
         return math.radians(self._gyro.getGyroAngleZ() + self.__offset)
 
     def reset(self):

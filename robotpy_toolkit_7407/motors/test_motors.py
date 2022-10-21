@@ -1,8 +1,6 @@
-from robotpy_toolkit_7407.unum import Unum
-
 from robotpy_toolkit_7407.motor import PIDMotor
 from robotpy_toolkit_7407.utils.math import clamp
-from robotpy_toolkit_7407.utils.units import rev, s, minute, rad, radians_per_second, radians_per_second_squared, \
+from robotpy_toolkit_7407.utils.units import radians_per_second, radians_per_second_squared, \
     radians
 
 

@@ -9,6 +9,7 @@ from robotpy_toolkit_7407.oi.joysticks import Joysticks
 @dataclass
 class Button:
     controller_id: int
+
     def __call__(self) -> commands.button.Button: ...
 
 

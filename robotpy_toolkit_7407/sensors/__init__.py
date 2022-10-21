@@ -1,3 +1,3 @@
-from sensors.limit_switch import LimitSwitch, MagneticLimitSwitch, PhotoElectricSwitch
-from sensors.color_sensor import ColorSensor
-from sensors.limelight import Limelight
+from limit_switch import LimitSwitch, MagneticLimitSwitch, PhotoElectricSwitch
+from color_sensor import ColorSensor
+from limelight import Limelight
