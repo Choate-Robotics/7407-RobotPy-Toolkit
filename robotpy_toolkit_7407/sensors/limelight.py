@@ -2,24 +2,28 @@ import math
 from networktables import NetworkTables
 from robotpy_toolkit_7407.utils.units import m, deg, ft, inch, rad, radians, meters
 
+
 class Limelight:
-    def __init__(self, cam_height: float, cam_angle: float, target_height: float):
-        """Connect, get, and modify limelight values and settings through the networktables interface
+    def __init__(self, cam_height: float, cam_angle: float, target_height: float = None):
+        """Connect, get, and modify limelight values and settings through the NetworkTables interface
 
         Args:
             cam_height (float): Height of the limelight camera from the ground in meters.
             cam_angle (float): Camera angle from the horizontal in degrees.
-            target_height (float): Height of the target from the ground in meters.
+            target_height (float): Height of the target from the ground in meters. Defaults to None. If not specified, the target height will be set to the camera height.
         """
-        
+
         NetworkTables.initialize()
         self.table = NetworkTables.getTable("limelight")
         self.tx = 0
         self.ty = 0
         self.refs = 0
-        self.k_cam_height = (cam_height * m).asNumber(m) # Height from ground
+        self.k_cam_height = (cam_height * m).asNumber(m)  # Height from ground
         self.k_cam_angle: radians = (cam_angle * deg).asNumber(rad)  # Angle from horizontal
-        self.k_h_target_height = (target_height*m).asNumber(m)
+        if target_height is not None:
+            self.k_h_target_height = (target_height * m).asNumber(m)
+        else:
+            self.k_h_target_height = self.k_cam_height
 
     def led_on(self):
         """Turn limelight LEDs on
