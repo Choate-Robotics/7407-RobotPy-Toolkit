@@ -17,6 +17,7 @@ TObj = TypeVar("TObj", bound=NetworkObject)
 
 class Sendable(Generic[TObj]):
     def get_network_object(self) -> TObj: ...
+
     def network_update(self, data: TObj): ...
 
 

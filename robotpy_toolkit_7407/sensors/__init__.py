@@ -1,3 +1,3 @@
-from limit_switch import LimitSwitch, MagneticLimitSwitch, PhotoElectricSwitch
-from color_sensor import ColorSensor
-from limelight import Limelight
+from robotpy_toolkit_7407.sensors.limit_switch import LimitSwitch, MagneticLimitSwitch, PhotoElectricSwitch
+from robotpy_toolkit_7407.sensors.color_sensor import ColorSensor
+from robotpy_toolkit_7407.sensors.limelight import Limelight

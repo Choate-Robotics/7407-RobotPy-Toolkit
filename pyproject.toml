@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "robotpy-toolkit-7407"
-version = "0.5.4"
+version = "0.5.8"
 description = "FRC Wired Boars Team 7407's Toolkit for usage with RobotPy"
 authors = ["Sidharth Rao <sidharthmrao@gmail.com>", "Ethan Chapman <ethan.chapman0@outlook.com>"]
 
@@ -8,11 +8,8 @@ authors = ["Sidharth Rao <sidharthmrao@gmail.com>", "Ethan Chapman <ethan.chapma
 python = "^3.10"
 robotpy = {extras = ["commands2"], version = "^2022.4.8"}
 pydantic = "^1.9.0"
-pygame = "^2.1.2"
 robotpy-ctre = "^2022.1.1"
 robotpy-rev = "^2022.0.1"
-twine = "^4.0.2"
-build = "^0.9.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

@@ -8,6 +8,8 @@ from robotpy_toolkit_7407.utils.units import rev, minute, radians, radians_per_s
 
 from robotpy_toolkit_7407.unum import Unum
 
+from robotpy_toolkit_7407.motors.ctre_motors import hundred_ms
+
 
 @dataclass
 class SparkMaxConfig:
@@ -20,7 +22,6 @@ class SparkMaxConfig:
 
 
 rev_sensor_unit = Unum.unit("rev_sensor_u", rev / 4096, "rev sensor unit")
-hundred_ms = Unum.unit("100ms", s / 10, "100 milliseconds")
 rev_sensor_vel_unit = rev_sensor_unit / hundred_ms
 rev_sensor_accel_unit = rev_sensor_vel_unit / s
 
