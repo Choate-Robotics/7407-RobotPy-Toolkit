@@ -10,7 +10,16 @@ from robotpy_toolkit_7407.utils.units import m, s
 
 # TODO Redo this to make it like swerve drivetrain commands
 class DriveArcade(SubsystemCommand[DifferentialDrivetrain]):
+    """
+    Arcade drive command for differential drivetrain.
+    """
     def __init__(self, subsystem: T, track_width_inches: float):
+        """
+
+        Args:
+            subsystem: drivetrain
+            track_width_inches: track width of the robot in inches
+        """
         super().__init__(subsystem)
         self.track_width_inches = track_width_inches
 

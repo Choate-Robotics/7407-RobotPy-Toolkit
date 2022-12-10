@@ -13,32 +13,68 @@ from robotpy_toolkit_7407.utils.units import s, m, deg, rad, hour, mile, rev, me
 
 
 class SwerveNode:
-    _motor_reversed: bool
-    _motor_sensor_offset: radians
+    """
+    Extendable class for swerve node.
+    """
+    motor_reversed: bool = False
+    motor_sensor_offset: radians = 0
 
     def init(self):
-        self._motor_reversed = False
-        self._motor_sensor_offset = 0
+        """
+        Initialize the swerve node.
+        """
+        ...
 
     def set(self, vel: meters_per_second, angle_radians: radians_per_second):
-        self._set_angle(angle_radians, self.get_current_motor_angle() + self._motor_sensor_offset)
-        self.set_motor_velocity(vel if not self._motor_reversed else -vel)
+        """
+        Set the velocity and angle of the swerve node.
+
+        Args:
+            vel (meters_per_second): velocity of the swerve node
+            angle_radians (radians_per_second): turning swerve node velocity in radians per second
+        """
+        self._set_angle(angle_radians, self.get_current_motor_angle() + self.motor_sensor_offset)
+        self.set_motor_velocity(vel if not self.motor_reversed else -vel)
 
     # OVERRIDDEN FUNCTIONS
-    def set_motor_angle(self, pos: radians): ...
-    def get_current_motor_angle(self) -> radians: ...
-    def set_motor_velocity(self, vel: meters_per_second): ...
-    def get_motor_velocity(self) -> meters_per_second: ...
+    def set_motor_angle(self, pos: radians):
+        """
+        Set the angle of the swerve node. Must be overridden.
 
-    # 0 degrees is facing right
+        Args:
+            pos (radians): angle of the swerve node in radians
+        """
+        ...
+
+    def get_current_motor_angle(self) -> radians:
+        """
+        Get the current angle of the swerve node. Must be overridden. Must return radians.
+        """
+        ...
+
+    def set_motor_velocity(self, vel: meters_per_second):
+        """
+        Set the velocity of the swerve node. Must be overridden.
+        Args:
+            vel (meters_per_second): velocity of the swerve node in meters per second
+        """
+        ...
+
+    def get_motor_velocity(self) -> meters_per_second:
+        """
+        Get the velocity of the swerve node. Must be overridden. Must return meters per second.
+        """
+        ...
+
+    # 0 degrees is facing right | "ethan is our FRC lord and saviour" - sid
     def _set_angle(self, target_angle: radians, initial_angle: radians):
         target_sensor_angle, flipped, flip_sensor_offset = SwerveNode._resolve_angles(target_angle, initial_angle)
 
-        target_sensor_angle -= self._motor_sensor_offset
+        target_sensor_angle -= self.motor_sensor_offset
 
         if flipped:
-            self._motor_reversed = not self._motor_reversed
-            self._motor_sensor_offset += flip_sensor_offset
+            self.motor_reversed = not self.motor_reversed
+            self.motor_sensor_offset += flip_sensor_offset
 
         self.set_motor_angle(target_sensor_angle)
 
@@ -63,12 +99,33 @@ class SwerveNode:
 
 
 class SwerveGyro:
-    def init(self): ...
-    def get_robot_heading(self) -> radians: ...
-    def reset_angle(self): ...
+    """
+    Extendable class for swerve gyro.
+    """
+
+    def init(self):
+        """
+        Initialize the swerve gyro. Overridden class.
+        """
+        ...
+
+    def get_robot_heading(self) -> radians:
+        """
+        Get the robot heading in radians. Overridden class. Must return radians.
+        """
+        ...
+
+    def reset_angle(self):
+        """
+        Reset the robot heading. Overridden class.
+        """
+        ...
 
 
 class SwerveDrivetrain(Subsystem):
+    """
+    Swerve Drivetrain Extendable class. Contains driving functions.
+    """
     n_00: SwerveNode  # Top Left
     n_01: SwerveNode  # Bottom Left
     n_10: SwerveNode  # Top Right
@@ -78,11 +135,11 @@ class SwerveDrivetrain(Subsystem):
     axis_dy: JoystickAxis
     axis_rotation: JoystickAxis
     track_width: meters = 1
-    max_vel: meters_per_second = (20 * mile/hour).asNumber(m/s)
-    max_angular_vel: radians_per_second = (4 * rev/s).asNumber(rad/s)
-    deadzone_velocity: meters_per_second = 0.05
-    deadzone_angular_velocity: radians_per_second = (5 * deg/s).asNumber(rad/s)
-    start_pose: Pose2d = Pose2d(0, 0, 0)
+    max_vel: meters_per_second = (20 * mile / hour).asNumber(m / s)  # Maximum velocity
+    max_angular_vel: radians_per_second = (4 * rev / s).asNumber(rad / s)  # Maximum angular velocity
+    deadzone_velocity: meters_per_second = 0.05  # Does not run within this speed
+    deadzone_angular_velocity: radians_per_second = (5 * deg / s).asNumber(rad / s)  # Will not turn within this speed
+    start_pose: Pose2d = Pose2d(0, 0, 0)  # Starting pose of the robot from wpilib Pose (x, y, rotation)
 
     def __init__(self):
         super().__init__()
@@ -92,6 +149,9 @@ class SwerveDrivetrain(Subsystem):
         self._omega: radians_per_second = 0
 
     def init(self):
+        """
+        Initialize the swerve drivetrain, kinematics, odometry, and gyro.
+        """
         logger.info("initializing swerve drivetrain", "[swerve_drivetrain]")
         self.n_00.init()
         self.n_01.init()
@@ -113,10 +173,23 @@ class SwerveDrivetrain(Subsystem):
         logger.info("initialization complete", "[swerve_drivetrain]")
 
     def set_driver_centric(self, vel: (meters_per_second, meters_per_second), angular_vel: radians_per_second):
+        """
+        Set the driver centric velocity and angular velocity. Driver centric runs with perspective of driver.
+
+        Args:
+            vel: velocity in x and y direction as (meters per second, meters per second)
+            angular_vel: angular velocity in radians per second
+        """
         vel = rotate_vector(vel[0], vel[1], -self.gyro.get_robot_heading())
         self.set_robot_centric(vel, angular_vel)
 
     def set_robot_centric(self, vel: (meters_per_second, meters_per_second), angular_vel: radians_per_second):
+        """
+        Set the robot centric velocity and angular velocity. Robot centric runs with perspective of robot.
+        Args:
+            vel: velocity in x and y direction as (meters per second, meters per second)
+            angular_vel: angular velocity in radians per second
+        """
         self._omega = angular_vel  # For simulation
 
         if abs(vel[0]) < self.deadzone_velocity and abs(vel[1]) < self.deadzone_velocity and \
@@ -163,15 +236,19 @@ class SwerveDrivetrain(Subsystem):
         self.chassis_speeds = self.kinematics.toChassisSpeeds(module_states)
 
     def stop(self):
+        """
+        Stop the drivetrain and all pods.
+        """
         self.n_00.set(0, 0)
         self.n_01.set(0, 0)
         self.n_10.set(0, 0)
         self.n_11.set(0, 0)
 
     @staticmethod
-    def _calculate_swerve_node(node_x: meters, node_y: meters, dx: meters_per_second, dy: meters_per_second, d_theta: radians_per_second) -> (meters_per_second, radians):
+    def _calculate_swerve_node(node_x: meters, node_y: meters, dx: meters_per_second, dy: meters_per_second,
+                               d_theta: radians_per_second) -> (meters_per_second, radians):
         tangent_x, tangent_y = -node_y, node_x
-        tangent_m = math.sqrt(tangent_x**2 + tangent_y**2)
+        tangent_m = math.sqrt(tangent_x ** 2 + tangent_y ** 2)
         tangent_x /= tangent_m
         tangent_y /= tangent_m
 

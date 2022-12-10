@@ -13,22 +13,21 @@ from robotpy_toolkit_7407.utils.units import m, s, rad
 
 
 class DriveSwerve(SubsystemCommand[SwerveDrivetrain]):
+    """
+    Drive the robot using a swerve drive controller.
+    """
+
     def initialize(self) -> None:
         pass
 
     def execute(self) -> None:
+        """
+        Execute the command. Can be overridden for a custom swerve drive.
+        """
         dx, dy, d_theta = self.subsystem.axis_dx.value, self.subsystem.axis_dy.value, self.subsystem.axis_rotation.value
 
-        # if abs(dx) < 0.1:
-        #     dx = 0
-        # if abs(dy) < 0.1:
-        #     dy = 0
-        # if abs(d_theta) < 0.1:
-        #     d_theta = 0
-
-        # TODO normalize this to circle somehow
-        dx *= self.subsystem.max_vel.asUnit(m/s)
-        dy *= -self.subsystem.max_vel.asUnit(m/s)
+        dx *= self.subsystem.max_vel.asUnit(m / s)
+        dy *= -self.subsystem.max_vel.asUnit(m / s)
 
         self.subsystem.set_driver_centric((dx, dy), -d_theta * self.subsystem.max_angular_vel)
 
@@ -43,6 +42,9 @@ class DriveSwerve(SubsystemCommand[SwerveDrivetrain]):
 
 
 class FollowPath(SubsystemCommand[SwerveDrivetrain]):
+    """
+    Follow a given wpimath trajectory using a swerve drive controller.
+    """
     def __init__(self, subsystem: SwerveDrivetrain, trajectory: Trajectory, period: float = 0.02):
         super().__init__(subsystem)
         self.trajectory = trajectory
