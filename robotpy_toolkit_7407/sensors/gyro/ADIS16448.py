@@ -3,19 +3,33 @@ from wpilib import ADIS16448_IMU
 
 from robotpy_toolkit_7407.utils.units import radians
 
+from robotpy_toolkit_7407.subsystem_templates.drivetrain import SwerveGyro
 
-class GyroADIS16448:
+
+class GyroADIS16448(SwerveGyro):
+    """
+    Wrapper class for the ADIS16448 Gyro
+    """
     def __init__(self) -> None:
         self._gyro = ADIS16448_IMU()
         self.__offset = 0
 
-    @property
-    def angle(self) -> radians:
+    def init(self):
         """
-        Returns:
-            theta: The angle of the robot in radians.
+        Initialize the gyro
+        """
+        self.reset_angle()
+        self.__offset = 0
+
+    def get_robot_heading(self) -> radians:
+        """
+        Returns the angle of the robot's heading in radians (yaw)
+        :return: Robot heading (radians)
         """
         return math.radians(self._gyro.getGyroAngleZ() + self.__offset)
 
-    def reset(self):
-        self.__offset = self.angle
+    def reset_angle(self):
+        """
+        Resets the gyro's yaw.
+        """
+        self.__offset = self.get_robot_heading()

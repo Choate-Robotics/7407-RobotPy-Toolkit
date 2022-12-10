@@ -1,0 +1,39 @@
+import ctre
+from robotpy_toolkit_7407.subsystem_templates.drivetrain import SwerveGyro
+
+import math
+
+from robotpy_toolkit_7407.utils.units import radians
+
+
+class PigeonIMUGyro_Wrapper(SwerveGyro):
+    """
+    Wrapper class for the Pigeon2 IMU gyro.
+    """
+
+    def __init__(self, port):
+        """
+        :param port: CAN ID of the Pigeon gyro
+        """
+        self._gyro = ctre.Pigeon2(port)
+        self._gyro.configMountPose(0, 0, 0)
+
+    def init(self):
+        """
+        Initialize gyro
+        """
+        self.reset_angle()
+
+    def get_robot_heading(self) -> radians:
+        """
+        Returns the angle of the robot's heading in radians (yaw)
+        :return: Robot heading (radians)
+        """
+        return math.radians(self._gyro.getYaw())
+
+    # reset the gyro
+    def reset_angle(self):
+        """
+        Resets the gyro's yaw.
+        """
+        self._gyro.setYaw(0)

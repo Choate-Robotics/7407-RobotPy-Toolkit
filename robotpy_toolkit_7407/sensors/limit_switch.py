@@ -2,9 +2,12 @@ import wpilib
 
 
 class LimitSwitch:
+    """
+    Wrapper class for I2C Limit Switches
+    """
 
     def __init__(self, port: int, inverted: bool = True):
-        """Wpilib I2C Limit Switch Wrapper
+        """Wrapper class for I2C Limit Switches
         Args:
             port (int): I2C port of the limit switch.
             inverted (bool, optional): Return the inverted boolean of output. Defaults to True.
@@ -24,6 +27,9 @@ class LimitSwitch:
 
 
 class MagneticLimitSwitch(LimitSwitch):
+    """
+    Wrapper class for I2C Magnetic Limit Switches
+    """
 
     def __init__(self, port: int, inverted: bool = True):
         """Wpilib I2C Magnetic Limit Switch Wrapper extends LimitSwitch
@@ -36,12 +42,15 @@ class MagneticLimitSwitch(LimitSwitch):
 
 
 class PhotoElectricSwitch(LimitSwitch):
-    """Wpilib I2C PhotoElectric Limit Switch Wrapper extends LimitSwitch
+    """
+    Wrapper class for I2C PhotoElectric Switches
+    """
+
+    def __init__(self, port: int, inverted: bool = True):
+        """Wpilib I2C PhotoElectric Limit Switch Wrapper extends LimitSwitch
 
         Args:
             port (int): I2C port of the limit switch.
             inverted (bool, optional): Return the inverted boolean of output. Defaults to True.
         """
-
-    def __init__(self, port: int, inverted: bool = True):
         super().__init__(port, inverted)

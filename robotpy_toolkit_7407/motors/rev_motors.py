@@ -1,7 +1,8 @@
+from builtins import type
 from dataclasses import dataclass
 from typing import Optional
 
-from rev import CANSparkMax, SparkMaxPIDController, SparkMaxRelativeEncoder
+from rev import CANSparkMax, SparkMaxPIDController, SparkMaxRelativeEncoder, SparkMaxAlternateEncoder
 
 from robotpy_toolkit_7407.motor import PIDMotor
 from robotpy_toolkit_7407.utils.units import rev, minute, radians, radians_per_second, rad, s
@@ -33,8 +34,8 @@ k_rad_per_sec_to_sensor_vel = (rad / s).asNumber(rev / minute)
 
 class SparkMax(PIDMotor):
     _motor: CANSparkMax
+    _encoder: SparkMaxRelativeEncoder
     __pid_controller: SparkMaxPIDController
-    __encoder: SparkMaxRelativeEncoder
 
     def __init__(self, can_id: int, inverted: bool = True, brushless: bool = True, config: SparkMaxConfig = None):
         super().__init__()
@@ -50,7 +51,7 @@ class SparkMax(PIDMotor):
         )
         self._motor.setInverted(self._inverted)
         self.__pid_controller = self._motor.getPIDController()
-        self.__encoder = self._motor.getEncoder()
+        self._encoder = self._motor.getEncoder()
         self._set_config(self._config)
 
     def set_raw_output(self, x: float):
@@ -63,13 +64,13 @@ class SparkMax(PIDMotor):
         self.__pid_controller.setReference(vel * k_rad_per_sec_to_sensor_vel, CANSparkMax.ControlType.kVelocity)
 
     def get_sensor_position(self) -> radians:
-        return self.__encoder.getPosition() * k_sensor_pos_to_radians
+        return self._encoder.getPosition() * k_sensor_pos_to_radians
 
     def set_sensor_position(self, pos: radians):
-        self.__encoder.setPosition(pos * k_radians_to_sensor_pos)
+        self._encoder.setPosition(pos * k_radians_to_sensor_pos)
 
     def get_sensor_velocity(self) -> radians_per_second:
-        return self.__encoder.getVelocity() * k_sensor_vel_to_rad_per_sec
+        return self._encoder.getVelocity() * k_sensor_vel_to_rad_per_sec
 
     def _set_config(self, config: SparkMaxConfig):
         if config is None:

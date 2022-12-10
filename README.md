@@ -1,6 +1,12 @@
 # 7407-RobotPy-Toolkit  
 ### FRC Wired Boars Team 7407's toolkit for usage with RobotPy  
-  
+
+## TODO:
+ - UnitTests (IN PROGRESS)
+ - Smart Dashboard Wrapper (NOT STARTED)
+ - Commands Fix (SubsystemCommand is screwed up) 
+ - Document Everything
+
 ## Features:  
 ### Motor Wrappers:  
  - Ctre Motors
