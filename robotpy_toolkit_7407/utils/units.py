@@ -26,3 +26,5 @@ radians_per_second = float
 radians_per_second_squared = float
 radians_per_meter = float
 meters_per_radian = float
+rotations_per_second = float
+rotations = float
