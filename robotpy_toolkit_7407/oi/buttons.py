@@ -7,14 +7,17 @@ from robotpy_toolkit_7407.oi.joysticks import Joysticks
 
 
 @dataclass
-class Button:
+class _Button:
     controller_id: int
 
     def __call__(self) -> commands.button.Button: ...
 
 
 @dataclass
-class DefaultButton(Button):
+class DefaultButton(_Button):
+    """
+    Wrapper for wpilib button
+    """
     button_id: int
 
     def __call__(self) -> commands.button.Button:
@@ -26,7 +29,10 @@ class DefaultButton(Button):
 
 
 @dataclass
-class AxisButton(Button):
+class AxisButton(_Button):
+    """
+    Wrapper for wpilib axis button
+    """
     axis_id: int
     range_min: float = -1
     range_max: float = 1
