@@ -4,7 +4,14 @@ from robotpy_toolkit_7407.network.objects import Sendable, SubsystemNetworkObjec
 
 
 class Subsystem(commands2.SubsystemBase, Sendable[SubsystemNetworkObject]):
-    def init(self): ...
+    """
+    Extendable subsystem class. Needs to be extended by every subsystem.
+    """
+    def init(self):
+        """
+        Overridable method for initializing the subsystem.
+        """
+        ...
 
     def get_network_object(self) -> SubsystemNetworkObject:
         return SubsystemNetworkObject(

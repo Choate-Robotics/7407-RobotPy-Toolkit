@@ -4,7 +4,7 @@ from robotpy_toolkit_7407.unum import Unum
 from robotpy_toolkit_7407.command import SubsystemCommand, T
 from robotpy_toolkit_7407.motors.ctre_motors import talon_sensor_vel_unit
 from robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain import DifferentialDrivetrain
-from robotpy_toolkit_7407.utils.math import clamp, sensor_units_to_inches, inches_to_sensor_units
+from robotpy_toolkit_7407.utils.math import clamp, talon_sensor_units_to_inches, inches_to_talon_sensor_units
 from robotpy_toolkit_7407.utils.units import m, s
 
 
@@ -71,7 +71,7 @@ class DriveArcade(SubsystemCommand[DifferentialDrivetrain]):
         # x_axis *= abs(x_axis)
 
         velocity_sensor_units = 18000 * y_axis
-        target_velocity = sensor_units_to_inches(velocity_sensor_units, True)
+        target_velocity = talon_sensor_units_to_inches(velocity_sensor_units, True)
 
         if x_axis > 0:
             turn_radius = 120.0 * (1.05 - x_axis)
@@ -83,12 +83,12 @@ class DriveArcade(SubsystemCommand[DifferentialDrivetrain]):
         if x_axis == 0:
             velocity_difference = 0
         elif target_velocity == 0 or turn_radius == 0:
-            velocity_difference = sensor_units_to_inches(-18000.0 * x_axis, True)
+            velocity_difference = talon_sensor_units_to_inches(-18000.0 * x_axis, True)
         else:
             velocity_difference = (track_width_inches * target_velocity) / turn_radius
 
-        left = inches_to_sensor_units(target_velocity - velocity_difference, True)
-        right = inches_to_sensor_units(target_velocity + velocity_difference, True)
+        left = inches_to_talon_sensor_units(target_velocity - velocity_difference, True)
+        right = inches_to_talon_sensor_units(target_velocity + velocity_difference, True)
 
         left = clamp(left, -18000, 18000)
         right = clamp(right, -18000, 18000)

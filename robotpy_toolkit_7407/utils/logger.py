@@ -2,7 +2,10 @@ import inspect
 import logging.config
 import os
 
+
 from robotpy_toolkit_7407.utils.color import Color, NoColor
+
+# Straight up a copy of logger
 
 """
 Logger utility for debugging. 
