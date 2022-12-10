@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>robotpy_toolkit_7407.network package &#8212; 7407 RobotPy Toolkit Documentation 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="robotpy_toolkit_7407.oi package" href="robotpy_toolkit_7407.oi.html" />
+    <link rel="prev" title="robotpy_toolkit_7407.motors package" href="robotpy_toolkit_7407.motors.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="robotpy-toolkit-7407-network-package">
+<h1>robotpy_toolkit_7407.network package<a class="headerlink" href="#robotpy-toolkit-7407-network-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-robotpy_toolkit_7407.network.network_system">
+<span id="robotpy-toolkit-7407-network-network-system-module"></span><h2>robotpy_toolkit_7407.network.network_system module<a class="headerlink" href="#module-robotpy_toolkit_7407.network.network_system" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.network_system.Network">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.network.network_system.</span></span><span class="sig-name descname"><span class="pre">Network</span></span><a class="headerlink" href="#robotpy_toolkit_7407.network.network_system.Network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.network_system.Network.ds_get_status">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ds_get_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#robotpy_toolkit_7407.network.objects.RobotStatusPacket" title="robotpy_toolkit_7407.network.objects.RobotStatusPacket"><span class="pre">RobotStatusPacket</span></a></span></span><a class="headerlink" href="#robotpy_toolkit_7407.network.network_system.Network.ds_get_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.network_system.Network.ds_init">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ds_init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.network.network_system.Network.ds_init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.network_system.Network.local_websocket_ip">
+<span class="sig-name descname"><span class="pre">local_websocket_ip</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'localhost'</span></em><a class="headerlink" href="#robotpy_toolkit_7407.network.network_system.Network.local_websocket_ip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.network_system.Network.local_websocket_port">
+<span class="sig-name descname"><span class="pre">local_websocket_port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8765</span></em><a class="headerlink" href="#robotpy_toolkit_7407.network.network_system.Network.local_websocket_port" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.network_system.Network.robot_init">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">robot_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subsystems</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="robotpy_toolkit_7407.html#robotpy_toolkit_7407.subsystem.Subsystem" title="robotpy_toolkit_7407.subsystem.Subsystem"><span class="pre">robotpy_toolkit_7407.subsystem.Subsystem</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.network.network_system.Network.robot_init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.network_system.Network.robot_send_status">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">robot_send_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.network.network_system.Network.robot_send_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.network_system.Network.subsystems">
+<span class="sig-name descname"><span class="pre">subsystems</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="robotpy_toolkit_7407.html#robotpy_toolkit_7407.subsystem.Subsystem" title="robotpy_toolkit_7407.subsystem.Subsystem"><span class="pre">robotpy_toolkit_7407.subsystem.Subsystem</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#robotpy_toolkit_7407.network.network_system.Network.subsystems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.network_system.Network.udp_ip">
+<span class="sig-name descname"><span class="pre">udp_ip</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'127.0.0.1'</span></em><a class="headerlink" href="#robotpy_toolkit_7407.network.network_system.Network.udp_ip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.network_system.Network.udp_max_packet_size">
+<span class="sig-name descname"><span class="pre">udp_max_packet_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">32768</span></em><a class="headerlink" href="#robotpy_toolkit_7407.network.network_system.Network.udp_max_packet_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.network_system.Network.udp_port">
+<span class="sig-name descname"><span class="pre">udp_port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5800</span></em><a class="headerlink" href="#robotpy_toolkit_7407.network.network_system.Network.udp_port" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.network_system.Network.udp_socket">
+<span class="sig-name descname"><span class="pre">udp_socket</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">socket</span></em><a class="headerlink" href="#robotpy_toolkit_7407.network.network_system.Network.udp_socket" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.network.objects">
+<span id="robotpy-toolkit-7407-network-objects-module"></span><h2>robotpy_toolkit_7407.network.objects module<a class="headerlink" href="#module-robotpy_toolkit_7407.network.objects" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.objects.MotorNetworkObject">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.network.objects.</span></span><span class="sig-name descname"><span class="pre">MotorNetworkObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.network.objects.MotorNetworkObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#robotpy_toolkit_7407.network.objects.NetworkObject" title="robotpy_toolkit_7407.network.objects.NetworkObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">NetworkObject</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.objects.MotorNetworkObject.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#robotpy_toolkit_7407.network.objects.MotorNetworkObject.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.objects.NetworkObject">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.network.objects.</span></span><span class="sig-name descname"><span class="pre">NetworkObject</span></span><a class="headerlink" href="#robotpy_toolkit_7407.network.objects.NetworkObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.objects.NetworkObject.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.network.objects.NetworkObject.load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.objects.NetworkObject.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.network.objects.NetworkObject.serialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.objects.RobotStatusPacket">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.network.objects.</span></span><span class="sig-name descname"><span class="pre">RobotStatusPacket</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsystems</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#robotpy_toolkit_7407.network.objects.SubsystemNetworkObject" title="robotpy_toolkit_7407.network.objects.SubsystemNetworkObject"><span class="pre">robotpy_toolkit_7407.network.objects.SubsystemNetworkObject</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.network.objects.RobotStatusPacket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#robotpy_toolkit_7407.network.objects.NetworkObject" title="robotpy_toolkit_7407.network.objects.NetworkObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">NetworkObject</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.objects.RobotStatusPacket.subsystems">
+<span class="sig-name descname"><span class="pre">subsystems</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#robotpy_toolkit_7407.network.objects.SubsystemNetworkObject" title="robotpy_toolkit_7407.network.objects.SubsystemNetworkObject"><span class="pre">robotpy_toolkit_7407.network.objects.SubsystemNetworkObject</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#robotpy_toolkit_7407.network.objects.RobotStatusPacket.subsystems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.objects.Sendable">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.network.objects.</span></span><span class="sig-name descname"><span class="pre">Sendable</span></span><a class="headerlink" href="#robotpy_toolkit_7407.network.objects.Sendable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">TObj</span></code>]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.objects.Sendable.get_network_object">
+<span class="sig-name descname"><span class="pre">get_network_object</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TObj</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.network.objects.Sendable.get_network_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.objects.Sendable.network_update">
+<span class="sig-name descname"><span class="pre">network_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TObj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.network.objects.Sendable.network_update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.objects.SubsystemNetworkObject">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.network.objects.</span></span><span class="sig-name descname"><span class="pre">SubsystemNetworkObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">motors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#robotpy_toolkit_7407.network.objects.MotorNetworkObject" title="robotpy_toolkit_7407.network.objects.MotorNetworkObject"><span class="pre">robotpy_toolkit_7407.network.objects.MotorNetworkObject</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.network.objects.SubsystemNetworkObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#robotpy_toolkit_7407.network.objects.NetworkObject" title="robotpy_toolkit_7407.network.objects.NetworkObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">NetworkObject</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.objects.SubsystemNetworkObject.motors">
+<span class="sig-name descname"><span class="pre">motors</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#robotpy_toolkit_7407.network.objects.MotorNetworkObject" title="robotpy_toolkit_7407.network.objects.MotorNetworkObject"><span class="pre">robotpy_toolkit_7407.network.objects.MotorNetworkObject</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#robotpy_toolkit_7407.network.objects.SubsystemNetworkObject.motors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.network.objects.SubsystemNetworkObject.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#robotpy_toolkit_7407.network.objects.SubsystemNetworkObject.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.network">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-robotpy_toolkit_7407.network" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">7407 RobotPy Toolkit Documentation</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">robotpy_toolkit_7407</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="robotpy_toolkit_7407.html">robotpy_toolkit_7407 package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">robotpy_toolkit_7407</a><ul>
+  <li><a href="robotpy_toolkit_7407.html">robotpy_toolkit_7407 package</a><ul>
+      <li>Previous: <a href="robotpy_toolkit_7407.motors.html" title="previous chapter">robotpy_toolkit_7407.motors package</a></li>
+      <li>Next: <a href="robotpy_toolkit_7407.oi.html" title="next chapter">robotpy_toolkit_7407.oi package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sidharth Rao.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/robotpy_toolkit_7407.network.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

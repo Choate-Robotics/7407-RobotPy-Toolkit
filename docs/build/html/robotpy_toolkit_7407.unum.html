@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>robotpy_toolkit_7407.unum package &#8212; 7407 RobotPy Toolkit Documentation 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="robotpy_toolkit_7407.unum.units package" href="robotpy_toolkit_7407.unum.units.html" />
+    <link rel="prev" title="robotpy_toolkit_7407.subsystem_templates.drivetrain package" href="robotpy_toolkit_7407.subsystem_templates.drivetrain.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="robotpy-toolkit-7407-unum-package">
+<h1>robotpy_toolkit_7407.unum package<a class="headerlink" href="#robotpy-toolkit-7407-unum-package" title="Permalink to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="robotpy_toolkit_7407.unum.units.html">robotpy_toolkit_7407.unum.units package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.unum.units.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.unum.units.custom.html">robotpy_toolkit_7407.unum.units.custom package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.units.custom.html#module-robotpy_toolkit_7407.unum.units.custom">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.unum.units.others.html">robotpy_toolkit_7407.unum.units.others package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.units.others.html#module-robotpy_toolkit_7407.unum.units.others">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.unum.units.si.html">robotpy_toolkit_7407.unum.units.si package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.units.si.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.units.si.html#module-robotpy_toolkit_7407.unum.units.si.base">robotpy_toolkit_7407.unum.units.si.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.units.si.html#module-robotpy_toolkit_7407.unum.units.si.derived">robotpy_toolkit_7407.unum.units.si.derived module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.units.si.html#module-robotpy_toolkit_7407.unum.units.si">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.unum.units.html#module-robotpy_toolkit_7407.unum.units">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-robotpy_toolkit_7407.unum">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-robotpy_toolkit_7407.unum" title="Permalink to this heading">¶</a></h2>
+<p>Main Unum module.</p>
+<p># TODO: consider alternatives to unum and see how they compare.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.ConversionError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.unum.</span></span><span class="sig-name descname"><span class="pre">ConversionError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.ConversionError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#robotpy_toolkit_7407.unum.UnumError" title="robotpy_toolkit_7407.unum.UnumError"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnumError</span></code></a></p>
+<p>Failed to convert a unit to the desired type.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.IncompatibleUnitsError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.unum.</span></span><span class="sig-name descname"><span class="pre">IncompatibleUnitsError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unit1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.IncompatibleUnitsError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TypeError</span></code></p>
+<p>An operation on two Unums failed because the units were incompatible.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.NameConflictError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.unum.</span></span><span class="sig-name descname"><span class="pre">NameConflictError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unit_key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.NameConflictError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#robotpy_toolkit_7407.unum.UnumError" title="robotpy_toolkit_7407.unum.UnumError"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnumError</span></code></a></p>
+<p>Tried to define a symbol that was already defined.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.NonBasicUnitError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.unum.</span></span><span class="sig-name descname"><span class="pre">NonBasicUnitError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.NonBasicUnitError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#robotpy_toolkit_7407.unum.UnumError" title="robotpy_toolkit_7407.unum.UnumError"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnumError</span></code></a></p>
+<p>Expected a basic unit but got a non-basic unit.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.ShouldBeUnitlessError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.unum.</span></span><span class="sig-name descname"><span class="pre">ShouldBeUnitlessError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.ShouldBeUnitlessError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TypeError</span></code></p>
+<p>An operation on a Unum failed because it had units unexpectedly.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.unum.</span></span><span class="sig-name descname"><span class="pre">Unum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Encapsulates a value attached to a unit.</p>
+<p>Implements arithmetic operators, dynamic unit consistency checking, and
+string representation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.AUTO_NORM">
+<span class="sig-name descname"><span class="pre">AUTO_NORM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.AUTO_NORM" title="Permalink to this definition">¶</a></dt>
+<dd><p>If True, normalize unums for their string representation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.UNIT_DIV_SEP">
+<span class="sig-name descname"><span class="pre">UNIT_DIV_SEP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/'</span></em><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.UNIT_DIV_SEP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Separator between numerator and denominator.</p>
+<p>If set to None, negative exponents are used instead.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.UNIT_FORMAT">
+<span class="sig-name descname"><span class="pre">UNIT_FORMAT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'[%s]'</span></em><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.UNIT_FORMAT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format string for attached unit.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.UNIT_HIDE_EMPTY">
+<span class="sig-name descname"><span class="pre">UNIT_HIDE_EMPTY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.UNIT_HIDE_EMPTY" title="Permalink to this definition">¶</a></dt>
+<dd><p>If True, unitless unums are displayed as raw numbers.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.UNIT_INDENT">
+<span class="sig-name descname"><span class="pre">UNIT_INDENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'</span> <span class="pre">'</span></em><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.UNIT_INDENT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Separator between value and unit.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.UNIT_SEP">
+<span class="sig-name descname"><span class="pre">UNIT_SEP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'.'</span></em><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.UNIT_SEP" title="Permalink to this definition">¶</a></dt>
+<dd><p>e.g. “5 N.m”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Separator between multiple units</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.UNIT_SORTING">
+<span class="sig-name descname"><span class="pre">UNIT_SORTING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.UNIT_SORTING" title="Permalink to this definition">¶</a></dt>
+<dd><p>If True, units are sorted alphabetically for display.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.VALUE_FORMAT">
+<span class="sig-name descname"><span class="pre">VALUE_FORMAT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'%s'</span></em><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.VALUE_FORMAT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format string for value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.asNumber">
+<span class="sig-name descname"><span class="pre">asNumber</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.asNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the (normalized) raw value of self.</p>
+<p>If other is supplied, first convert to other’s units before returning
+the raw value.</p>
+<p>Raises NonBasicUnitError if other is supplied, but has a value other
+than 1. (e.g., kg.asNumber(2*g) is an error, but kg.asNumber(g) is ok.)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.asUnit">
+<span class="sig-name descname"><span class="pre">asUnit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.asUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Unum with this Unum’s value and the units of the given Unum.</p>
+<p>Raises IncompatibleUnitsError if self can’t be converted to other.
+Raises NonBasicUnitError if other isn’t a basic unit.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.checkNoUnit">
+<span class="sig-name descname"><span class="pre">checkNoUnit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.checkNoUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise ShouldBeUnitlessError if self has a unit.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.coerceToUnum">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">coerceToUnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.coerceToUnum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a unitless Unum if value is a number.</p>
+<p>If value is a Unum already, it is returned unmodified.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.converted">
+<span class="sig-name descname"><span class="pre">converted</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.converted" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns self converted following _unitTable
+raises UnumError exception if the self’s unit is not unique</p>
+<blockquote>
+<div><p>or if no conversion exists for self</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a copy of this Unum, normalizing the copy if specified.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.getUnitTable">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">getUnitTable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.getUnitTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a copy of the unit table.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.matchUnits">
+<span class="sig-name descname"><span class="pre">matchUnits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.matchUnits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return (self, other) where both Unums have the same units.</p>
+<p>Raises IncompatibleUnitsError if there is no way to do this.
+If there are multiple ways to do this, the units of self, then other
+are preferred, and then by maximum level.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.maxLevel">
+<span class="sig-name descname"><span class="pre">maxLevel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.maxLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the maximum level of self’s units</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.normalize">
+<span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forDisplay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.normalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalize our units IN PLACE and return self.</p>
+<p>Substitutions may be applied to reduce the number of different units,
+while making the fewest substitutions.</p>
+<p>If forDisplay is True, then prefer a single unit to no unit.
+# TODO: example of forDisplay.
+# TODO: simplify normalize so it fits in 80 columns…</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.replaced">
+<span class="sig-name descname"><span class="pre">replaced</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conv_unum</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.replaced" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Unum with the string u replaced by the Unum conv_unum.</p>
+<p>If u is absent from self, a copy of self is returned.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.reset">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unitTable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the unit table, replacing it with the new one if provided.</p>
+<p>This is generally only useful when playing around with defining new
+units in the interpreter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.strUnit">
+<span class="sig-name descname"><span class="pre">strUnit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.strUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a string representation of our unit.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.Unum.unit">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.unum.Unum.unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new unit represented by the string symbol.</p>
+<p>If conv is 0, the new unit is a base unit.
+If conv is a Unum, the new unit is a derived unit equal to conv.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">KB</span> <span class="o">=</span> <span class="n">Unum</span><span class="o">.</span><span class="n">defineUnit</span><span class="p">(</span><span class="s2">&quot;kB&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;kilobyte&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MB</span> <span class="o">=</span> <span class="n">Unum</span><span class="o">.</span><span class="n">defineUnit</span><span class="p">(</span><span class="s2">&quot;MB&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="o">*</span><span class="n">KB</span><span class="p">,</span> <span class="s2">&quot;megabyte&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.unum.UnumError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.unum.</span></span><span class="sig-name descname"><span class="pre">UnumError</span></span><a class="headerlink" href="#robotpy_toolkit_7407.unum.UnumError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>A Unum error occurred that was unrelated to dimensional errors.</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">7407 RobotPy Toolkit Documentation</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">robotpy_toolkit_7407</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="robotpy_toolkit_7407.html">robotpy_toolkit_7407 package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">robotpy_toolkit_7407</a><ul>
+  <li><a href="robotpy_toolkit_7407.html">robotpy_toolkit_7407 package</a><ul>
+      <li>Previous: <a href="robotpy_toolkit_7407.subsystem_templates.drivetrain.html" title="previous chapter">robotpy_toolkit_7407.subsystem_templates.drivetrain package</a></li>
+      <li>Next: <a href="robotpy_toolkit_7407.unum.units.html" title="next chapter">robotpy_toolkit_7407.unum.units package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sidharth Rao.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/robotpy_toolkit_7407.unum.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

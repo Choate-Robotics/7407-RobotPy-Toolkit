@@ -1,0 +1,589 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>robotpy_toolkit_7407.subsystem_templates.drivetrain package &#8212; 7407 RobotPy Toolkit Documentation 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="robotpy_toolkit_7407.unum package" href="robotpy_toolkit_7407.unum.html" />
+    <link rel="prev" title="robotpy_toolkit_7407.subsystem_templates package" href="robotpy_toolkit_7407.subsystem_templates.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="robotpy-toolkit-7407-subsystem-templates-drivetrain-package">
+<h1>robotpy_toolkit_7407.subsystem_templates.drivetrain package<a class="headerlink" href="#robotpy-toolkit-7407-subsystem-templates-drivetrain-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain">
+<span id="robotpy-toolkit-7407-subsystem-templates-drivetrain-differential-drivetrain-module"></span><h2>robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain module<a class="headerlink" href="#module-robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.</span></span><span class="sig-name descname"><span class="pre">DifferentialDrivetrain</span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="robotpy_toolkit_7407.html#robotpy_toolkit_7407.subsystem.Subsystem" title="robotpy_toolkit_7407.subsystem.Subsystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subsystem</span></code></a></p>
+<p>Extendable differential drivetrain class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>m_left</strong> – leading left motor</p></li>
+<li><p><strong>m_right</strong> – leading right motor</p></li>
+<li><p><strong>axis_x</strong> – x-axis of the joystick</p></li>
+<li><p><strong>axis_y</strong> – y-axis of the joystick</p></li>
+<li><p><strong>gear_ratio</strong> – gear ratio of the drivetrain</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain.axis_x">
+<span class="sig-name descname"><span class="pre">axis_x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.joysticks.JoystickAxis" title="robotpy_toolkit_7407.oi.joysticks.JoystickAxis"><span class="pre">JoystickAxis</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain.axis_x" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain.axis_y">
+<span class="sig-name descname"><span class="pre">axis_y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.joysticks.JoystickAxis" title="robotpy_toolkit_7407.oi.joysticks.JoystickAxis"><span class="pre">JoystickAxis</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain.axis_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain.gear_ratio">
+<span class="sig-name descname"><span class="pre">gear_ratio</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain.gear_ratio" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the drivetrain.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain.m_left">
+<span class="sig-name descname"><span class="pre">m_left</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="robotpy_toolkit_7407.html#robotpy_toolkit_7407.motor.PIDMotor" title="robotpy_toolkit_7407.motor.PIDMotor"><span class="pre">PIDMotor</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain.m_left" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain.m_right">
+<span class="sig-name descname"><span class="pre">m_right</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="robotpy_toolkit_7407.html#robotpy_toolkit_7407.motor.PIDMotor" title="robotpy_toolkit_7407.motor.PIDMotor"><span class="pre">PIDMotor</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain.m_right" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain.set_motor_percent_output">
+<span class="sig-name descname"><span class="pre">set_motor_percent_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">left</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain.set_motor_percent_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the percent output of the motors between -1 and 1</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>left</strong> (<em>float</em>) – percent output of the left motor</p></li>
+<li><p><strong>right</strong> (<em>float</em>) – percent output of the right motor</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain.set_motor_velocity">
+<span class="sig-name descname"><span class="pre">set_motor_velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">left_vel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right_vel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain.set_motor_velocity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the velocity of the motors in meters per second</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>left_vel</strong> (<em>meters_per_second</em>) – velocity of the left motor</p></li>
+<li><p><strong>right_vel</strong> (<em>meters_per_second</em>) – velocity of the right motor</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands">
+<span id="robotpy-toolkit-7407-subsystem-templates-drivetrain-differential-drivetrain-commands-module"></span><h2>robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands module<a class="headerlink" href="#module-robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands.DriveArcade">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands.</span></span><span class="sig-name descname"><span class="pre">DriveArcade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subsystem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_width_inches</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands.DriveArcade" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="robotpy_toolkit_7407.html#robotpy_toolkit_7407.command.SubsystemCommand" title="robotpy_toolkit_7407.command.SubsystemCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubsystemCommand</span></code></a>[<a class="reference internal" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain" title="robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain.DifferentialDrivetrain"><code class="xref py py-class docutils literal notranslate"><span class="pre">DifferentialDrivetrain</span></code></a>]</p>
+<p>Arcade drive command for differential drivetrain.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands.DriveArcade.end">
+<span class="sig-name descname"><span class="pre">end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">commands2._impl.Command</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interrupted</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands.DriveArcade.end" title="Permalink to this definition">¶</a></dt>
+<dd><p>The action to take when the command ends.  Called when either the command
+finishes normally, or when it interrupted/canceled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interrupted</strong> – whether the command was interrupted/canceled</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands.DriveArcade.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">commands2._impl.Command</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands.DriveArcade.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main body of a command.  Called repeatedly while the command is
+scheduled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands.DriveArcade.initialize">
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">commands2._impl.Command</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands.DriveArcade.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>The initial subroutine of a command.  Called once when the command is
+initially scheduled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands.DriveArcade.isFinished">
+<span class="sig-name descname"><span class="pre">isFinished</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">commands2._impl.Command</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands.DriveArcade.isFinished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the command has finished.  Once a command finishes, the scheduler
+will call its end() method and un-schedule it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>whether the command has finished.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands.DriveArcade.runsWhenDisabled">
+<span class="sig-name descname"><span class="pre">runsWhenDisabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">commands2._impl.Command</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands.DriveArcade.runsWhenDisabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the given command should run when the robot is disabled.  Override
+to return true if the command should run when disabled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>whether the command should run when the robot is disabled</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain">
+<span id="robotpy-toolkit-7407-subsystem-templates-drivetrain-swerve-drivetrain-module"></span><h2>robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain module<a class="headerlink" href="#module-robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.</span></span><span class="sig-name descname"><span class="pre">SwerveDrivetrain</span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="robotpy_toolkit_7407.html#robotpy_toolkit_7407.subsystem.Subsystem" title="robotpy_toolkit_7407.subsystem.Subsystem"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subsystem</span></code></a></p>
+<p>Swerve Drivetrain Extendable class. Contains driving functions.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.axis_dx">
+<span class="sig-name descname"><span class="pre">axis_dx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.joysticks.JoystickAxis" title="robotpy_toolkit_7407.oi.joysticks.JoystickAxis"><span class="pre">JoystickAxis</span></a></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.axis_dx" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.axis_dy">
+<span class="sig-name descname"><span class="pre">axis_dy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.joysticks.JoystickAxis" title="robotpy_toolkit_7407.oi.joysticks.JoystickAxis"><span class="pre">JoystickAxis</span></a></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.axis_dy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.axis_rotation">
+<span class="sig-name descname"><span class="pre">axis_rotation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.joysticks.JoystickAxis" title="robotpy_toolkit_7407.oi.joysticks.JoystickAxis"><span class="pre">JoystickAxis</span></a></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.axis_rotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.deadzone_angular_velocity">
+<span class="sig-name descname"><span class="pre">deadzone_angular_velocity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.08726646259971647</span></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.deadzone_angular_velocity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.deadzone_velocity">
+<span class="sig-name descname"><span class="pre">deadzone_velocity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.05</span></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.deadzone_velocity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.gyro">
+<span class="sig-name descname"><span class="pre">gyro</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveGyro" title="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveGyro"><span class="pre">SwerveGyro</span></a></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.gyro" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the swerve drivetrain, kinematics, odometry, and gyro.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.max_angular_vel">
+<span class="sig-name descname"><span class="pre">max_angular_vel</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">25.132741228718345</span></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.max_angular_vel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.max_vel">
+<span class="sig-name descname"><span class="pre">max_vel</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8.940777777777777</span></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.max_vel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.n_00">
+<span class="sig-name descname"><span class="pre">n_00</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode" title="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode"><span class="pre">SwerveNode</span></a></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.n_00" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.n_01">
+<span class="sig-name descname"><span class="pre">n_01</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode" title="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode"><span class="pre">SwerveNode</span></a></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.n_01" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.n_10">
+<span class="sig-name descname"><span class="pre">n_10</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode" title="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode"><span class="pre">SwerveNode</span></a></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.n_10" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.n_11">
+<span class="sig-name descname"><span class="pre">n_11</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode" title="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode"><span class="pre">SwerveNode</span></a></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.n_11" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.set_driver_centric">
+<span class="sig-name descname"><span class="pre">set_driver_centric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vel:</span> <span class="pre">(&lt;class</span> <span class="pre">'float'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'float'&gt;)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angular_vel:</span> <span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.set_driver_centric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the driver centric velocity and angular velocity. Driver centric runs with perspective of driver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vel</strong> – velocity in x and y direction as (meters per second, meters per second)</p></li>
+<li><p><strong>angular_vel</strong> – angular velocity in radians per second</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.set_robot_centric">
+<span class="sig-name descname"><span class="pre">set_robot_centric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vel:</span> <span class="pre">(&lt;class</span> <span class="pre">'float'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'float'&gt;)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angular_vel:</span> <span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.set_robot_centric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the robot centric velocity and angular velocity. Robot centric runs with perspective of robot.
+:param vel: velocity in x and y direction as (meters per second, meters per second)
+:param angular_vel: angular velocity in radians per second</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.start_pose">
+<span class="sig-name descname"><span class="pre">start_pose</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Pose2d</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Pose2d(Translation2d(x=0.000000,</span> <span class="pre">y=0.000000),</span> <span class="pre">Rotation2d(0.000000))</span></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.start_pose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop the drivetrain and all pods.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.track_width">
+<span class="sig-name descname"><span class="pre">track_width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain.track_width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveGyro">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.</span></span><span class="sig-name descname"><span class="pre">SwerveGyro</span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveGyro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Extendable class for swerve gyro.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveGyro.get_robot_heading">
+<span class="sig-name descname"><span class="pre">get_robot_heading</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveGyro.get_robot_heading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the robot heading in radians. Overridden class. Must return radians.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveGyro.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveGyro.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the swerve gyro. Overridden class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveGyro.reset_angle">
+<span class="sig-name descname"><span class="pre">reset_angle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveGyro.reset_angle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the robot heading. Overridden class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.</span></span><span class="sig-name descname"><span class="pre">SwerveNode</span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Extendable class for swerve node.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode.get_current_motor_angle">
+<span class="sig-name descname"><span class="pre">get_current_motor_angle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode.get_current_motor_angle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current angle of the swerve node. Must be overridden. Must return radians.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode.get_motor_velocity">
+<span class="sig-name descname"><span class="pre">get_motor_velocity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode.get_motor_velocity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the velocity of the swerve node. Must be overridden. Must return meters per second.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the swerve node.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode.motor_reversed">
+<span class="sig-name descname"><span class="pre">motor_reversed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode.motor_reversed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode.motor_sensor_offset">
+<span class="sig-name descname"><span class="pre">motor_sensor_offset</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode.motor_sensor_offset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle_radians</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the velocity and angle of the swerve node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vel</strong> (<em>meters_per_second</em>) – velocity of the swerve node</p></li>
+<li><p><strong>angle_radians</strong> (<em>radians_per_second</em>) – turning swerve node velocity in radians per second</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode.set_motor_angle">
+<span class="sig-name descname"><span class="pre">set_motor_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode.set_motor_angle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the angle of the swerve node. Must be overridden.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pos</strong> (<em>radians</em>) – angle of the swerve node in radians</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode.set_motor_velocity">
+<span class="sig-name descname"><span class="pre">set_motor_velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveNode.set_motor_velocity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the velocity of the swerve node. Must be overridden.
+:param vel: velocity of the swerve node in meters per second
+:type vel: meters_per_second</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands">
+<span id="robotpy-toolkit-7407-subsystem-templates-drivetrain-swerve-drivetrain-commands-module"></span><h2>robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands module<a class="headerlink" href="#module-robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.DriveSwerve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.</span></span><span class="sig-name descname"><span class="pre">DriveSwerve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subsystem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.DriveSwerve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="robotpy_toolkit_7407.html#robotpy_toolkit_7407.command.SubsystemCommand" title="robotpy_toolkit_7407.command.SubsystemCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubsystemCommand</span></code></a>[<a class="reference internal" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain" title="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain"><code class="xref py py-class docutils literal notranslate"><span class="pre">SwerveDrivetrain</span></code></a>]</p>
+<p>Drive the robot using a swerve drive controller.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.DriveSwerve.end">
+<span class="sig-name descname"><span class="pre">end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">commands2._impl.Command</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interrupted</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.DriveSwerve.end" title="Permalink to this definition">¶</a></dt>
+<dd><p>The action to take when the command ends.  Called when either the command
+finishes normally, or when it interrupted/canceled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interrupted</strong> – whether the command was interrupted/canceled</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.DriveSwerve.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.DriveSwerve.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the command. Can be overridden for a custom swerve drive.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.DriveSwerve.initialize">
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">commands2._impl.Command</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.DriveSwerve.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>The initial subroutine of a command.  Called once when the command is
+initially scheduled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.DriveSwerve.isFinished">
+<span class="sig-name descname"><span class="pre">isFinished</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">commands2._impl.Command</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.DriveSwerve.isFinished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the command has finished.  Once a command finishes, the scheduler
+will call its end() method and un-schedule it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>whether the command has finished.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.DriveSwerve.runsWhenDisabled">
+<span class="sig-name descname"><span class="pre">runsWhenDisabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">commands2._impl.Command</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.DriveSwerve.runsWhenDisabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the given command should run when the robot is disabled.  Override
+to return true if the command should run when disabled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>whether the command should run when the robot is disabled</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.FollowPath">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.</span></span><span class="sig-name descname"><span class="pre">FollowPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subsystem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain" title="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain"><span class="pre">SwerveDrivetrain</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">trajectory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Trajectory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.02</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.FollowPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="robotpy_toolkit_7407.html#robotpy_toolkit_7407.command.SubsystemCommand" title="robotpy_toolkit_7407.command.SubsystemCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubsystemCommand</span></code></a>[<a class="reference internal" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain" title="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain.SwerveDrivetrain"><code class="xref py py-class docutils literal notranslate"><span class="pre">SwerveDrivetrain</span></code></a>]</p>
+<p>Follow a given wpimath trajectory using a swerve drive controller.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.FollowPath.end">
+<span class="sig-name descname"><span class="pre">end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">commands2._impl.Command</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interrupted</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.FollowPath.end" title="Permalink to this definition">¶</a></dt>
+<dd><p>The action to take when the command ends.  Called when either the command
+finishes normally, or when it interrupted/canceled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interrupted</strong> – whether the command was interrupted/canceled</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.FollowPath.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">commands2._impl.Command</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.FollowPath.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main body of a command.  Called repeatedly while the command is
+scheduled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.FollowPath.initialize">
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">commands2._impl.Command</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.FollowPath.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>The initial subroutine of a command.  Called once when the command is
+initially scheduled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.FollowPath.isFinished">
+<span class="sig-name descname"><span class="pre">isFinished</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">commands2._impl.Command</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.FollowPath.isFinished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the command has finished.  Once a command finishes, the scheduler
+will call its end() method and un-schedule it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>whether the command has finished.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.FollowPath.runsWhenDisabled">
+<span class="sig-name descname"><span class="pre">runsWhenDisabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">commands2._impl.Command</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands.FollowPath.runsWhenDisabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the given command should run when the robot is disabled.  Override
+to return true if the command should run when disabled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>whether the command should run when the robot is disabled</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.subsystem_templates.drivetrain">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-robotpy_toolkit_7407.subsystem_templates.drivetrain" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">7407 RobotPy Toolkit Documentation</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">robotpy_toolkit_7407</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="robotpy_toolkit_7407.html">robotpy_toolkit_7407 package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">robotpy_toolkit_7407</a><ul>
+  <li><a href="robotpy_toolkit_7407.html">robotpy_toolkit_7407 package</a><ul>
+  <li><a href="robotpy_toolkit_7407.subsystem_templates.html">robotpy_toolkit_7407.subsystem_templates package</a><ul>
+      <li>Previous: <a href="robotpy_toolkit_7407.subsystem_templates.html" title="previous chapter">robotpy_toolkit_7407.subsystem_templates package</a></li>
+      <li>Next: <a href="robotpy_toolkit_7407.unum.html" title="next chapter">robotpy_toolkit_7407.unum package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sidharth Rao.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/robotpy_toolkit_7407.subsystem_templates.drivetrain.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
