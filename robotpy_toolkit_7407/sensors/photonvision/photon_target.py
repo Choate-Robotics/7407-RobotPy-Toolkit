@@ -1,5 +1,4 @@
 import photonvision
-import math
 
 class PhotonTarget:
     def __init__(self, target: photonvision.PhotonTrackedTarget):
