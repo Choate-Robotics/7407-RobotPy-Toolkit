@@ -1,12 +1,11 @@
 import ctre
-from robotpy_toolkit_7407.subsystem_templates.drivetrain import SwerveGyro
-
 import math
 
 from robotpy_toolkit_7407.utils.units import radians
+from robotpy_toolkit_7407.sensors.gyro import Gyro
 
 
-class PigeonIMUGyro_Wrapper(SwerveGyro):
+class PigeonIMUGyro_Wrapper(Gyro):
     """
     Wrapper class for the Pigeon2 IMU gyro.
     """

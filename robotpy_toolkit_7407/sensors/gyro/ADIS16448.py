@@ -3,10 +3,10 @@ from wpilib import ADIS16448_IMU
 
 from robotpy_toolkit_7407.utils.units import radians
 
-from robotpy_toolkit_7407.subsystem_templates.drivetrain import SwerveGyro
+from robotpy_toolkit_7407.sensors.gyro import Gyro
 
 
-class GyroADIS16448(SwerveGyro):
+class GyroADIS16448(Gyro):
     """
     Wrapper class for the ADIS16448 Gyro
     """
