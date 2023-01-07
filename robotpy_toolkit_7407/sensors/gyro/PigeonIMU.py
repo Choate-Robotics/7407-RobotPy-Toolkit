@@ -13,7 +13,8 @@ class PigeonIMUGyro_Wrapper(SwerveGyro):
 
     def __init__(self, port):
         """
-        :param port: CAN ID of the Pigeon gyro
+        Args:
+            port (int): CAN ID of the Pigeon gyro
         """
         self._gyro = ctre.Pigeon2(port)
         self._gyro.configMountPose(0, 0, 0)

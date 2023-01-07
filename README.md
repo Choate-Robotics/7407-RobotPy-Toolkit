@@ -31,3 +31,7 @@
  - Math
  - Units (Unum Based)
 ### In Progress: Swerve Simulation
+
+## TO BUILD AND DEPLOY:
+ - python -m build .
+ - twine upload dist/*

@@ -25,6 +25,7 @@ class JoystickAxis:
     def value(self) -> float:
         """
         Gets the value of the axis selected
+
         Returns:
             float: The value between -1 and 1 as a float
         """

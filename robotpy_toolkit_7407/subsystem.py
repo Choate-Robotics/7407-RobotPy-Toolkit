@@ -9,7 +9,8 @@ class Subsystem(commands2.SubsystemBase, Sendable[SubsystemNetworkObject]):
     """
     def init(self):
         """
-        Overridable method for initializing the subsystem.
+        Overridable method for initializing the subsystem. Place motor inits/other physical initialization here,
+        for example re-zeroing a gyro.
         """
         ...
 

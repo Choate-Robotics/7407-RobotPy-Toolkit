@@ -7,21 +7,19 @@ from robotpy_toolkit_7407.utils import logger
 
 
 class Network:
-    """
-    ### SCHEMA:
-
-    # Robot status:
-    - UDP status packet is sent by the robot to python on the DS laptop (port 5800)
-       - Pickled string of the RobotStatusPacket struct
-    - Python backend on DS is responsible for unpickling, validation, and converting to JSON for the frontend
-
-    # DS to Robot communication
-    - Python backend responsible for converting the actions into packets
-    - TCP packets on port 5801
-    - Pickled string
-    - Each distinct command will have a defined struct
-    - Response codes??
-    """
+    # ### SCHEMA:
+    #
+    # # Robot status:
+    # - UDP status packet is sent by the robot to python on the DS laptop (port 5800)
+    #    - Pickled string of the RobotStatusPacket struct
+    # - Python backend on DS is responsible for unpickling, validation, and converting to JSON for the frontend
+    #
+    # # DS to Robot communication
+    # - Python backend responsible for converting the actions into packets
+    # - TCP packets on port 5801
+    # - Pickled string
+    # - Each distinct command will have a defined struct
+    # - Response codes??
 
     subsystems: list[Subsystem]
 

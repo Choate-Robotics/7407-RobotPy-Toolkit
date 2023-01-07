@@ -5,8 +5,6 @@ from robotpy_toolkit_7407.oi.joysticks import JoystickAxis
 from robotpy_toolkit_7407.subsystem import Subsystem
 from robotpy_toolkit_7407.utils import logger
 from robotpy_toolkit_7407.utils.units import rad, m, radians_per_meter, meters_per_second
-
-
 class DifferentialDrivetrain(Subsystem):
     """
     Extendable differential drivetrain class.

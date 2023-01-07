@@ -3,7 +3,7 @@ from wpilib import I2C
 from robotpy_toolkit_7407.utils.logger import Logger
 
 
-class ColorSensor:
+class REVColorSensor:
     """
     REVColor Sensor Wrapper for usage with I2C Multiplexer
     """
