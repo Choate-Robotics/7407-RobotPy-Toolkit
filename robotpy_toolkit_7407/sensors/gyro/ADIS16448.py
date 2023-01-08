@@ -3,7 +3,7 @@ from wpilib import ADIS16448_IMU
 
 from robotpy_toolkit_7407.utils.units import radians
 
-from robotpy_toolkit_7407.sensors.gyro import Gyro
+from robotpy_toolkit_7407.sensors.gyro.base_gyro import Gyro
 
 
 class GyroADIS16448(Gyro):

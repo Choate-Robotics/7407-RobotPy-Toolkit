@@ -34,5 +34,3 @@ class PhotonOdometry:
             fieldToTarget=self.field_layout.getTagPose(target.id),
             cameraToRobot=self.camera.camera_to_robot_pose
         )
-
-    PhotonUtils.estimateFieldToRobot()

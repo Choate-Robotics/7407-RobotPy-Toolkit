@@ -369,6 +369,19 @@ robotpy-wpimath = ">=2023.0.0b7,<2024.0.0"
 wpilib = ">=2023.0.0b7,<2024.0.0"
 
 [[package]]
+name = "robotpy-rev"
+version = "2023.1.1"
+description = "REVLib for RobotPy"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+robotpy-wpimath = ">=2023.1.1.0,<2024.0.0"
+robotpy-wpiutil = ">=2023.1.1.0,<2024.0.0"
+wpilib = ">=2023.1.1.0,<2024.0.0"
+
+[[package]]
 name = "robotpy-wpilib-utilities"
 version = "2023.0.0"
 description = "Useful utility functions/objects for RobotPy"
@@ -463,7 +476,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "flake8 (<5)", "pytest-co
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<3.12"
-content-hash = "506c3fcf09828443b6fd525b71496ff202ecb8ea223ec8f1e4e0855b6705c9bd"
+content-hash = "bea89f8cebd8bb015a0a77a6d643192cef79a263eb9f9e990aba8d0307267975"
 
 [metadata.files]
 attrs = [
@@ -767,6 +780,24 @@ robotpy-photonvision = [
     {file = "robotpy_photonvision-2023.1.1b7-cp39-cp39-macosx_10_16_x86_64.whl", hash = "sha256:e08597113d4b3dd87f2c584d98b915fe290fc831c41ccac326c2165dff1cb02d"},
     {file = "robotpy_photonvision-2023.1.1b7-cp39-cp39-manylinux_2_35_x86_64.whl", hash = "sha256:0979787081405c59165ed70b89043cd1627d199056cd067f164e54eb27aff87a"},
     {file = "robotpy_photonvision-2023.1.1b7-cp39-cp39-win_amd64.whl", hash = "sha256:3066c9f72f665fdaf5fa6dd38911fd8418850f5b4f67b30eb838aee056d6d8c5"},
+]
+robotpy-rev = [
+    {file = "robotpy-rev-2023.1.1.tar.gz", hash = "sha256:ac5960584b2a2e4588c84bfb3c94d6e1c91c3690a9b8880a69ec69fa2755c8d1"},
+    {file = "robotpy_rev-2023.1.1-cp310-cp310-macosx_10_16_x86_64.whl", hash = "sha256:35798ed0abfcc7cffccf3728fcd96d7b395322bb9c1544eeb19da0aeddf84cc5"},
+    {file = "robotpy_rev-2023.1.1-cp310-cp310-manylinux_2_35_x86_64.whl", hash = "sha256:86e6424df913a93ae015f2ebbc8230896962fc9b8a730366dc836f6cd3257966"},
+    {file = "robotpy_rev-2023.1.1-cp310-cp310-win_amd64.whl", hash = "sha256:6b4233335af516aee369a84572730ad5c24bd76e47d0bfca4d0bee3411b5f8e2"},
+    {file = "robotpy_rev-2023.1.1-cp311-cp311-macosx_11_0_universal2.whl", hash = "sha256:c241e876716a2033bd6e67c82fc7a95c1d6c1f79959166430f3935f023ef2122"},
+    {file = "robotpy_rev-2023.1.1-cp311-cp311-manylinux_2_35_x86_64.whl", hash = "sha256:920693bb2d4421cc5a8ca71c25ae008b837b2444203457db2fbcdea29666554b"},
+    {file = "robotpy_rev-2023.1.1-cp311-cp311-win_amd64.whl", hash = "sha256:53904ba88cacc08eab2eb4824094eae10f755ea89d9b7c2c0b599cd11e8b60bb"},
+    {file = "robotpy_rev-2023.1.1-cp37-cp37m-macosx_10_16_x86_64.whl", hash = "sha256:e279d12aef124c3930a7021ae93e4b27f079f50f16fff796a299d7fd103da2cf"},
+    {file = "robotpy_rev-2023.1.1-cp37-cp37m-manylinux_2_35_x86_64.whl", hash = "sha256:f0466be94db26ab987f59017caf6efa5d65b3555b152a13d45476ee71292f6d2"},
+    {file = "robotpy_rev-2023.1.1-cp37-cp37m-win_amd64.whl", hash = "sha256:6cc92bac9f8d8d351684815e315b4e93968b2230c42fa66f9d7eb3045ba47aa0"},
+    {file = "robotpy_rev-2023.1.1-cp38-cp38-macosx_10_16_x86_64.whl", hash = "sha256:b221e28604daf68223ab81bd6f3e16ef4f53bf8a96f91ccfd606b5c830c04efb"},
+    {file = "robotpy_rev-2023.1.1-cp38-cp38-manylinux_2_35_x86_64.whl", hash = "sha256:6890c20afb061bfbebe99f534b78c89596afeabd1b2a0750733e70ae42c86829"},
+    {file = "robotpy_rev-2023.1.1-cp38-cp38-win_amd64.whl", hash = "sha256:32daae07aee83e4a96eb2a50ed52d1dd78537cd884131c34efe997cc04d82781"},
+    {file = "robotpy_rev-2023.1.1-cp39-cp39-macosx_10_16_x86_64.whl", hash = "sha256:7fedb58e3cfe6f0da1578b422f07f2f71f6c5f742fde522a04d408493904870a"},
+    {file = "robotpy_rev-2023.1.1-cp39-cp39-manylinux_2_35_x86_64.whl", hash = "sha256:dae2488a6fb79150635dc046ad4bcc368f614aa5c3df766990fe3f7f4afa6741"},
+    {file = "robotpy_rev-2023.1.1-cp39-cp39-win_amd64.whl", hash = "sha256:d57e0659745c7b929e2e16217e8e11db79d7d6cdb71eade29c29396494944a6f"},
 ]
 robotpy-wpilib-utilities = [
     {file = "robotpy-wpilib-utilities-2023.0.0.tar.gz", hash = "sha256:03ebacc0d63a237056730a45410200f6ae8f263d226b09f98c0f38e4ec98ec42"},
