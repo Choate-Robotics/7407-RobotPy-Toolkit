@@ -230,6 +230,17 @@ files = [
 ]
 
 [[package]]
+name = "logger"
+version = "1.4"
+description = "Python logging helper"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "logger-1.4.tar.gz", hash = "sha256:4ecac57133c6376fa215f0fe6b4dc4d60e4d1ad8be005cab4e8a702df682f8b3"},
+]
+
+[[package]]
 name = "packaging"
 version = "23.0"
 description = "Core utilities for Python packages"
@@ -374,6 +385,18 @@ python-versions = ">=3.6"
 files = [
     {file = "pynetconsole-2.0.4-py3-none-any.whl", hash = "sha256:3f6b51e3c943e900578ce92a85104d45784ea522863b025816cc7d580bd00069"},
     {file = "pynetconsole-2.0.4.tar.gz", hash = "sha256:a02a9a6538b63ab63ffb480a0e5c1485aa5f393da6a20f780a6b082c971762d5"},
+]
+
+[[package]]
+name = "pynetworktables"
+version = "2021.0.0"
+description = "A pure Python implementation of NetworkTables, used for robot communications in the FIRST Robotics Competition."
+category = "main"
+optional = false
+python-versions = ">=3.5"
+files = [
+    {file = "pynetworktables-2021.0.0-py3-none-any.whl", hash = "sha256:54604b1993515c43890be058263f158c1d168c69bedd802f0de644964cf3840d"},
+    {file = "pynetworktables-2021.0.0.tar.gz", hash = "sha256:91167948e66c29d5c90f85f3e249403f4d2ebf11368b93f9b968ef315388c73c"},
 ]
 
 [[package]]
@@ -864,4 +887,4 @@ robotpy-wpiutil = ">=2023.1.1,<2023.2.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">3.9,<3.12"
-content-hash = "b25c0b603f03264d370637235f176d5269c22e04f8ac324cbcb84b3656670269"
+content-hash = "96e5cf8cd904320a6a02e48e9e1875f9252658c9dae73960f749b220faa56cc5"

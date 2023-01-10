@@ -1,5 +1,4 @@
 from robotpy_toolkit_7407.utils.units import radians, radians_per_second
-from robotpy_toolkit_7407.sensors.color_sensors import REVColorSensor
 
 
 class Motor:
