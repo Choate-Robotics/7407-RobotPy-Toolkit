@@ -19,7 +19,7 @@ class PhotonOdometry:
     def getRobotPose(self):
         target = self.camera.latest_target
 
-        if target.relative_pose is None:
+        if target is None:
             return None
 
         return PhotonUtils.estimateFieldToRobot(
