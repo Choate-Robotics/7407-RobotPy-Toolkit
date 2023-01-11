@@ -28,7 +28,12 @@ class PhotonOdometry:
         if target is None:
             return None
 
-        field_to_target = self.field_layout.getTagPose(target.ID).translation().toTranslation2d()  # Coords of target relative to field
+        try:
+            field_to_target = self.field_layout.getTagPose(target.ID).translation().toTranslation2d()
+        except:
+            return None
+
+        # field_to_target = self.field_layout.getTagPose(target.ID).translation().toTranslation2d()  # Coords of target relative to field
         camera_to_target = target.relative_pose.translation().toTranslation2d()  # Coords of target relative to camera
         camera_to_robot = self.camera.camera_to_robot_pose.translation().toTranslation2d()  # Coords of camera relative to robot
 
