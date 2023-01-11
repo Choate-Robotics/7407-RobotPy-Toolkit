@@ -15,5 +15,5 @@ class PhotonCamera:
         return self.camera.hasTargets()
 
     def refresh(self):  # Call at the beginning of every loop. Saves target for the loop to optimize lookup times.
-        self.latest_targets_all = [PhotonTarget(target) for target in self.getLatestResult().getTargets()] if self.hasTargets() else None
-        self.latest_best_target = PhotonTarget(self.getLatestResult().getBestTarget()) if self.hasTargets() else None
+        self.latest_targets_all = [PhotonTarget(target) for target in self.camera.getLatestResult().getTargets()] if self.hasTargets() else None
+        self.latest_best_target = PhotonTarget(self.camera.getLatestResult().getBestTarget()) if self.hasTargets() else None
