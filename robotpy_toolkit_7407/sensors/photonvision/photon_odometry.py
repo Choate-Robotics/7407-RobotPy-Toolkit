@@ -35,7 +35,8 @@ class PhotonOdometry:
 
         # field_to_target = self.field_layout.getTagPose(target.ID).translation().toTranslation2d()  # Coords of target relative to field
         camera_to_target = target.relative_pose.translation().toTranslation2d() * self.camera.scale_constant
-        camera_to_target.y = -1 * camera_to_target.y  # Account for photon vision wrong direction
+        # x, y = -1 * camera_to_target.y  # Account for photon vision wrong direction
+        camera_to_target = Translation2d(camera_to_target.x, -1 * camera_to_target.y)
         # Coords of target relative to camera
         camera_to_robot = self.camera.camera_to_robot_pose.translation().toTranslation2d()  # Coords of camera relative to robot
 
