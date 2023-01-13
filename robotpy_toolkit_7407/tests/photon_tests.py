@@ -7,15 +7,17 @@ from robotpy_toolkit_7407.sensors.photonvision import PhotonCamera, PhotonTarget
 
 gyro = PigeonIMUGyro_Wrapper(13)
 
-camera = PhotonCamera("globalshuttercamera", Pose3d(Translation3d(0, 1, 2), Rotation3d(roll=1, pitch=2, yaw=3)),
-                      height=1, pitch=1)
+camera = PhotonCamera("globalshuttercamera",
+                      Pose3d(Translation3d(x=.71, y=.69, z=.65),
+                             Rotation3d(roll=0, pitch=0, yaw=0)),
+                      scale_constant=1)
 
 current_target = PhotonTarget(
     PhotonTrackedTarget(
         1, 1, 1, 1, 1,
         Transform3d(
-            Pose3d(1, 1, 1, Rotation3d(1, 1, 1)),
-            Pose3d(0, 0, 0, Rotation3d(0, 0, 0))),
+            Pose3d(0, 0, 0, Rotation3d(0, 0, 0)),
+            Pose3d(1, 1, 1, Rotation3d(0, 0, 0))),
         Transform3d(
             Pose3d(1, 1, 1, Rotation3d(1, 1, 1)),
             Pose3d(0, 0, 0, Rotation3d(0, 0, 0))),
@@ -24,20 +26,8 @@ current_target = PhotonTarget(
 
 field_layout = {
     'apriltags': {
-        0: Pose3d(
-            Translation3d(x=0, y=0, z=0),
-            Rotation3d(roll=0, pitch=0, yaw=0)
-        ),
         1: Pose3d(
-            Translation3d(x=5, y=4, z=2),
-            Rotation3d(roll=0, pitch=0, yaw=0)
-        ),
-        2: Pose3d(
-            Translation3d(x=2, y=3, z=6),
-            Rotation3d(roll=0, pitch=0, yaw=0)
-        ),
-        3: Pose3d(
-            Translation3d(x=10, y=3, z=1),
+            Translation3d(x=4.1783, y=1.2065, z=0.70485),
             Rotation3d(roll=0, pitch=0, yaw=0)
         ),
     },
@@ -52,4 +42,4 @@ odometry = PhotonOdometry(
 )
 
 odometry.refresh()
-print(odometry.getRobotPose(current_target))
+print(odometry.getRobotPose(target=current_target))

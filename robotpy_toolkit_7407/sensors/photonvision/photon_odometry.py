@@ -1,11 +1,18 @@
-from wpimath.geometry import Transform3d, Pose3d, Rotation3d, Translation3d, Transform2d, Translation2d, Pose2d
+"""
+IMPORTANT:
+ - From the perspective of the driver:
+   - Positive X is forward
+   - Positive Y is left
+   - Positive theta is counterclockwise
+"""
+
+
+import math
 
 from robotpy_toolkit_7407.sensors.photonvision.photon_target import PhotonTarget, AprilTag
 from robotpy_toolkit_7407.sensors.photonvision.photon_camera import PhotonCamera
-from photonvision import PhotonUtils, PhotonTrackedTarget
 from robotpy_apriltag import AprilTagFieldLayout
 from robotpy_toolkit_7407.sensors.gyro import Gyro
-from robotpy_apriltag import AprilTagPoseEstimator
 
 
 def LoadFieldLayout(json_path: str):
@@ -29,18 +36,26 @@ class PhotonOdometry:
             return None
 
         try:
-            field_to_target = self.field_layout.getTagPose(target.ID).translation().toTranslation2d()
+            field_to_target = self.field_layout.getTagPose(target.ID)
         except:
             return None
 
-        # field_to_target = self.field_layout.getTagPose(target.ID).translation().toTranslation2d()  # Coords of target relative to field
-        camera_to_target = target.relative_pose.translation().toTranslation2d() * self.camera.scale_constant
-        # x, y = -1 * camera_to_target.y  # Account for photon vision wrong direction
-        camera_to_target = Translation2d(camera_to_target.x, -1 * camera_to_target.y)
-        # Coords of target relative to camera
-        camera_to_robot = self.camera.camera_to_robot_pose.translation().toTranslation2d()  # Coords of camera relative to robot
+        gyro_angle = self.gyro.get_robot_heading()
+        camera_to_target = target.relative_pose
+        robot_to_camera = self.camera.camera_to_robot_pose
 
-        field_to_robot = field_to_target - camera_to_target - camera_to_robot  # Reverse coords from field to target to camera to robot
+        theta = robot_to_camera.rotation().angle - gyro_angle
+        h = (robot_to_camera.x ** 2 + robot_to_camera.y ** 2) ** .5
+
+        field_to_camera = (
+            field_to_target.x - camera_to_target.x,
+            field_to_target.y - camera_to_target.y
+        )
+
+        field_to_robot = (
+            field_to_camera[0] - h * math.sin(theta),
+            field_to_camera[1] - h * math.cos(theta)
+        )
 
         return field_to_robot
 
