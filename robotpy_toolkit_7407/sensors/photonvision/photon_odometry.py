@@ -24,12 +24,11 @@ class PhotonOdometry:
         self.camera = camera
         self.field_layout = self.parse_field_layout(field_layout)
         self.gyro = gyro
-        self.pose = start_pose
+        self.pose_estimate = start_pose
 
     def refresh(self):
         self.camera.refresh()
-        robot_pose = self.getRobotPose()
-        self.pose = robot_pose if robot_pose is not None else self.pose
+        self.pose_estimate = self.getRobotPose()
 
     def getRobotPose(self, target: PhotonTarget = None):
         if target is None:
