@@ -8,7 +8,7 @@ from robotpy_toolkit_7407.sensors.photonvision import PhotonCamera, PhotonTarget
 gyro = PigeonIMUGyro_Wrapper(13)
 
 camera = PhotonCamera("globalshuttercamera",
-                      Pose3d(Translation3d(x=.71, y=.69, z=.65),
+                      Pose3d(Translation3d(x=1, y=1, z=.65),
                              Rotation3d(roll=0, pitch=0, yaw=0)),
                       scale_constant=1)
 
