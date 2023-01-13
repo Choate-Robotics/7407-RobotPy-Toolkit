@@ -93,17 +93,14 @@ class PhotonOdometry:
         field_to_camera = (
             field_to_target.x - camera_to_target.x,
             field_to_target.y - camera_to_target.y
-
         )
 
-    field_to_robot = (
-        field_to_camera[0] - h * math.sin(theta),
-        field_to_camera[1] - h * math.cos(theta)  # Testing positive did not work
+        field_to_robot = (
+            field_to_camera[0] - h * math.sin(theta),
+            field_to_camera[1] - h * math.cos(theta)  # Testing positive did not work
+        )
 
-    )
-
-
-return field_to_robot
+        return field_to_robot
 
 
 def parse_field_layout(self, field_layout: dict):
