@@ -6,7 +6,6 @@ IMPORTANT:
    - Positive theta is counterclockwise
 """
 
-
 import math
 
 from robotpy_toolkit_7407.sensors.photonvision.photon_target import PhotonTarget, AprilTag
@@ -44,7 +43,7 @@ class PhotonOdometry:
         camera_to_target = target.relative_pose
         robot_to_camera = self.camera.camera_to_robot_pose
 
-        theta = robot_to_camera.rotation().angle - gyro_angle
+        theta = math.atan2(robot_to_camera.x, robot_to_camera.y) - gyro_angle
         h = (robot_to_camera.x ** 2 + robot_to_camera.y ** 2) ** .5
 
         field_to_camera = (
