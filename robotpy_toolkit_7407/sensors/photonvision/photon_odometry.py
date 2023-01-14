@@ -102,27 +102,26 @@ class PhotonOdometry:
 
         return field_to_robot
 
+    def parse_field_layout(self, field_layout: dict):
+        new_layout: AprilTagFieldLayout = None
+        april_tags: list[AprilTag] = []
+        length: float = None  # meters
+        width: float = None  # meters
 
-def parse_field_layout(self, field_layout: dict):
-    new_layout: AprilTagFieldLayout = None
-    april_tags: list[AprilTag] = []
-    length: float = None  # meters
-    width: float = None  # meters
-
-    for i in field_layout['apriltags'].keys():
-        april_tags.append(
-            AprilTag(
-                ID=i,
-                pose=field_layout['apriltags'][i]
+        for i in field_layout['apriltags'].keys():
+            april_tags.append(
+                AprilTag(
+                    ID=i,
+                    pose=field_layout['apriltags'][i]
+                )
             )
+
+        length = field_layout['fieldLength']
+        width = field_layout['fieldWidth']
+        new_layout = AprilTagFieldLayout(
+            apriltags=april_tags,
+            fieldLength=length,
+            fieldWidth=width
         )
 
-    length = field_layout['fieldLength']
-    width = field_layout['fieldWidth']
-    new_layout = AprilTagFieldLayout(
-        apriltags=april_tags,
-        fieldLength=length,
-        fieldWidth=width
-    )
-
-    return new_layout
+        return new_layout
