@@ -9,7 +9,7 @@ class Limelight:
     Connect, get, and modify limelight values and settings through the NetworkTables interface.
     """
 
-    def __init__(self, cam_height: float, cam_angle: float, target_height: float = None):
+    def __init__(self, cam_height: float, cam_angle: float, target_height: float = None, robot_ip: str = "10.74.07.2"):
         """
         Args:
             cam_height (float): Height of the limelight camera from the ground in meters.
@@ -17,7 +17,7 @@ class Limelight:
             target_height (float, optional): Height of the target from the ground in meters. Defaults to camera height.
         """
 
-        NetworkTables.initialize()
+        NetworkTables.initialize(server=robot_ip)
         self.table = NetworkTables.getTable("limelight")
         self.tx = 0
         self.ty = 0
@@ -84,3 +84,12 @@ class Limelight:
             radians: Radian offset of the target from the center of the camera
         """
         return math.radians(self.tx)
+
+    def get_bot_pose(self, round_to: int = None) -> list:
+        """
+        Get the robot's pose from the limelight's perspective.
+        """
+        bot_pose = self.table.getValue("botpose", None)
+        if round_to is not None:
+            bot_pose = [round(i, round_to) for i in bot_pose]
+        return bot_pose
