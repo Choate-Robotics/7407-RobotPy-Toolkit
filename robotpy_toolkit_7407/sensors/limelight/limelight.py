@@ -1,6 +1,6 @@
 import math
 from networktables import NetworkTables
-from robotpy_toolkit_7407.utils.units import m, deg, ft, inch, rad, radians, meters
+from robotpy_toolkit_7407.utils.units import m, deg, rad, radians
 
 
 class Limelight:
@@ -85,11 +85,11 @@ class Limelight:
         """
         return math.radians(self.tx)
 
-    def get_bot_pose(self, round_to: int = None) -> list:
+    def get_bot_pose(self, round_to: int = None) -> list | None:
         """
         Get the robot's pose from the limelight's perspective.
         """
         bot_pose = self.table.getValue("botpose", None)
-        if round_to is not None:
+        if round_to is not None and bot_pose is not None:
             bot_pose = [round(i, round_to) for i in bot_pose]
         return bot_pose
