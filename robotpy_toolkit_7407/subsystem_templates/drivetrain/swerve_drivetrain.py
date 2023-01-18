@@ -2,7 +2,7 @@ import math
 
 from robotpy_toolkit_7407.unum import Unum
 from wpimath.geometry import Rotation2d, Pose2d, Translation2d
-from wpimath.kinematics import SwerveDrive4Odometry, SwerveDrive4Kinematics, SwerveModuleState, ChassisSpeeds
+from wpimath.kinematics import SwerveDrive4Odometry, SwerveDrive4Kinematics, SwerveModuleState, ChassisSpeeds, SwerveModulePosition
 from wpimath.estimator import SwerveDrive4PoseEstimator
 
 from robotpy_toolkit_7407.oi.joysticks import JoystickAxis
@@ -150,6 +150,9 @@ class SwerveDrivetrain(Subsystem):
         self.chassis_speeds: ChassisSpeeds | None = None
         self._omega: radians_per_second = 0
 
+        self.node_translations: tuple[Translation2d] | None = None
+        self.swerve_positions: tuple[SwerveModulePosition] | None = None
+
     def init(self):
         """
         Initialize the swerve drivetrain, kinematics, odometry, and gyro.
@@ -160,21 +163,49 @@ class SwerveDrivetrain(Subsystem):
         self.n_10.init()
         self.n_11.init()
         self.gyro.init()
+
         logger.info("initializing odometry", "[swerve_drivetrain]")
-        self.kinematics = SwerveDrive4Kinematics(
+
+        self.node_translations = (
             Translation2d(-.5 * self.track_width, -.5 * self.track_width),
             Translation2d(-.5 * self.track_width, .5 * self.track_width),
             Translation2d(.5 * self.track_width, -.5 * self.track_width),
             Translation2d(.5 * self.track_width, .5 * self.track_width)
         )
+
+        self.kinematics = SwerveDrive4Kinematics(
+            *self.node_translations
+        )
+
+        self.swerve_positions = (
+            SwerveModulePosition(
+                distance=((self.track_width * .5)**2 + (.5 * self.track_width)**2)**.5,
+                angle=Rotation2d(math.atan2(-.5 * self.track_width, -.5 * self.track_width))
+            ),
+            SwerveModulePosition(
+                distance=((self.track_width * .5)**2 + (.5 * self.track_width)**2)**.5,
+                angle=Rotation2d(math.atan2(-.5 * self.track_width, .5 * self.track_width)),
+            ),
+            SwerveModulePosition(
+                distance=((self.track_width * .5)**2 + (.5 * self.track_width)**2)**.5,
+                angle=Rotation2d(math.atan2(.5 * self.track_width, -.5 * self.track_width)),
+            ),
+            SwerveModulePosition(
+                distance=((self.track_width * .5)**2 + (.5 * self.track_width)**2)**.5,
+                angle=Rotation2d(math.atan2(.5 * self.track_width, .5 * self.track_width)),
+            )
+        )
+
         self.odometry = SwerveDrive4Odometry(
             self.kinematics,
             Rotation2d(self.gyro.get_robot_heading()),
+            self.swerve_positions,
             self.start_pose
         )
         self.odometry_estimator = SwerveDrive4PoseEstimator(
             self.kinematics,
             Rotation2d(self.gyro.get_robot_heading()),
+            self.swerve_positions,
             self.start_pose
         )
 
@@ -240,9 +271,23 @@ class SwerveDrivetrain(Subsystem):
             )
         )
 
-        self.odometry.update(Rotation2d(self.gyro.get_robot_heading()), *module_states)
-        self.odometry_estimator.update(Rotation2d(self.gyro.get_robot_heading()), *module_states)
-        self.chassis_speeds = self.kinematics.toChassisSpeeds(module_states)
+        self.odometry.update(
+            Rotation2d(self.gyro.get_robot_heading()),
+            self.swerve_positions[0],
+            self.swerve_positions[1],
+            self.swerve_positions[2],
+            self.swerve_positions[3]
+        )
+        self.odometry_estimator.update(
+            Rotation2d(self.gyro.get_robot_heading()),
+            (
+                self.swerve_positions[0],
+                self.swerve_positions[1],
+                self.swerve_positions[2],
+                self.swerve_positions[3]
+            )
+        )
+        self.chassis_speeds = self.kinematics.toChassisSpeeds(*module_states)
 
     def stop(self):
         """

@@ -5,6 +5,8 @@ from wpimath.geometry import Pose3d, Translation3d, Rotation3d
 from robotpy_toolkit_7407.utils.units import m, deg, rad, radians
 from robotpy_toolkit_7407.sensors.odometry import VisionEstimator
 
+from wpilib import Timer
+
 
 class Limelight:
     """
@@ -103,7 +105,7 @@ class LimelightController(VisionEstimator):
         super().__init__()
         self.limelights = limelight_list
 
-    def get_estimated_robot_pose(self) -> list[Pose3d] | None:
+    def get_estimated_robot_pose(self) -> list[Pose3d, float] | None:
         """
         Returns the robot's pose relative to the field, estimated by the limelight.
         :return: Limelight estimate of robot pose.
@@ -114,11 +116,16 @@ class LimelightController(VisionEstimator):
         for limelight in self.limelights:
             est_pose = limelight.get_bot_pose()
             if est_pose:
-                pose_list.append(Pose3d(
-                    Translation3d(est_pose[0], est_pose[1], est_pose[2]),
-                    Rotation3d(est_pose[3], est_pose[4], est_pose[5])
-                ))
+                pose_list.append(
+                    (
+                        Pose3d(
+                            Translation3d(est_pose[0], est_pose[1], est_pose[2]),
+                            Rotation3d(est_pose[3], est_pose[4], est_pose[5])
+                        ),
+                        Timer.getFPGATimestamp()
+                    )
+                )
             else:
-                pose_list.append(None)
+                pose_list.append((None, None))
 
         return pose_list if pose_list else None
