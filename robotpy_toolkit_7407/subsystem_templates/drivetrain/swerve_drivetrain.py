@@ -3,6 +3,7 @@ import math
 from robotpy_toolkit_7407.unum import Unum
 from wpimath.geometry import Rotation2d, Pose2d, Translation2d
 from wpimath.kinematics import SwerveDrive4Odometry, SwerveDrive4Kinematics, SwerveModuleState, ChassisSpeeds
+from wpimath.estimator import SwerveDrive4PoseEstimator
 
 from robotpy_toolkit_7407.oi.joysticks import JoystickAxis
 from robotpy_toolkit_7407.subsystem import Subsystem
@@ -145,6 +146,7 @@ class SwerveDrivetrain(Subsystem):
         super().__init__()
         self.kinematics: SwerveDrive4Kinematics | None = None
         self.odometry: SwerveDrive4Odometry | None = None
+        self.odometry_estimator: SwerveDrive4PoseEstimator | None = None
         self.chassis_speeds: ChassisSpeeds | None = None
         self._omega: radians_per_second = 0
 
@@ -170,6 +172,12 @@ class SwerveDrivetrain(Subsystem):
             Rotation2d(self.gyro.get_robot_heading()),
             self.start_pose
         )
+        self.odometry_estimator = SwerveDrive4PoseEstimator(
+            self.kinematics,
+            Rotation2d(self.gyro.get_robot_heading()),
+            self.start_pose
+        )
+
         logger.info("initialization complete", "[swerve_drivetrain]")
 
     def set_driver_centric(self, vel: (meters_per_second, meters_per_second), angular_vel: radians_per_second):
@@ -233,6 +241,7 @@ class SwerveDrivetrain(Subsystem):
         )
 
         self.odometry.update(Rotation2d(self.gyro.get_robot_heading()), *module_states)
+        self.odometry_estimator.update(Rotation2d(self.gyro.get_robot_heading()), *module_states)
         self.chassis_speeds = self.kinematics.toChassisSpeeds(module_states)
 
     def stop(self):

@@ -1,6 +1,9 @@
 import math
 from networktables import NetworkTables
+from wpimath.geometry import Pose3d, Translation3d, Rotation3d
+
 from robotpy_toolkit_7407.utils.units import m, deg, rad, radians
+from robotpy_toolkit_7407.sensors.odometry import VisionEstimator
 
 
 class Limelight:
@@ -93,3 +96,29 @@ class Limelight:
         if round_to is not None and bot_pose is not None:
             bot_pose = [round(i, round_to) for i in bot_pose]
         return bot_pose
+
+
+class LimelightController(VisionEstimator):
+    def __init__(self, limelight_list: list[Limelight]):
+        super().__init__()
+        self.limelights = limelight_list
+
+    def get_estimated_robot_pose(self) -> list[Pose3d] | None:
+        """
+        Returns the robot's pose relative to the field, estimated by the limelight.
+        :return: Limelight estimate of robot pose.
+        :rtype: Pose3d | None
+        """
+        pose_list = []
+
+        for limelight in self.limelights:
+            est_pose = limelight.get_bot_pose()
+            if est_pose:
+                pose_list.append(Pose3d(
+                    Translation3d(est_pose[0], est_pose[1], est_pose[2]),
+                    Rotation3d(est_pose[3], est_pose[4], est_pose[5])
+                ))
+            else:
+                pose_list.append(None)
+
+        return pose_list if pose_list else None
