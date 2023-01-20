@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>robotpy_toolkit_7407.sensors.photonvision package &mdash; RobotPy Toolkit 7407 0.5.49.8 documentation</title>
+      <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../static/js/html5shiv.min.js"></script>
+    <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../static/documentation_options.js"></script>
+        <script src="../static/doctools.js"></script>
+        <script src="../static/sphinx_highlight.js"></script>
+    <script src="../static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> RobotPy Toolkit 7407
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">robotpy_toolkit_7407.sensors.photonvision package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.sensors.photonvision.photon_camera">robotpy_toolkit_7407.sensors.photonvision.photon_camera module</a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.photonvision.photon_camera.PhotonCamera"><code class="docutils literal notranslate"><span class="pre">PhotonCamera</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.photonvision.photon_camera.PhotonCamera.get_scaled_relative_pose"><code class="docutils literal notranslate"><span class="pre">PhotonCamera.get_scaled_relative_pose()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.photonvision.photon_camera.PhotonCamera.hasTargets"><code class="docutils literal notranslate"><span class="pre">PhotonCamera.hasTargets()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.photonvision.photon_camera.PhotonCamera.refresh"><code class="docutils literal notranslate"><span class="pre">PhotonCamera.refresh()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.sensors.photonvision.photon_odometry">robotpy_toolkit_7407.sensors.photonvision.photon_odometry module</a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.photonvision.photon_odometry.LoadFieldLayout"><code class="docutils literal notranslate"><span class="pre">LoadFieldLayout()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.photonvision.photon_odometry.PhotonOdometry"><code class="docutils literal notranslate"><span class="pre">PhotonOdometry</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.photonvision.photon_odometry.PhotonOdometry.getRobotPose"><code class="docutils literal notranslate"><span class="pre">PhotonOdometry.getRobotPose()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.photonvision.photon_odometry.PhotonOdometry.parse_field_layout"><code class="docutils literal notranslate"><span class="pre">PhotonOdometry.parse_field_layout()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.photonvision.photon_odometry.PhotonOdometry.refresh"><code class="docutils literal notranslate"><span class="pre">PhotonOdometry.refresh()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.sensors.photonvision.photon_target">robotpy_toolkit_7407.sensors.photonvision.photon_target module</a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.photonvision.photon_target.AprilTag"><code class="docutils literal notranslate"><span class="pre">AprilTag</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.photonvision.photon_target.PhotonTarget"><code class="docutils literal notranslate"><span class="pre">PhotonTarget</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.sensors.photonvision">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RobotPy Toolkit 7407</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">robotpy_toolkit_7407.sensors.photonvision package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_build/html/_sources/source/robotpy_toolkit_7407.sensors.photonvision.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="robotpy-toolkit-7407-sensors-photonvision-package">
+<h1>robotpy_toolkit_7407.sensors.photonvision package<a class="headerlink" href="#robotpy-toolkit-7407-sensors-photonvision-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-robotpy_toolkit_7407.sensors.photonvision.photon_camera">
+<span id="robotpy-toolkit-7407-sensors-photonvision-photon-camera-module"></span><h2>robotpy_toolkit_7407.sensors.photonvision.photon_camera module<a class="headerlink" href="#module-robotpy_toolkit_7407.sensors.photonvision.photon_camera" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.photonvision.photon_camera.PhotonCamera">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.sensors.photonvision.photon_camera.</span></span><span class="sig-name descname"><span class="pre">PhotonCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poseRelativeToRobot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Pose3d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_constant</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.photonvision.photon_camera.PhotonCamera" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.photonvision.photon_camera.PhotonCamera.get_scaled_relative_pose">
+<span class="sig-name descname"><span class="pre">get_scaled_relative_pose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.photonvision.photon_camera.PhotonCamera.get_scaled_relative_pose" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.photonvision.photon_camera.PhotonCamera.hasTargets">
+<span class="sig-name descname"><span class="pre">hasTargets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.photonvision.photon_camera.PhotonCamera.hasTargets" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.photonvision.photon_camera.PhotonCamera.refresh">
+<span class="sig-name descname"><span class="pre">refresh</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.photonvision.photon_camera.PhotonCamera.refresh" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.sensors.photonvision.photon_odometry">
+<span id="robotpy-toolkit-7407-sensors-photonvision-photon-odometry-module"></span><h2>robotpy_toolkit_7407.sensors.photonvision.photon_odometry module<a class="headerlink" href="#module-robotpy_toolkit_7407.sensors.photonvision.photon_odometry" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>IMPORTANT:</dt><dd><ul class="simple">
+<li><p>THIS DOES NOT WORK YET</p></li>
+<li><p>From the perspective of the driver:
+- Positive X is forward
+- Positive Y is left
+- Positive theta is counterclockwise</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.photonvision.photon_odometry.LoadFieldLayout">
+<span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.sensors.photonvision.photon_odometry.</span></span><span class="sig-name descname"><span class="pre">LoadFieldLayout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">json_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.photonvision.photon_odometry.LoadFieldLayout" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.photonvision.photon_odometry.PhotonOdometry">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.sensors.photonvision.photon_odometry.</span></span><span class="sig-name descname"><span class="pre">PhotonOdometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#robotpy_toolkit_7407.sensors.photonvision.photon_camera.PhotonCamera" title="robotpy_toolkit_7407.sensors.photonvision.photon_camera.PhotonCamera"><span class="pre">PhotonCamera</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_layout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gyro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="robotpy_toolkit_7407.sensors.gyro.html#robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro" title="robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro"><span class="pre">Gyro</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_pose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Pose3d(Translation3d(x=0.000000,</span> <span class="pre">y=0.000000,</span> <span class="pre">z=0.000000),</span> <span class="pre">Rotation3d(x=0.000000,</span> <span class="pre">y=0.000000,</span> <span class="pre">z=0.000000))</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.photonvision.photon_odometry.PhotonOdometry" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.photonvision.photon_odometry.PhotonOdometry.getRobotPose">
+<span class="sig-name descname"><span class="pre">getRobotPose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#robotpy_toolkit_7407.sensors.photonvision.photon_target.PhotonTarget" title="robotpy_toolkit_7407.sensors.photonvision.photon_target.PhotonTarget"><span class="pre">PhotonTarget</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.photonvision.photon_odometry.PhotonOdometry.getRobotPose" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.photonvision.photon_odometry.PhotonOdometry.parse_field_layout">
+<span class="sig-name descname"><span class="pre">parse_field_layout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_layout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.photonvision.photon_odometry.PhotonOdometry.parse_field_layout" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.photonvision.photon_odometry.PhotonOdometry.refresh">
+<span class="sig-name descname"><span class="pre">refresh</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.photonvision.photon_odometry.PhotonOdometry.refresh" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.sensors.photonvision.photon_target">
+<span id="robotpy-toolkit-7407-sensors-photonvision-photon-target-module"></span><h2>robotpy_toolkit_7407.sensors.photonvision.photon_target module<a class="headerlink" href="#module-robotpy_toolkit_7407.sensors.photonvision.photon_target" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.photonvision.photon_target.AprilTag">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.sensors.photonvision.photon_target.</span></span><span class="sig-name descname"><span class="pre">AprilTag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Pose3d</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.photonvision.photon_target.AprilTag" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AprilTag</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.photonvision.photon_target.PhotonTarget">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.sensors.photonvision.photon_target.</span></span><span class="sig-name descname"><span class="pre">PhotonTarget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PhotonTrackedTarget</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.photonvision.photon_target.PhotonTarget" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.sensors.photonvision">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-robotpy_toolkit_7407.sensors.photonvision" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Sidharth Rao.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

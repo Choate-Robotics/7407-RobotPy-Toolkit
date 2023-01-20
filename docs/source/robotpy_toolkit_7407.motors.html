@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>robotpy_toolkit_7407.motors package &mdash; RobotPy Toolkit 7407 0.5.49.8 documentation</title>
+      <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../static/js/html5shiv.min.js"></script>
+    <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../static/documentation_options.js"></script>
+        <script src="../static/doctools.js"></script>
+        <script src="../static/sphinx_highlight.js"></script>
+    <script src="../static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> RobotPy Toolkit 7407
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">robotpy_toolkit_7407.motors package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.motors.ctre_motors">robotpy_toolkit_7407.motors.ctre_motors module</a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig"><code class="docutils literal notranslate"><span class="pre">TalonConfig</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.closed_loop_peak_output"><code class="docutils literal notranslate"><span class="pre">TalonConfig.closed_loop_peak_output</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.integral_zone"><code class="docutils literal notranslate"><span class="pre">TalonConfig.integral_zone</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.k_D"><code class="docutils literal notranslate"><span class="pre">TalonConfig.k_D</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.k_F"><code class="docutils literal notranslate"><span class="pre">TalonConfig.k_F</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.k_I"><code class="docutils literal notranslate"><span class="pre">TalonConfig.k_I</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.k_P"><code class="docutils literal notranslate"><span class="pre">TalonConfig.k_P</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.max_integral_accumulator"><code class="docutils literal notranslate"><span class="pre">TalonConfig.max_integral_accumulator</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.motion_acceleration"><code class="docutils literal notranslate"><span class="pre">TalonConfig.motion_acceleration</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.motion_cruise_velocity"><code class="docutils literal notranslate"><span class="pre">TalonConfig.motion_cruise_velocity</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.neutral_brake"><code class="docutils literal notranslate"><span class="pre">TalonConfig.neutral_brake</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonFX"><code class="docutils literal notranslate"><span class="pre">TalonFX</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonFX.init"><code class="docutils literal notranslate"><span class="pre">TalonFX.init()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup"><code class="docutils literal notranslate"><span class="pre">TalonGroup</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.get_sensor_position"><code class="docutils literal notranslate"><span class="pre">TalonGroup.get_sensor_position()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.get_sensor_velocity"><code class="docutils literal notranslate"><span class="pre">TalonGroup.get_sensor_velocity()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.init"><code class="docutils literal notranslate"><span class="pre">TalonGroup.init()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.motors"><code class="docutils literal notranslate"><span class="pre">TalonGroup.motors</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_leader_idx"><code class="docutils literal notranslate"><span class="pre">TalonGroup.set_leader_idx()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_raw_output"><code class="docutils literal notranslate"><span class="pre">TalonGroup.set_raw_output()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_sensor_position"><code class="docutils literal notranslate"><span class="pre">TalonGroup.set_sensor_position()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_target_position"><code class="docutils literal notranslate"><span class="pre">TalonGroup.set_target_position()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_target_velocity"><code class="docutils literal notranslate"><span class="pre">TalonGroup.set_target_velocity()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonSRX"><code class="docutils literal notranslate"><span class="pre">TalonSRX</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonSRX.init"><code class="docutils literal notranslate"><span class="pre">TalonSRX.init()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.VictorSPX"><code class="docutils literal notranslate"><span class="pre">VictorSPX</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.VictorSPX.init"><code class="docutils literal notranslate"><span class="pre">VictorSPX.init()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.motors.rev_motors">robotpy_toolkit_7407.motors.rev_motors module</a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMax"><code class="docutils literal notranslate"><span class="pre">SparkMax</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMax.get_sensor_position"><code class="docutils literal notranslate"><span class="pre">SparkMax.get_sensor_position()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMax.get_sensor_velocity"><code class="docutils literal notranslate"><span class="pre">SparkMax.get_sensor_velocity()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMax.init"><code class="docutils literal notranslate"><span class="pre">SparkMax.init()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMax.set_raw_output"><code class="docutils literal notranslate"><span class="pre">SparkMax.set_raw_output()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMax.set_sensor_position"><code class="docutils literal notranslate"><span class="pre">SparkMax.set_sensor_position()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMax.set_target_position"><code class="docutils literal notranslate"><span class="pre">SparkMax.set_target_position()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMax.set_target_velocity"><code class="docutils literal notranslate"><span class="pre">SparkMax.set_target_velocity()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig"><code class="docutils literal notranslate"><span class="pre">SparkMaxConfig</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.idle_mode"><code class="docutils literal notranslate"><span class="pre">SparkMaxConfig.idle_mode</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.k_D"><code class="docutils literal notranslate"><span class="pre">SparkMaxConfig.k_D</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.k_F"><code class="docutils literal notranslate"><span class="pre">SparkMaxConfig.k_F</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.k_I"><code class="docutils literal notranslate"><span class="pre">SparkMaxConfig.k_I</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.k_P"><code class="docutils literal notranslate"><span class="pre">SparkMaxConfig.k_P</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.output_range"><code class="docutils literal notranslate"><span class="pre">SparkMaxConfig.output_range</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.motors">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RobotPy Toolkit 7407</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">robotpy_toolkit_7407.motors package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_build/html/_sources/source/robotpy_toolkit_7407.motors.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="robotpy-toolkit-7407-motors-package">
+<h1>robotpy_toolkit_7407.motors package<a class="headerlink" href="#robotpy-toolkit-7407-motors-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-robotpy_toolkit_7407.motors.ctre_motors">
+<span id="robotpy-toolkit-7407-motors-ctre-motors-module"></span><h2>robotpy_toolkit_7407.motors.ctre_motors module<a class="headerlink" href="#module-robotpy_toolkit_7407.motors.ctre_motors" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.motors.ctre_motors.</span></span><span class="sig-name descname"><span class="pre">TalonConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_P</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_I</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_D</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_F</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">closed_loop_peak_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">motion_cruise_velocity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">motion_acceleration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neutral_brake</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">integral_zone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_integral_accumulator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Configuration for a TalonSRX/Falcon motor controller</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>kP: Proportional gain
+kI: Integral gain
+kD: Derivative gain
+kF: Feedforward gain
+closed_loop_peak_output: The maximum output of the controller
+neutral_brake: Whether to brake or coast when the motor is not moving</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.closed_loop_peak_output">
+<span class="sig-name descname"><span class="pre">closed_loop_peak_output</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.closed_loop_peak_output" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.integral_zone">
+<span class="sig-name descname"><span class="pre">integral_zone</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.integral_zone" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.k_D">
+<span class="sig-name descname"><span class="pre">k_D</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.k_D" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.k_F">
+<span class="sig-name descname"><span class="pre">k_F</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.k_F" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.k_I">
+<span class="sig-name descname"><span class="pre">k_I</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.k_I" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.k_P">
+<span class="sig-name descname"><span class="pre">k_P</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.k_P" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.max_integral_accumulator">
+<span class="sig-name descname"><span class="pre">max_integral_accumulator</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.max_integral_accumulator" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.motion_acceleration">
+<span class="sig-name descname"><span class="pre">motion_acceleration</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.motion_acceleration" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.motion_cruise_velocity">
+<span class="sig-name descname"><span class="pre">motion_cruise_velocity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.motion_cruise_velocity" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.neutral_brake">
+<span class="sig-name descname"><span class="pre">neutral_brake</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.neutral_brake" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonFX">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.motors.ctre_motors.</span></span><span class="sig-name descname"><span class="pre">TalonFX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">can_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverted</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig" title="robotpy_toolkit_7407.motors.ctre_motors.TalonConfig"><span class="pre">TalonConfig</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonFX" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_Talon</span></code></p>
+<p>TalonFX motor controller wrapper</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonFX.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonFX.init" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize the motor controller</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonGroup">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.motors.ctre_motors.</span></span><span class="sig-name descname"><span class="pre">TalonGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">motors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">_Talon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig" title="robotpy_toolkit_7407.motors.ctre_motors.TalonConfig"><span class="pre">TalonConfig</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leader_idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="robotpy_toolkit_7407.html#robotpy_toolkit_7407.motor.PIDMotor" title="robotpy_toolkit_7407.motor.PIDMotor"><code class="xref py py-class docutils literal notranslate"><span class="pre">PIDMotor</span></code></a></p>
+<p>Group of Talon motor controllers. Used when multiple motors act as a single unit with a leader motor</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.get_sensor_position">
+<span class="sig-name descname"><span class="pre">get_sensor_position</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.get_sensor_position" title="Permalink to this definition"></a></dt>
+<dd><p>Get the sensor position of the leader motor</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>position (radians): Sensor position of the leader motor in radians</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.get_sensor_velocity">
+<span class="sig-name descname"><span class="pre">get_sensor_velocity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.get_sensor_velocity" title="Permalink to this definition"></a></dt>
+<dd><p>Get the sensor velocity of the leader motor
+Returns:</p>
+<blockquote>
+<div><p>velocity (radians_per_second): Sensor velocity of the leader motor in radians per second</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.init" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize the motor controllers</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.motors">
+<span class="sig-name descname"><span class="pre">motors</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">robotpy_toolkit_7407.motors.ctre_motors._Talon</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.motors" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_leader_idx">
+<span class="sig-name descname"><span class="pre">set_leader_idx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_leader_idx" title="Permalink to this definition"></a></dt>
+<dd><p>Set the leader motor index (in the list of motors)</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>idx (int): Index of the leader motor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_raw_output">
+<span class="sig-name descname"><span class="pre">set_raw_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_raw_output" title="Permalink to this definition"></a></dt>
+<dd><p>Set the raw output of the leader motor
+Args:</p>
+<blockquote>
+<div><p>x (float): Raw output of the leader motor</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_sensor_position">
+<span class="sig-name descname"><span class="pre">set_sensor_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_sensor_position" title="Permalink to this definition"></a></dt>
+<dd><p>Set the sensor position of the leader motor
+Args:</p>
+<blockquote>
+<div><p>pos (radians): Sensor position of the leader motor in radians</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_target_position">
+<span class="sig-name descname"><span class="pre">set_target_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_target_position" title="Permalink to this definition"></a></dt>
+<dd><p>Set the target position of the leader motor
+Args:</p>
+<blockquote>
+<div><p>pos (radians): Target position of the leader motor in radians</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_target_velocity">
+<span class="sig-name descname"><span class="pre">set_target_velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_target_velocity" title="Permalink to this definition"></a></dt>
+<dd><p>Set the target velocity of the leader motor
+Args:</p>
+<blockquote>
+<div><p>vel (radians_per_second): Target velocity of the leader motor in radians per second</p>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonSRX">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.motors.ctre_motors.</span></span><span class="sig-name descname"><span class="pre">TalonSRX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">can_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverted</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig" title="robotpy_toolkit_7407.motors.ctre_motors.TalonConfig"><span class="pre">TalonConfig</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonSRX" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_Talon</span></code></p>
+<p>TalonSRX motor controller wrapper</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.TalonSRX.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonSRX.init" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize the motor controller</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.VictorSPX">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.motors.ctre_motors.</span></span><span class="sig-name descname"><span class="pre">VictorSPX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">can_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverted</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig" title="robotpy_toolkit_7407.motors.ctre_motors.TalonConfig"><span class="pre">TalonConfig</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.VictorSPX" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_Talon</span></code></p>
+<p>VictorSPX motor controller wrapper</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.ctre_motors.VictorSPX.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.ctre_motors.VictorSPX.init" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize the motor controller</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.motors.rev_motors">
+<span id="robotpy-toolkit-7407-motors-rev-motors-module"></span><h2>robotpy_toolkit_7407.motors.rev_motors module<a class="headerlink" href="#module-robotpy_toolkit_7407.motors.rev_motors" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.rev_motors.SparkMax">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.motors.rev_motors.</span></span><span class="sig-name descname"><span class="pre">SparkMax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">can_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverted</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brushless</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig" title="robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig"><span class="pre">SparkMaxConfig</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMax" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="robotpy_toolkit_7407.html#robotpy_toolkit_7407.motor.PIDMotor" title="robotpy_toolkit_7407.motor.PIDMotor"><code class="xref py py-class docutils literal notranslate"><span class="pre">PIDMotor</span></code></a></p>
+<p>Wrapper class for the SparkMax motor controller</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.rev_motors.SparkMax.get_sensor_position">
+<span class="sig-name descname"><span class="pre">get_sensor_position</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMax.get_sensor_position" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the sensor position of the motor controller in rotations</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>(rotations): The sensor position of the motor controller in rotations</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.rev_motors.SparkMax.get_sensor_velocity">
+<span class="sig-name descname"><span class="pre">get_sensor_velocity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMax.get_sensor_velocity" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the sensor velocity of the motor controller in rotations per second</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>(rotations_per_second): The sensor velocity of the motor controller in rotations per second</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.rev_motors.SparkMax.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMax.init" title="Permalink to this definition"></a></dt>
+<dd><p>Initializes the motor controller, pid controller, and encoder</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.rev_motors.SparkMax.set_raw_output">
+<span class="sig-name descname"><span class="pre">set_raw_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMax.set_raw_output" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the raw output of the motor controller</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>x (float): The output of the motor controller (between -1 and 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.rev_motors.SparkMax.set_sensor_position">
+<span class="sig-name descname"><span class="pre">set_sensor_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMax.set_sensor_position" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the sensor position of the motor controller in rotations</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pos (rotations): The sensor position of the motor controller in rotations</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.rev_motors.SparkMax.set_target_position">
+<span class="sig-name descname"><span class="pre">set_target_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMax.set_target_position" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the target position of the motor controller in rotations</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pos (float): The target position of the motor controller in rotations</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.rev_motors.SparkMax.set_target_velocity">
+<span class="sig-name descname"><span class="pre">set_target_velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMax.set_target_velocity" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the target velocity of the motor controller in rotations per second</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>vel (float): The target velocity of the motor controller in rotations per second</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.motors.rev_motors.</span></span><span class="sig-name descname"><span class="pre">SparkMaxConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_P</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_I</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_D</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_F</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idle_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">IdleMode</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Configuration for a SparkMax motor controller</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>kP: Proportional gain
+kI: Integral gain
+kD: Derivative gain
+kF: Feedforward gain
+output_range: The minimum and maximum output of the controller as (min: float, max: float)
+idle_mode: Whether to brake or coast when the motor is not moving</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.idle_mode">
+<span class="sig-name descname"><span class="pre">idle_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">IdleMode</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.idle_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.k_D">
+<span class="sig-name descname"><span class="pre">k_D</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.k_D" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.k_F">
+<span class="sig-name descname"><span class="pre">k_F</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.k_F" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.k_I">
+<span class="sig-name descname"><span class="pre">k_I</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.k_I" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.k_P">
+<span class="sig-name descname"><span class="pre">k_P</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.k_P" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.output_range">
+<span class="sig-name descname"><span class="pre">output_range</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.output_range" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.motors">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-robotpy_toolkit_7407.motors" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Sidharth Rao.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

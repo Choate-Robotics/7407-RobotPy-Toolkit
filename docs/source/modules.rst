@@ -1,7 +1,0 @@
-robotpy_toolkit_7407
-====================
-
-.. toctree::
-   :maxdepth: 4
-
-   robotpy_toolkit_7407
