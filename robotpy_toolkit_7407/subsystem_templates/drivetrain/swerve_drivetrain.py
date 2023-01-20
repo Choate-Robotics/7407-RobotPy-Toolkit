@@ -1,6 +1,5 @@
 import math
 
-from robotpy_toolkit_7407.unum import Unum
 from wpimath.geometry import Rotation2d, Pose2d, Translation2d
 from wpimath.kinematics import SwerveDrive4Odometry, SwerveDrive4Kinematics, SwerveModuleState, ChassisSpeeds, SwerveModulePosition
 from wpimath.estimator import SwerveDrive4PoseEstimator
@@ -64,6 +63,15 @@ class SwerveNode:
     def get_motor_velocity(self) -> meters_per_second:
         """
         Get the velocity of the swerve node. Must be overridden. Must return meters per second.
+        """
+        ...
+
+    def get_node_position(self) -> SwerveModulePosition:
+        """
+        Get the position of the swerve node. Must be overridden. Must return SwerveModulePosition.
+
+        Returns:
+            SwerveModulePosition: position of the swerve node
         """
         ...
 
@@ -178,22 +186,10 @@ class SwerveDrivetrain(Subsystem):
         )
 
         self.swerve_positions = (
-            SwerveModulePosition(
-                distance=((self.track_width * .5)**2 + (.5 * self.track_width)**2)**.5,
-                angle=Rotation2d(math.atan2(-.5 * self.track_width, -.5 * self.track_width))
-            ),
-            SwerveModulePosition(
-                distance=((self.track_width * .5)**2 + (.5 * self.track_width)**2)**.5,
-                angle=Rotation2d(math.atan2(-.5 * self.track_width, .5 * self.track_width)),
-            ),
-            SwerveModulePosition(
-                distance=((self.track_width * .5)**2 + (.5 * self.track_width)**2)**.5,
-                angle=Rotation2d(math.atan2(.5 * self.track_width, -.5 * self.track_width)),
-            ),
-            SwerveModulePosition(
-                distance=((self.track_width * .5)**2 + (.5 * self.track_width)**2)**.5,
-                angle=Rotation2d(math.atan2(.5 * self.track_width, .5 * self.track_width)),
-            )
+            self.n_00.get_node_position(),
+            self.n_01.get_node_position(),
+            self.n_10.get_node_position(),
+            self.n_11.get_node_position()
         )
 
         self.odometry = SwerveDrive4Odometry(
