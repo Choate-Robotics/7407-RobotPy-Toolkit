@@ -66,14 +66,40 @@ class SwerveNode:
         """
         ...
 
+    def get_drive_motor_traveled_distance(self) -> meters:
+        """
+        Get the distance traveled by the drive motor. Must be overridden. Must return meters.
+        """
+        ...
+
+    def get_turn_motor_angle(self) -> radians:
+        """
+        Get the distance traveled by the turning motor. Must be overridden. Must return radians. (0, 2π)
+        """
+        ...
+
     def get_node_position(self) -> SwerveModulePosition:
         """
-        Get the position of the swerve node. Must be overridden. Must return SwerveModulePosition.
+        Get the position of the swerve node.
 
         Returns:
             SwerveModulePosition: position of the swerve node
         """
-        ...
+        return SwerveModulePosition(
+            self.get_drive_motor_traveled_distance(),
+            Rotation2d(self.get_turn_motor_angle())
+        )
+
+    def get_node_state(self) -> SwerveModuleState:
+        """
+        Get the state of the swerve node.
+        Returns:
+            SwerveModuleState: state of the swerve node
+        """
+        return SwerveModuleState(
+            self.get_motor_velocity(),
+            Rotation2d(self.get_current_motor_angle())
+        )
 
     # 0 degrees is facing right | "ethan is our FRC lord and saviour" - sid
     def _set_angle(self, target_angle: radians, initial_angle: radians):
@@ -194,13 +220,13 @@ class SwerveDrivetrain(Subsystem):
 
         self.odometry = SwerveDrive4Odometry(
             self.kinematics,
-            Rotation2d(self.gyro.get_robot_heading()),
+            self.get_heading(),
             self.swerve_positions,
             self.start_pose
         )
         self.odometry_estimator = SwerveDrive4PoseEstimator(
             self.kinematics,
-            Rotation2d(self.gyro.get_robot_heading()),
+            self.get_heading(),
             self.swerve_positions,
             self.start_pose
         )
@@ -252,36 +278,20 @@ class SwerveDrivetrain(Subsystem):
             ))
 
         module_states = (
-            SwerveModuleState(
-                self.n_00.get_motor_velocity(),
-                Rotation2d(self.n_00.get_current_motor_angle())
-            ), SwerveModuleState(
-                self.n_01.get_motor_velocity(),
-                Rotation2d(self.n_01.get_current_motor_angle())
-            ), SwerveModuleState(
-                self.n_10.get_motor_velocity(),
-                Rotation2d(self.n_10.get_current_motor_angle())
-            ), SwerveModuleState(
-                self.n_11.get_motor_velocity(),
-                Rotation2d(self.n_11.get_current_motor_angle())
-            )
+            self.n_00.get_node_state(),
+            self.n_01.get_node_state(),
+            self.n_10.get_node_state(),
+            self.n_11.get_node_state()
         )
 
         self.odometry.update(
-            Rotation2d(self.gyro.get_robot_heading()),
-            self.swerve_positions[0],
-            self.swerve_positions[1],
-            self.swerve_positions[2],
-            self.swerve_positions[3]
+            self.get_heading(),
+            *module_states
         )
+
         self.odometry_estimator.update(
-            Rotation2d(self.gyro.get_robot_heading()),
-            (
-                self.swerve_positions[0],
-                self.swerve_positions[1],
-                self.swerve_positions[2],
-                self.swerve_positions[3]
-            )
+            self.get_heading(),
+            module_states
         )
         self.chassis_speeds = self.kinematics.toChassisSpeeds(*module_states)
 
@@ -293,6 +303,15 @@ class SwerveDrivetrain(Subsystem):
         self.n_01.set(0, 0)
         self.n_10.set(0, 0)
         self.n_11.set(0, 0)
+
+    def get_heading(self) -> Rotation2d:
+        """
+        Get the robot heading.
+
+        Returns:
+            Heading (Rotation2d): the robot heading
+        """
+        return Rotation2d(self.gyro.get_robot_heading())
 
     @staticmethod
     def _calculate_swerve_node(node_x: meters, node_y: meters, dx: meters_per_second, dy: meters_per_second,
