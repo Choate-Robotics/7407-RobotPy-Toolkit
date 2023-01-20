@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>robotpy_toolkit_7407.sensors.gyro package &mdash; RobotPy Toolkit 7407 0.5.49.8 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> RobotPy Toolkit 7407
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">robotpy_toolkit_7407.sensors.gyro package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.sensors.gyro.ADIS16448">robotpy_toolkit_7407.sensors.gyro.ADIS16448 module</a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.gyro.ADIS16448.GyroADIS16448"><code class="docutils literal notranslate"><span class="pre">GyroADIS16448</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.gyro.ADIS16448.GyroADIS16448.get_robot_heading"><code class="docutils literal notranslate"><span class="pre">GyroADIS16448.get_robot_heading()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.gyro.ADIS16448.GyroADIS16448.init"><code class="docutils literal notranslate"><span class="pre">GyroADIS16448.init()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.gyro.ADIS16448.GyroADIS16448.reset_angle"><code class="docutils literal notranslate"><span class="pre">GyroADIS16448.reset_angle()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.sensors.gyro.PigeonIMU">robotpy_toolkit_7407.sensors.gyro.PigeonIMU module</a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.gyro.PigeonIMU.PigeonIMUGyro_Wrapper"><code class="docutils literal notranslate"><span class="pre">PigeonIMUGyro_Wrapper</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.gyro.PigeonIMU.PigeonIMUGyro_Wrapper.get_robot_heading"><code class="docutils literal notranslate"><span class="pre">PigeonIMUGyro_Wrapper.get_robot_heading()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.gyro.PigeonIMU.PigeonIMUGyro_Wrapper.init"><code class="docutils literal notranslate"><span class="pre">PigeonIMUGyro_Wrapper.init()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.gyro.PigeonIMU.PigeonIMUGyro_Wrapper.reset_angle"><code class="docutils literal notranslate"><span class="pre">PigeonIMUGyro_Wrapper.reset_angle()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.sensors.gyro.base_gyro">robotpy_toolkit_7407.sensors.gyro.base_gyro module</a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro"><code class="docutils literal notranslate"><span class="pre">Gyro</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro.get_robot_heading"><code class="docutils literal notranslate"><span class="pre">Gyro.get_robot_heading()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro.init"><code class="docutils literal notranslate"><span class="pre">Gyro.init()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro.reset_angle"><code class="docutils literal notranslate"><span class="pre">Gyro.reset_angle()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.sensors.gyro">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RobotPy Toolkit 7407</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">robotpy_toolkit_7407.sensors.gyro package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/source/robotpy_toolkit_7407.sensors.gyro.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="robotpy-toolkit-7407-sensors-gyro-package">
+<h1>robotpy_toolkit_7407.sensors.gyro package<a class="headerlink" href="#robotpy-toolkit-7407-sensors-gyro-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-robotpy_toolkit_7407.sensors.gyro.ADIS16448">
+<span id="robotpy-toolkit-7407-sensors-gyro-adis16448-module"></span><h2>robotpy_toolkit_7407.sensors.gyro.ADIS16448 module<a class="headerlink" href="#module-robotpy_toolkit_7407.sensors.gyro.ADIS16448" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.gyro.ADIS16448.GyroADIS16448">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.sensors.gyro.ADIS16448.</span></span><span class="sig-name descname"><span class="pre">GyroADIS16448</span></span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.gyro.ADIS16448.GyroADIS16448" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro" title="robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gyro</span></code></a></p>
+<p>Wrapper class for the ADIS16448 Gyro</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.gyro.ADIS16448.GyroADIS16448.get_robot_heading">
+<span class="sig-name descname"><span class="pre">get_robot_heading</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.gyro.ADIS16448.GyroADIS16448.get_robot_heading" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the angle of the robot’s heading in radians (yaw)
+Returns:</p>
+<blockquote>
+<div><p>Robot heading (radians): Yaw heading of the robot in radians</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.gyro.ADIS16448.GyroADIS16448.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.gyro.ADIS16448.GyroADIS16448.init" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize the gyro</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.gyro.ADIS16448.GyroADIS16448.reset_angle">
+<span class="sig-name descname"><span class="pre">reset_angle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.gyro.ADIS16448.GyroADIS16448.reset_angle" title="Permalink to this definition"></a></dt>
+<dd><p>Resets the gyro’s yaw.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.sensors.gyro.PigeonIMU">
+<span id="robotpy-toolkit-7407-sensors-gyro-pigeonimu-module"></span><h2>robotpy_toolkit_7407.sensors.gyro.PigeonIMU module<a class="headerlink" href="#module-robotpy_toolkit_7407.sensors.gyro.PigeonIMU" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.gyro.PigeonIMU.PigeonIMUGyro_Wrapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.sensors.gyro.PigeonIMU.</span></span><span class="sig-name descname"><span class="pre">PigeonIMUGyro_Wrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">port</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.gyro.PigeonIMU.PigeonIMUGyro_Wrapper" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro" title="robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gyro</span></code></a></p>
+<p>Wrapper class for the Pigeon2 IMU gyro.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.gyro.PigeonIMU.PigeonIMUGyro_Wrapper.get_robot_heading">
+<span class="sig-name descname"><span class="pre">get_robot_heading</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.gyro.PigeonIMU.PigeonIMUGyro_Wrapper.get_robot_heading" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the angle of the robot’s heading in radians (yaw)
+Returns:</p>
+<blockquote>
+<div><p>Robot heading (radians): Yaw heading of the robot in radians</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.gyro.PigeonIMU.PigeonIMUGyro_Wrapper.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.gyro.PigeonIMU.PigeonIMUGyro_Wrapper.init" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize gyro</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.gyro.PigeonIMU.PigeonIMUGyro_Wrapper.reset_angle">
+<span class="sig-name descname"><span class="pre">reset_angle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.gyro.PigeonIMU.PigeonIMUGyro_Wrapper.reset_angle" title="Permalink to this definition"></a></dt>
+<dd><p>Resets the gyro’s yaw.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.sensors.gyro.base_gyro">
+<span id="robotpy-toolkit-7407-sensors-gyro-base-gyro-module"></span><h2>robotpy_toolkit_7407.sensors.gyro.base_gyro module<a class="headerlink" href="#module-robotpy_toolkit_7407.sensors.gyro.base_gyro" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.sensors.gyro.base_gyro.</span></span><span class="sig-name descname"><span class="pre">Gyro</span></span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Extendable class for swerve gyro.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro.get_robot_heading">
+<span class="sig-name descname"><span class="pre">get_robot_heading</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro.get_robot_heading" title="Permalink to this definition"></a></dt>
+<dd><p>Get the robot heading in radians. Overridden class. Must return radians.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro.init" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize the swerve gyro. Overridden class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro.reset_angle">
+<span class="sig-name descname"><span class="pre">reset_angle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.sensors.gyro.base_gyro.Gyro.reset_angle" title="Permalink to this definition"></a></dt>
+<dd><p>Reset the robot heading. Overridden class.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.sensors.gyro">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-robotpy_toolkit_7407.sensors.gyro" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Sidharth Rao.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

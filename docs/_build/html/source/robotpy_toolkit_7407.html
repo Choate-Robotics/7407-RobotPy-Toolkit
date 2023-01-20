@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>robotpy_toolkit_7407 package &mdash; RobotPy Toolkit 7407 0.5.49.8 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> RobotPy Toolkit 7407
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">robotpy_toolkit_7407 package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.command">robotpy_toolkit_7407.command module</a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.command.BasicCommand"><code class="docutils literal notranslate"><span class="pre">BasicCommand</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.command.SubsystemCommand"><code class="docutils literal notranslate"><span class="pre">SubsystemCommand</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.motor">robotpy_toolkit_7407.motor module</a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motor.EncoderMotor"><code class="docutils literal notranslate"><span class="pre">EncoderMotor</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motor.EncoderMotor.get_sensor_position"><code class="docutils literal notranslate"><span class="pre">EncoderMotor.get_sensor_position()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motor.EncoderMotor.get_sensor_velocity"><code class="docutils literal notranslate"><span class="pre">EncoderMotor.get_sensor_velocity()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motor.EncoderMotor.set_sensor_position"><code class="docutils literal notranslate"><span class="pre">EncoderMotor.set_sensor_position()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motor.Motor"><code class="docutils literal notranslate"><span class="pre">Motor</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motor.Motor.init"><code class="docutils literal notranslate"><span class="pre">Motor.init()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motor.Motor.set_raw_output"><code class="docutils literal notranslate"><span class="pre">Motor.set_raw_output()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motor.PIDMotor"><code class="docutils literal notranslate"><span class="pre">PIDMotor</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motor.PIDMotor.set_target_position"><code class="docutils literal notranslate"><span class="pre">PIDMotor.set_target_position()</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.motor.PIDMotor.set_target_velocity"><code class="docutils literal notranslate"><span class="pre">PIDMotor.set_target_velocity()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.subsystem">robotpy_toolkit_7407.subsystem module</a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.subsystem.Subsystem"><code class="docutils literal notranslate"><span class="pre">Subsystem</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.subsystem.Subsystem.init"><code class="docutils literal notranslate"><span class="pre">Subsystem.init()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RobotPy Toolkit 7407</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">robotpy_toolkit_7407 package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/source/robotpy_toolkit_7407.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="robotpy-toolkit-7407-package">
+<h1>robotpy_toolkit_7407 package<a class="headerlink" href="#robotpy-toolkit-7407-package" title="Permalink to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="robotpy_toolkit_7407.motors.html">robotpy_toolkit_7407.motors package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#module-robotpy_toolkit_7407.motors.ctre_motors">robotpy_toolkit_7407.motors.ctre_motors module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig"><code class="docutils literal notranslate"><span class="pre">TalonConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.closed_loop_peak_output"><code class="docutils literal notranslate"><span class="pre">TalonConfig.closed_loop_peak_output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.integral_zone"><code class="docutils literal notranslate"><span class="pre">TalonConfig.integral_zone</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.k_D"><code class="docutils literal notranslate"><span class="pre">TalonConfig.k_D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.k_F"><code class="docutils literal notranslate"><span class="pre">TalonConfig.k_F</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.k_I"><code class="docutils literal notranslate"><span class="pre">TalonConfig.k_I</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.k_P"><code class="docutils literal notranslate"><span class="pre">TalonConfig.k_P</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.max_integral_accumulator"><code class="docutils literal notranslate"><span class="pre">TalonConfig.max_integral_accumulator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.motion_acceleration"><code class="docutils literal notranslate"><span class="pre">TalonConfig.motion_acceleration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.motion_cruise_velocity"><code class="docutils literal notranslate"><span class="pre">TalonConfig.motion_cruise_velocity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonConfig.neutral_brake"><code class="docutils literal notranslate"><span class="pre">TalonConfig.neutral_brake</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonFX"><code class="docutils literal notranslate"><span class="pre">TalonFX</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonFX.init"><code class="docutils literal notranslate"><span class="pre">TalonFX.init()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup"><code class="docutils literal notranslate"><span class="pre">TalonGroup</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.get_sensor_position"><code class="docutils literal notranslate"><span class="pre">TalonGroup.get_sensor_position()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.get_sensor_velocity"><code class="docutils literal notranslate"><span class="pre">TalonGroup.get_sensor_velocity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.init"><code class="docutils literal notranslate"><span class="pre">TalonGroup.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.motors"><code class="docutils literal notranslate"><span class="pre">TalonGroup.motors</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_leader_idx"><code class="docutils literal notranslate"><span class="pre">TalonGroup.set_leader_idx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_raw_output"><code class="docutils literal notranslate"><span class="pre">TalonGroup.set_raw_output()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_sensor_position"><code class="docutils literal notranslate"><span class="pre">TalonGroup.set_sensor_position()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_target_position"><code class="docutils literal notranslate"><span class="pre">TalonGroup.set_target_position()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonGroup.set_target_velocity"><code class="docutils literal notranslate"><span class="pre">TalonGroup.set_target_velocity()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonSRX"><code class="docutils literal notranslate"><span class="pre">TalonSRX</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.TalonSRX.init"><code class="docutils literal notranslate"><span class="pre">TalonSRX.init()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.VictorSPX"><code class="docutils literal notranslate"><span class="pre">VictorSPX</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.ctre_motors.VictorSPX.init"><code class="docutils literal notranslate"><span class="pre">VictorSPX.init()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#module-robotpy_toolkit_7407.motors.rev_motors">robotpy_toolkit_7407.motors.rev_motors module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.rev_motors.SparkMax"><code class="docutils literal notranslate"><span class="pre">SparkMax</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.rev_motors.SparkMax.get_sensor_position"><code class="docutils literal notranslate"><span class="pre">SparkMax.get_sensor_position()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.rev_motors.SparkMax.get_sensor_velocity"><code class="docutils literal notranslate"><span class="pre">SparkMax.get_sensor_velocity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.rev_motors.SparkMax.init"><code class="docutils literal notranslate"><span class="pre">SparkMax.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.rev_motors.SparkMax.set_raw_output"><code class="docutils literal notranslate"><span class="pre">SparkMax.set_raw_output()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.rev_motors.SparkMax.set_sensor_position"><code class="docutils literal notranslate"><span class="pre">SparkMax.set_sensor_position()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.rev_motors.SparkMax.set_target_position"><code class="docutils literal notranslate"><span class="pre">SparkMax.set_target_position()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.rev_motors.SparkMax.set_target_velocity"><code class="docutils literal notranslate"><span class="pre">SparkMax.set_target_velocity()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig"><code class="docutils literal notranslate"><span class="pre">SparkMaxConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.idle_mode"><code class="docutils literal notranslate"><span class="pre">SparkMaxConfig.idle_mode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.k_D"><code class="docutils literal notranslate"><span class="pre">SparkMaxConfig.k_D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.k_F"><code class="docutils literal notranslate"><span class="pre">SparkMaxConfig.k_F</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.k_I"><code class="docutils literal notranslate"><span class="pre">SparkMaxConfig.k_I</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.k_P"><code class="docutils literal notranslate"><span class="pre">SparkMaxConfig.k_P</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#robotpy_toolkit_7407.motors.rev_motors.SparkMaxConfig.output_range"><code class="docutils literal notranslate"><span class="pre">SparkMaxConfig.output_range</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.motors.html#module-robotpy_toolkit_7407.motors">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robotpy_toolkit_7407.oi.html">robotpy_toolkit_7407.oi package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#module-robotpy_toolkit_7407.oi.buttons">robotpy_toolkit_7407.oi.buttons module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.buttons.AxisButton"><code class="docutils literal notranslate"><span class="pre">AxisButton</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.buttons.AxisButton.axis_id"><code class="docutils literal notranslate"><span class="pre">AxisButton.axis_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.buttons.AxisButton.range_max"><code class="docutils literal notranslate"><span class="pre">AxisButton.range_max</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.buttons.AxisButton.range_min"><code class="docutils literal notranslate"><span class="pre">AxisButton.range_min</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.buttons.DefaultButton"><code class="docutils literal notranslate"><span class="pre">DefaultButton</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.buttons.DefaultButton.button_id"><code class="docutils literal notranslate"><span class="pre">DefaultButton.button_id</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#module-robotpy_toolkit_7407.oi.controllermap">robotpy_toolkit_7407.oi.controllermap module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.LogitechController"><code class="docutils literal notranslate"><span class="pre">LogitechController</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.LogitechController.A"><code class="docutils literal notranslate"><span class="pre">LogitechController.A</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.LogitechController.B"><code class="docutils literal notranslate"><span class="pre">LogitechController.B</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.LogitechController.LB"><code class="docutils literal notranslate"><span class="pre">LogitechController.LB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.LogitechController.LT"><code class="docutils literal notranslate"><span class="pre">LogitechController.LT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.LogitechController.L_JOY"><code class="docutils literal notranslate"><span class="pre">LogitechController.L_JOY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.LogitechController.RB"><code class="docutils literal notranslate"><span class="pre">LogitechController.RB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.LogitechController.RT"><code class="docutils literal notranslate"><span class="pre">LogitechController.RT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.LogitechController.R_JOY"><code class="docutils literal notranslate"><span class="pre">LogitechController.R_JOY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.LogitechController.SELECT"><code class="docutils literal notranslate"><span class="pre">LogitechController.SELECT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.LogitechController.START"><code class="docutils literal notranslate"><span class="pre">LogitechController.START</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.LogitechController.X"><code class="docutils literal notranslate"><span class="pre">LogitechController.X</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.LogitechController.Y"><code class="docutils literal notranslate"><span class="pre">LogitechController.Y</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.XBoxController"><code class="docutils literal notranslate"><span class="pre">XBoxController</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.XBoxController.A"><code class="docutils literal notranslate"><span class="pre">XBoxController.A</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.XBoxController.B"><code class="docutils literal notranslate"><span class="pre">XBoxController.B</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.XBoxController.LB"><code class="docutils literal notranslate"><span class="pre">XBoxController.LB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.XBoxController.LT"><code class="docutils literal notranslate"><span class="pre">XBoxController.LT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.XBoxController.L_JOY"><code class="docutils literal notranslate"><span class="pre">XBoxController.L_JOY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.XBoxController.RB"><code class="docutils literal notranslate"><span class="pre">XBoxController.RB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.XBoxController.RT"><code class="docutils literal notranslate"><span class="pre">XBoxController.RT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.XBoxController.R_JOY"><code class="docutils literal notranslate"><span class="pre">XBoxController.R_JOY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.XBoxController.SELECT"><code class="docutils literal notranslate"><span class="pre">XBoxController.SELECT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.XBoxController.START"><code class="docutils literal notranslate"><span class="pre">XBoxController.START</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.XBoxController.X"><code class="docutils literal notranslate"><span class="pre">XBoxController.X</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.controllermap.XBoxController.Y"><code class="docutils literal notranslate"><span class="pre">XBoxController.Y</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#module-robotpy_toolkit_7407.oi.joysticks">robotpy_toolkit_7407.oi.joysticks module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.joysticks.JoystickAxis"><code class="docutils literal notranslate"><span class="pre">JoystickAxis</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.joysticks.JoystickAxis.axis_id"><code class="docutils literal notranslate"><span class="pre">JoystickAxis.axis_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.joysticks.JoystickAxis.controller_id"><code class="docutils literal notranslate"><span class="pre">JoystickAxis.controller_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#robotpy_toolkit_7407.oi.joysticks.JoystickAxis.value"><code class="docutils literal notranslate"><span class="pre">JoystickAxis.value</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.oi.html#module-robotpy_toolkit_7407.oi">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robotpy_toolkit_7407.pneumatics.html">robotpy_toolkit_7407.pneumatics package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.pneumatics.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.pneumatics.pistons.html">robotpy_toolkit_7407.pneumatics.pistons package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.pneumatics.pistons.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.pneumatics.pistons.html#module-robotpy_toolkit_7407.pneumatics.pistons.double_solenoid">robotpy_toolkit_7407.pneumatics.pistons.double_solenoid module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.pneumatics.pistons.html#module-robotpy_toolkit_7407.pneumatics.pistons.single_solenoid">robotpy_toolkit_7407.pneumatics.pistons.single_solenoid module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.pneumatics.pistons.html#module-robotpy_toolkit_7407.pneumatics.pistons">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.pneumatics.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.pneumatics.html#module-robotpy_toolkit_7407.pneumatics.compressor">robotpy_toolkit_7407.pneumatics.compressor module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.pneumatics.html#robotpy_toolkit_7407.pneumatics.compressor.Compressor"><code class="docutils literal notranslate"><span class="pre">Compressor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.pneumatics.html#robotpy_toolkit_7407.pneumatics.compressor.Compressor.enable_analog"><code class="docutils literal notranslate"><span class="pre">Compressor.enable_analog()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.pneumatics.html#robotpy_toolkit_7407.pneumatics.compressor.Compressor.get_compressor_enabled"><code class="docutils literal notranslate"><span class="pre">Compressor.get_compressor_enabled()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.pneumatics.html#robotpy_toolkit_7407.pneumatics.compressor.Compressor.get_current"><code class="docutils literal notranslate"><span class="pre">Compressor.get_current()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.pneumatics.html#robotpy_toolkit_7407.pneumatics.compressor.Compressor.start"><code class="docutils literal notranslate"><span class="pre">Compressor.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.pneumatics.html#robotpy_toolkit_7407.pneumatics.compressor.Compressor.stop"><code class="docutils literal notranslate"><span class="pre">Compressor.stop()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.pneumatics.html#module-robotpy_toolkit_7407.pneumatics">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robotpy_toolkit_7407.sensors.html">robotpy_toolkit_7407.sensors package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.sensors.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.sensors.color_sensors.html">robotpy_toolkit_7407.sensors.color_sensors package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.color_sensors.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.color_sensors.html#module-robotpy_toolkit_7407.sensors.color_sensors.REVColorSensor">robotpy_toolkit_7407.sensors.color_sensors.REVColorSensor module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.color_sensors.html#module-robotpy_toolkit_7407.sensors.color_sensors">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.sensors.gyro.html">robotpy_toolkit_7407.sensors.gyro package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.gyro.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.gyro.html#module-robotpy_toolkit_7407.sensors.gyro.ADIS16448">robotpy_toolkit_7407.sensors.gyro.ADIS16448 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.gyro.html#module-robotpy_toolkit_7407.sensors.gyro.PigeonIMU">robotpy_toolkit_7407.sensors.gyro.PigeonIMU module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.gyro.html#module-robotpy_toolkit_7407.sensors.gyro.base_gyro">robotpy_toolkit_7407.sensors.gyro.base_gyro module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.gyro.html#module-robotpy_toolkit_7407.sensors.gyro">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.sensors.limelight.html">robotpy_toolkit_7407.sensors.limelight package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.limelight.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.limelight.html#module-robotpy_toolkit_7407.sensors.limelight.limelight">robotpy_toolkit_7407.sensors.limelight.limelight module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.limelight.html#module-robotpy_toolkit_7407.sensors.limelight">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.sensors.limit_switches.html">robotpy_toolkit_7407.sensors.limit_switches package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.limit_switches.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.limit_switches.html#module-robotpy_toolkit_7407.sensors.limit_switches.limit_switch">robotpy_toolkit_7407.sensors.limit_switches.limit_switch module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.limit_switches.html#module-robotpy_toolkit_7407.sensors.limit_switches">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.sensors.odometry.html">robotpy_toolkit_7407.sensors.odometry package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.odometry.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.odometry.html#module-robotpy_toolkit_7407.sensors.odometry.vision_estimator">robotpy_toolkit_7407.sensors.odometry.vision_estimator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.odometry.html#module-robotpy_toolkit_7407.sensors.odometry">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.sensors.photonvision.html">robotpy_toolkit_7407.sensors.photonvision package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.photonvision.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.photonvision.html#module-robotpy_toolkit_7407.sensors.photonvision.photon_camera">robotpy_toolkit_7407.sensors.photonvision.photon_camera module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.photonvision.html#module-robotpy_toolkit_7407.sensors.photonvision.photon_odometry">robotpy_toolkit_7407.sensors.photonvision.photon_odometry module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.photonvision.html#module-robotpy_toolkit_7407.sensors.photonvision.photon_target">robotpy_toolkit_7407.sensors.photonvision.photon_target module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.sensors.photonvision.html#module-robotpy_toolkit_7407.sensors.photonvision">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.sensors.html#module-robotpy_toolkit_7407.sensors">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robotpy_toolkit_7407.subsystem_templates.html">robotpy_toolkit_7407.subsystem_templates package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.subsystem_templates.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.subsystem_templates.drivetrain.html">robotpy_toolkit_7407.subsystem_templates.drivetrain package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.subsystem_templates.drivetrain.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.subsystem_templates.drivetrain.html#module-robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain">robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.subsystem_templates.drivetrain.html#module-robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands">robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.subsystem_templates.drivetrain.html#module-robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain">robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.subsystem_templates.drivetrain.html#module-robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands">robotpy_toolkit_7407.subsystem_templates.drivetrain.swerve_drivetrain_commands module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.subsystem_templates.drivetrain.html#module-robotpy_toolkit_7407.subsystem_templates.drivetrain">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.subsystem_templates.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.subsystem_templates.html#module-robotpy_toolkit_7407.subsystem_templates.subsystem_base">robotpy_toolkit_7407.subsystem_templates.subsystem_base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.subsystem_templates.html#robotpy_toolkit_7407.subsystem_templates.subsystem_base.SubsystemBase"><code class="docutils literal notranslate"><span class="pre">SubsystemBase</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.subsystem_templates.html#module-robotpy_toolkit_7407.subsystem_templates">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robotpy_toolkit_7407.tests.html">robotpy_toolkit_7407.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.tests.html#module-robotpy_toolkit_7407.tests.base_tests">robotpy_toolkit_7407.tests.base_tests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.tests.html#robotpy-toolkit-7407-tests-photon-tests-module">robotpy_toolkit_7407.tests.photon_tests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.tests.html#module-robotpy_toolkit_7407.tests">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robotpy_toolkit_7407.unum.html">robotpy_toolkit_7407.unum package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.unum.units.html">robotpy_toolkit_7407.unum.units package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.units.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.units.html#module-robotpy_toolkit_7407.unum.units">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#module-robotpy_toolkit_7407.unum">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.ConversionError"><code class="docutils literal notranslate"><span class="pre">ConversionError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.IncompatibleUnitsError"><code class="docutils literal notranslate"><span class="pre">IncompatibleUnitsError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.NameConflictError"><code class="docutils literal notranslate"><span class="pre">NameConflictError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.NonBasicUnitError"><code class="docutils literal notranslate"><span class="pre">NonBasicUnitError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.ShouldBeUnitlessError"><code class="docutils literal notranslate"><span class="pre">ShouldBeUnitlessError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum"><code class="docutils literal notranslate"><span class="pre">Unum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.AUTO_NORM"><code class="docutils literal notranslate"><span class="pre">Unum.AUTO_NORM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.UNIT_DIV_SEP"><code class="docutils literal notranslate"><span class="pre">Unum.UNIT_DIV_SEP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.UNIT_FORMAT"><code class="docutils literal notranslate"><span class="pre">Unum.UNIT_FORMAT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.UNIT_HIDE_EMPTY"><code class="docutils literal notranslate"><span class="pre">Unum.UNIT_HIDE_EMPTY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.UNIT_INDENT"><code class="docutils literal notranslate"><span class="pre">Unum.UNIT_INDENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.UNIT_SEP"><code class="docutils literal notranslate"><span class="pre">Unum.UNIT_SEP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.UNIT_SORTING"><code class="docutils literal notranslate"><span class="pre">Unum.UNIT_SORTING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.VALUE_FORMAT"><code class="docutils literal notranslate"><span class="pre">Unum.VALUE_FORMAT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.asNumber"><code class="docutils literal notranslate"><span class="pre">Unum.asNumber()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.asUnit"><code class="docutils literal notranslate"><span class="pre">Unum.asUnit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.checkNoUnit"><code class="docutils literal notranslate"><span class="pre">Unum.checkNoUnit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.coerceToUnum"><code class="docutils literal notranslate"><span class="pre">Unum.coerceToUnum()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.converted"><code class="docutils literal notranslate"><span class="pre">Unum.converted()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.copy"><code class="docutils literal notranslate"><span class="pre">Unum.copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.getUnitTable"><code class="docutils literal notranslate"><span class="pre">Unum.getUnitTable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.matchUnits"><code class="docutils literal notranslate"><span class="pre">Unum.matchUnits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.maxLevel"><code class="docutils literal notranslate"><span class="pre">Unum.maxLevel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.normalize"><code class="docutils literal notranslate"><span class="pre">Unum.normalize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.replaced"><code class="docutils literal notranslate"><span class="pre">Unum.replaced()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.reset"><code class="docutils literal notranslate"><span class="pre">Unum.reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.strUnit"><code class="docutils literal notranslate"><span class="pre">Unum.strUnit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.Unum.unit"><code class="docutils literal notranslate"><span class="pre">Unum.unit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.unum.html#robotpy_toolkit_7407.unum.UnumError"><code class="docutils literal notranslate"><span class="pre">UnumError</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robotpy_toolkit_7407.utils.html">robotpy_toolkit_7407.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#module-robotpy_toolkit_7407.utils.color">robotpy_toolkit_7407.utils.color module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.Color"><code class="docutils literal notranslate"><span class="pre">Color</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.Color.BLUE"><code class="docutils literal notranslate"><span class="pre">Color.BLUE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.Color.BOLD"><code class="docutils literal notranslate"><span class="pre">Color.BOLD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.Color.CYAN"><code class="docutils literal notranslate"><span class="pre">Color.CYAN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.Color.DARKCYAN"><code class="docutils literal notranslate"><span class="pre">Color.DARKCYAN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.Color.END"><code class="docutils literal notranslate"><span class="pre">Color.END</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.Color.GREEN"><code class="docutils literal notranslate"><span class="pre">Color.GREEN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.Color.PURPLE"><code class="docutils literal notranslate"><span class="pre">Color.PURPLE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.Color.RED"><code class="docutils literal notranslate"><span class="pre">Color.RED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.Color.UNDERLINE"><code class="docutils literal notranslate"><span class="pre">Color.UNDERLINE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.Color.YELLOW"><code class="docutils literal notranslate"><span class="pre">Color.YELLOW</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.NoColor"><code class="docutils literal notranslate"><span class="pre">NoColor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.NoColor.BLUE"><code class="docutils literal notranslate"><span class="pre">NoColor.BLUE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.NoColor.BOLD"><code class="docutils literal notranslate"><span class="pre">NoColor.BOLD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.NoColor.CYAN"><code class="docutils literal notranslate"><span class="pre">NoColor.CYAN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.NoColor.DARKCYAN"><code class="docutils literal notranslate"><span class="pre">NoColor.DARKCYAN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.NoColor.END"><code class="docutils literal notranslate"><span class="pre">NoColor.END</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.NoColor.GREEN"><code class="docutils literal notranslate"><span class="pre">NoColor.GREEN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.NoColor.PURPLE"><code class="docutils literal notranslate"><span class="pre">NoColor.PURPLE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.NoColor.RED"><code class="docutils literal notranslate"><span class="pre">NoColor.RED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.NoColor.UNDERLINE"><code class="docutils literal notranslate"><span class="pre">NoColor.UNDERLINE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.color.NoColor.YELLOW"><code class="docutils literal notranslate"><span class="pre">NoColor.YELLOW</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#module-robotpy_toolkit_7407.utils.logger">robotpy_toolkit_7407.utils.logger module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.logger.Logger"><code class="docutils literal notranslate"><span class="pre">Logger</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.logger.Logger.log_error"><code class="docutils literal notranslate"><span class="pre">Logger.log_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.logger.Logger.log_info"><code class="docutils literal notranslate"><span class="pre">Logger.log_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.logger.Logger.log_warning"><code class="docutils literal notranslate"><span class="pre">Logger.log_warning()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.logger.Logger.print_function_call"><code class="docutils literal notranslate"><span class="pre">Logger.print_function_call()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.logger.error"><code class="docutils literal notranslate"><span class="pre">error()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.logger.get_default_logging"><code class="docutils literal notranslate"><span class="pre">get_default_logging()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.logger.info"><code class="docutils literal notranslate"><span class="pre">info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.logger.warn"><code class="docutils literal notranslate"><span class="pre">warn()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.logger.warning"><code class="docutils literal notranslate"><span class="pre">warning()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#module-robotpy_toolkit_7407.utils.math">robotpy_toolkit_7407.utils.math module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.math.bounded_angle_diff"><code class="docutils literal notranslate"><span class="pre">bounded_angle_diff()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.math.clamp"><code class="docutils literal notranslate"><span class="pre">clamp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.math.ft_to_m"><code class="docutils literal notranslate"><span class="pre">ft_to_m()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.math.inches_to_talon_sensor_units"><code class="docutils literal notranslate"><span class="pre">inches_to_talon_sensor_units()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.math.meters_to_talon_sensor_units"><code class="docutils literal notranslate"><span class="pre">meters_to_talon_sensor_units()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.math.rotate_vector"><code class="docutils literal notranslate"><span class="pre">rotate_vector()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.math.talon_sensor_units_to_inches"><code class="docutils literal notranslate"><span class="pre">talon_sensor_units_to_inches()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#robotpy_toolkit_7407.utils.math.talon_sensor_units_to_meters"><code class="docutils literal notranslate"><span class="pre">talon_sensor_units_to_meters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#module-robotpy_toolkit_7407.utils.units">robotpy_toolkit_7407.utils.units module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robotpy_toolkit_7407.utils.html#module-robotpy_toolkit_7407.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-robotpy_toolkit_7407.command">
+<span id="robotpy-toolkit-7407-command-module"></span><h2>robotpy_toolkit_7407.command module<a class="headerlink" href="#module-robotpy_toolkit_7407.command" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.command.BasicCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.command.</span></span><span class="sig-name descname"><span class="pre">BasicCommand</span></span><a class="headerlink" href="#robotpy_toolkit_7407.command.BasicCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">CommandBase</span></code></p>
+<p>Extendable basic command</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.command.SubsystemCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.command.</span></span><span class="sig-name descname"><span class="pre">SubsystemCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subsystem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.command.SubsystemCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#robotpy_toolkit_7407.command.BasicCommand" title="robotpy_toolkit_7407.command.BasicCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicCommand</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code>]</p>
+<p>Extendable subsystem command</p>
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.motor">
+<span id="robotpy-toolkit-7407-motor-module"></span><h2>robotpy_toolkit_7407.motor module<a class="headerlink" href="#module-robotpy_toolkit_7407.motor" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motor.EncoderMotor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.motor.</span></span><span class="sig-name descname"><span class="pre">EncoderMotor</span></span><a class="headerlink" href="#robotpy_toolkit_7407.motor.EncoderMotor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#robotpy_toolkit_7407.motor.Motor" title="robotpy_toolkit_7407.motor.Motor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Motor</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motor.EncoderMotor.get_sensor_position">
+<span class="sig-name descname"><span class="pre">get_sensor_position</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.motor.EncoderMotor.get_sensor_position" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motor.EncoderMotor.get_sensor_velocity">
+<span class="sig-name descname"><span class="pre">get_sensor_velocity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#robotpy_toolkit_7407.motor.EncoderMotor.get_sensor_velocity" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motor.EncoderMotor.set_sensor_position">
+<span class="sig-name descname"><span class="pre">set_sensor_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motor.EncoderMotor.set_sensor_position" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motor.Motor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.motor.</span></span><span class="sig-name descname"><span class="pre">Motor</span></span><a class="headerlink" href="#robotpy_toolkit_7407.motor.Motor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motor.Motor.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motor.Motor.init" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motor.Motor.set_raw_output">
+<span class="sig-name descname"><span class="pre">set_raw_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motor.Motor.set_raw_output" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motor.PIDMotor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.motor.</span></span><span class="sig-name descname"><span class="pre">PIDMotor</span></span><a class="headerlink" href="#robotpy_toolkit_7407.motor.PIDMotor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#robotpy_toolkit_7407.motor.EncoderMotor" title="robotpy_toolkit_7407.motor.EncoderMotor"><code class="xref py py-class docutils literal notranslate"><span class="pre">EncoderMotor</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motor.PIDMotor.set_target_position">
+<span class="sig-name descname"><span class="pre">set_target_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motor.PIDMotor.set_target_position" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.motor.PIDMotor.set_target_velocity">
+<span class="sig-name descname"><span class="pre">set_target_velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.motor.PIDMotor.set_target_velocity" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.subsystem">
+<span id="robotpy-toolkit-7407-subsystem-module"></span><h2>robotpy_toolkit_7407.subsystem module<a class="headerlink" href="#module-robotpy_toolkit_7407.subsystem" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem.Subsystem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.subsystem.</span></span><span class="sig-name descname"><span class="pre">Subsystem</span></span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem.Subsystem" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">SubsystemBase</span></code></p>
+<p>Extendable subsystem class. Needs to be extended by every subsystem.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.subsystem.Subsystem.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.subsystem.Subsystem.init" title="Permalink to this definition"></a></dt>
+<dd><p>Overridable method for initializing the subsystem. Place motor inits/other physical initialization here,
+for example re-zeroing a gyro.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-robotpy_toolkit_7407" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Sidharth Rao.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
