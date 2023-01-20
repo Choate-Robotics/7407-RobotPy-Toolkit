@@ -4,8 +4,7 @@
 ## TODO:
  - UnitTests (IN PROGRESS)
  - Smart Dashboard Wrapper (NOT STARTED)
- - Commands Fix (SubsystemCommand is screwed up) 
- - Document Everything
+ - Fiducial Odometry (IN PROGRESS)
 
 ## Features:  
 ### Motor Wrappers:  
