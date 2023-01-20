@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>robotpy_toolkit_7407.oi package &mdash; RobotPy Toolkit 7407 0.5.49.8 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> RobotPy Toolkit 7407
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">robotpy_toolkit_7407.oi package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.oi.buttons">robotpy_toolkit_7407.oi.buttons module</a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.buttons.AxisButton"><code class="docutils literal notranslate"><span class="pre">AxisButton</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.buttons.AxisButton.axis_id"><code class="docutils literal notranslate"><span class="pre">AxisButton.axis_id</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.buttons.AxisButton.range_max"><code class="docutils literal notranslate"><span class="pre">AxisButton.range_max</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.buttons.AxisButton.range_min"><code class="docutils literal notranslate"><span class="pre">AxisButton.range_min</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.buttons.DefaultButton"><code class="docutils literal notranslate"><span class="pre">DefaultButton</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.buttons.DefaultButton.button_id"><code class="docutils literal notranslate"><span class="pre">DefaultButton.button_id</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.oi.controllermap">robotpy_toolkit_7407.oi.controllermap module</a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController"><code class="docutils literal notranslate"><span class="pre">LogitechController</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.A"><code class="docutils literal notranslate"><span class="pre">LogitechController.A</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.B"><code class="docutils literal notranslate"><span class="pre">LogitechController.B</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.LB"><code class="docutils literal notranslate"><span class="pre">LogitechController.LB</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.LT"><code class="docutils literal notranslate"><span class="pre">LogitechController.LT</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.L_JOY"><code class="docutils literal notranslate"><span class="pre">LogitechController.L_JOY</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.RB"><code class="docutils literal notranslate"><span class="pre">LogitechController.RB</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.RT"><code class="docutils literal notranslate"><span class="pre">LogitechController.RT</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.R_JOY"><code class="docutils literal notranslate"><span class="pre">LogitechController.R_JOY</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.SELECT"><code class="docutils literal notranslate"><span class="pre">LogitechController.SELECT</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.START"><code class="docutils literal notranslate"><span class="pre">LogitechController.START</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.X"><code class="docutils literal notranslate"><span class="pre">LogitechController.X</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.Y"><code class="docutils literal notranslate"><span class="pre">LogitechController.Y</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController"><code class="docutils literal notranslate"><span class="pre">XBoxController</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.A"><code class="docutils literal notranslate"><span class="pre">XBoxController.A</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.B"><code class="docutils literal notranslate"><span class="pre">XBoxController.B</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.LB"><code class="docutils literal notranslate"><span class="pre">XBoxController.LB</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.LT"><code class="docutils literal notranslate"><span class="pre">XBoxController.LT</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.L_JOY"><code class="docutils literal notranslate"><span class="pre">XBoxController.L_JOY</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.RB"><code class="docutils literal notranslate"><span class="pre">XBoxController.RB</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.RT"><code class="docutils literal notranslate"><span class="pre">XBoxController.RT</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.R_JOY"><code class="docutils literal notranslate"><span class="pre">XBoxController.R_JOY</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.SELECT"><code class="docutils literal notranslate"><span class="pre">XBoxController.SELECT</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.START"><code class="docutils literal notranslate"><span class="pre">XBoxController.START</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.X"><code class="docutils literal notranslate"><span class="pre">XBoxController.X</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.Y"><code class="docutils literal notranslate"><span class="pre">XBoxController.Y</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.oi.joysticks">robotpy_toolkit_7407.oi.joysticks module</a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.joysticks.JoystickAxis"><code class="docutils literal notranslate"><span class="pre">JoystickAxis</span></code></a><ul>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.joysticks.JoystickAxis.axis_id"><code class="docutils literal notranslate"><span class="pre">JoystickAxis.axis_id</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.joysticks.JoystickAxis.controller_id"><code class="docutils literal notranslate"><span class="pre">JoystickAxis.controller_id</span></code></a></li>
+<li><a class="reference internal" href="#robotpy_toolkit_7407.oi.joysticks.JoystickAxis.value"><code class="docutils literal notranslate"><span class="pre">JoystickAxis.value</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-robotpy_toolkit_7407.oi">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RobotPy Toolkit 7407</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">robotpy_toolkit_7407.oi package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/source/robotpy_toolkit_7407.oi.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="robotpy-toolkit-7407-oi-package">
+<h1>robotpy_toolkit_7407.oi package<a class="headerlink" href="#robotpy-toolkit-7407-oi-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-robotpy_toolkit_7407.oi.buttons">
+<span id="robotpy-toolkit-7407-oi-buttons-module"></span><h2>robotpy_toolkit_7407.oi.buttons module<a class="headerlink" href="#module-robotpy_toolkit_7407.oi.buttons" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.buttons.AxisButton">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.oi.buttons.</span></span><span class="sig-name descname"><span class="pre">AxisButton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">controller_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_min</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.oi.buttons.AxisButton" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_Button</span></code></p>
+<p>Wrapper for wpilib axis button</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.buttons.AxisButton.axis_id">
+<span class="sig-name descname"><span class="pre">axis_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.buttons.AxisButton.axis_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.buttons.AxisButton.range_max">
+<span class="sig-name descname"><span class="pre">range_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.buttons.AxisButton.range_max" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.buttons.AxisButton.range_min">
+<span class="sig-name descname"><span class="pre">range_min</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.buttons.AxisButton.range_min" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.buttons.DefaultButton">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.oi.buttons.</span></span><span class="sig-name descname"><span class="pre">DefaultButton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">controller_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">button_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.oi.buttons.DefaultButton" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_Button</span></code></p>
+<p>Wrapper for wpilib button</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.buttons.DefaultButton.button_id">
+<span class="sig-name descname"><span class="pre">button_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.buttons.DefaultButton.button_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.oi.controllermap">
+<span id="robotpy-toolkit-7407-oi-controllermap-module"></span><h2>robotpy_toolkit_7407.oi.controllermap module<a class="headerlink" href="#module-robotpy_toolkit_7407.oi.controllermap" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.LogitechController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.oi.controllermap.</span></span><span class="sig-name descname"><span class="pre">LogitechController</span></span><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Mappings for Logitech Controller ports</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.LogitechController.A">
+<span class="sig-name descname"><span class="pre">A</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.A" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.LogitechController.B">
+<span class="sig-name descname"><span class="pre">B</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.B" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.LogitechController.LB">
+<span class="sig-name descname"><span class="pre">LB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.LB" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.LogitechController.LT">
+<span class="sig-name descname"><span class="pre">LT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.LT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.LogitechController.L_JOY">
+<span class="sig-name descname"><span class="pre">L_JOY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0,</span> <span class="pre">1)</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.L_JOY" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.LogitechController.RB">
+<span class="sig-name descname"><span class="pre">RB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.RB" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.LogitechController.RT">
+<span class="sig-name descname"><span class="pre">RT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.RT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.LogitechController.R_JOY">
+<span class="sig-name descname"><span class="pre">R_JOY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(2,</span> <span class="pre">3)</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.R_JOY" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.LogitechController.SELECT">
+<span class="sig-name descname"><span class="pre">SELECT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.SELECT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.LogitechController.START">
+<span class="sig-name descname"><span class="pre">START</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.START" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.LogitechController.X">
+<span class="sig-name descname"><span class="pre">X</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.X" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.LogitechController.Y">
+<span class="sig-name descname"><span class="pre">Y</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.LogitechController.Y" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.XBoxController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.oi.controllermap.</span></span><span class="sig-name descname"><span class="pre">XBoxController</span></span><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Mappings for XBox Controller ports</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.XBoxController.A">
+<span class="sig-name descname"><span class="pre">A</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.A" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.XBoxController.B">
+<span class="sig-name descname"><span class="pre">B</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.B" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.XBoxController.LB">
+<span class="sig-name descname"><span class="pre">LB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.LB" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.XBoxController.LT">
+<span class="sig-name descname"><span class="pre">LT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-2</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.LT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.XBoxController.L_JOY">
+<span class="sig-name descname"><span class="pre">L_JOY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0,</span> <span class="pre">1)</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.L_JOY" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.XBoxController.RB">
+<span class="sig-name descname"><span class="pre">RB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.RB" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.XBoxController.RT">
+<span class="sig-name descname"><span class="pre">RT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-3</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.RT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.XBoxController.R_JOY">
+<span class="sig-name descname"><span class="pre">R_JOY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(4,</span> <span class="pre">5)</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.R_JOY" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.XBoxController.SELECT">
+<span class="sig-name descname"><span class="pre">SELECT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.SELECT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.XBoxController.START">
+<span class="sig-name descname"><span class="pre">START</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.START" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.XBoxController.X">
+<span class="sig-name descname"><span class="pre">X</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.X" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.controllermap.XBoxController.Y">
+<span class="sig-name descname"><span class="pre">Y</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.controllermap.XBoxController.Y" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.oi.joysticks">
+<span id="robotpy-toolkit-7407-oi-joysticks-module"></span><h2>robotpy_toolkit_7407.oi.joysticks module<a class="headerlink" href="#module-robotpy_toolkit_7407.oi.joysticks" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.joysticks.JoystickAxis">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robotpy_toolkit_7407.oi.joysticks.</span></span><span class="sig-name descname"><span class="pre">JoystickAxis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">controller_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robotpy_toolkit_7407.oi.joysticks.JoystickAxis" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Wrapper for wpilib joystick button</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.joysticks.JoystickAxis.axis_id">
+<span class="sig-name descname"><span class="pre">axis_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.joysticks.JoystickAxis.axis_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.joysticks.JoystickAxis.controller_id">
+<span class="sig-name descname"><span class="pre">controller_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.joysticks.JoystickAxis.controller_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="robotpy_toolkit_7407.oi.joysticks.JoystickAxis.value">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#robotpy_toolkit_7407.oi.joysticks.JoystickAxis.value" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the value of the axis selected</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>float: The value between -1 and 1 as a float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-robotpy_toolkit_7407.oi">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-robotpy_toolkit_7407.oi" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Sidharth Rao.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
