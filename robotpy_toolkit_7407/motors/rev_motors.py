@@ -99,6 +99,15 @@ class SparkMax(PIDMotor):
         """
         self.__pid_controller.setReference(pos, CANSparkMax.ControlType.kPosition)
 
+    def follow(self, id, invert: bool = False):
+        """
+        Follows another motor controller
+
+        Args:
+            motor (SparkMax): The motor controller to follow
+        """
+        self._motor.follow(id, invert)
+
     def set_target_velocity(self, vel: rotations_per_second):
         """
         Sets the target velocity of the motor controller in rotations per second
