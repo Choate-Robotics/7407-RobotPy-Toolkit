@@ -2,7 +2,7 @@ from builtins import type
 from dataclasses import dataclass
 from typing import Optional
 
-from rev import CANSparkMax, SparkMaxPIDController, SparkMaxRelativeEncoder, SparkMaxAlternateEncoder
+from rev import CANSparkMax, SparkMaxPIDController, SparkMaxRelativeEncoder, SparkMaxAlternateEncoder, _rev
 
 from robotpy_toolkit_7407.motor import PIDMotor
 from robotpy_toolkit_7407.utils.units import rev, minute, radians, radians_per_second, rad, s, rotations_per_second, \
@@ -134,6 +134,28 @@ class SparkMax(PIDMotor):
             (rotations_per_second): The sensor velocity of the motor controller in rotations per second
         """
         return self._encoder.getVelocity()
+
+    def absolute_encoder(self, encoderType: _rev.SparkMaxAbsoluteEncoder.Type = _rev.SparkMaxAbsoluteEncoder.Type.kDutyCycle):
+        """
+        Gets an object the absolute encoder of the motor controller
+
+
+
+        Returns:
+            (object): An object for interfacing with the absolute encoder
+        """
+        return self._motor.getAbsoluteEncoder(encoderType)
+
+    def alternate_encoder(self, encoderType: _rev.SparkMaxAlternateEncoder.Type = _rev.SparkMaxAlternateEncoder.Type.kQuadrature):
+        """
+        Gets an object the alternate encoder of the motor controller
+
+        Returns:
+            (object): An object for interfacing with the alternate encoder
+        """
+        return self._motor.getAlternateEncoder(encoderType)
+
+    
 
     def _set_config(self, config: SparkMaxConfig):
         if config is None:
