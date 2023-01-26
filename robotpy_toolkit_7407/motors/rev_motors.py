@@ -2,7 +2,7 @@ from builtins import type
 from dataclasses import dataclass
 from typing import Optional
 
-from rev import CANSparkMax, SparkMaxPIDController, SparkMaxRelativeEncoder, SparkMaxAlternateEncoder
+from rev import CANSparkMax, SparkMaxPIDController, SparkMaxRelativeEncoder, SparkMaxAlternateEncoder, _rev
 
 from robotpy_toolkit_7407.motor import PIDMotor
 from robotpy_toolkit_7407.utils.units import rev, minute, radians, radians_per_second, rad, s, rotations_per_second, \
@@ -99,6 +99,15 @@ class SparkMax(PIDMotor):
         """
         self.__pid_controller.setReference(pos, CANSparkMax.ControlType.kPosition)
 
+    def follow(self, id, invert: bool = False):
+        """
+        Follows another motor controller
+
+        Args:
+            motor (SparkMax): The motor controller to follow
+        """
+        self._motor.follow(id, invert)
+
     def set_target_velocity(self, vel: rotations_per_second):
         """
         Sets the target velocity of the motor controller in rotations per second
@@ -134,6 +143,59 @@ class SparkMax(PIDMotor):
             (rotations_per_second): The sensor velocity of the motor controller in rotations per second
         """
         return self._encoder.getVelocity()
+
+    def absolute_encoder(self):
+        """
+        Gets an object the absolute encoder of the motor controller
+
+        Returns:
+            (object): An object for interfacing with the absolute encoder
+        """
+        return self._motor.getAnalog()
+
+    def alternate_encoder(self):
+        """
+        Gets an object the alternate encoder of the motor controller
+        
+        WARNING -- WILL DISABLE FORWARD AND REVERSE LIMITS
+
+        Returns:
+            (object): An object for interfacing with the alternate encoder
+        """
+        return self._motor.getAlternateEncoder(6)
+        
+    def forward_limit(self, polarity: bool = True):
+        """
+        Gets an object the forward limit of the motor controller
+
+        WARNING -- WILL DISABLE ALTERNATE ENCODER
+        
+        Returns:
+            (object): An object for interfacing with the forward limit
+        """
+        type: rev.LimitSwitchPolarity
+        if polarity:
+            type = rev.limitSwitchPolarity.kNormallyOpen
+        else: 
+            type = rev.limitSwitchPolarity.kNormallyClosed
+        return self._motor.getForwardLimitSwitch(type)
+    
+    def reverse_limit(self, polarity: bool = True):
+        """
+        Gets an object the reverse limit of the motor controller
+
+        WARNING -- WILL DISABLE ALTERNATE ENCODER
+
+        Returns:
+            (object): An object for interfacing with the reverse limit
+        """
+        type: rev.LimitSwitchPolarity
+        if polarity:
+            type = rev.limitSwitchPolarity.kNormallyOpen
+        else: 
+            type = rev.limitSwitchPolarity.kNormallyClosed
+        return self._motor.getReverseLimitSwitch(type)
+    
 
     def _set_config(self, config: SparkMaxConfig):
         if config is None:
