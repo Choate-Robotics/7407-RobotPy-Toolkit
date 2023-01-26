@@ -161,10 +161,10 @@ class SwerveDrivetrain(Subsystem):
     """
     Swerve Drivetrain Extendable class. Contains driving functions.
     """
-    n_00: SwerveNode  # Top Left
-    n_01: SwerveNode  # Bottom Left
-    n_10: SwerveNode  # Top Right
-    n_11: SwerveNode  # Bottom Right
+    n_front_left: SwerveNode  # Top Left
+    n_front_right: SwerveNode  # Bottom Left
+    n_back_left: SwerveNode  # Top Right
+    n_back_right: SwerveNode  # Bottom Right
     gyro: SwerveGyro
     axis_dx: JoystickAxis
     axis_dy: JoystickAxis
@@ -185,49 +185,50 @@ class SwerveDrivetrain(Subsystem):
         self._omega: radians_per_second = 0
 
         self.node_translations: tuple[Translation2d] | None = None
-        self.swerve_positions: tuple[SwerveModulePosition] | None = None
+        self.node_positions: tuple[SwerveModulePosition] | None = None
+        self.node_states: tuple[SwerveModuleState] | None = None
 
     def init(self):
         """
         Initialize the swerve drivetrain, kinematics, odometry, and gyro.
         """
         logger.info("initializing swerve drivetrain", "[swerve_drivetrain]")
-        self.n_00.init()
-        self.n_01.init()
-        self.n_10.init()
-        self.n_11.init()
+        self.n_front_left.init()
+        self.n_front_right.init()
+        self.n_back_left.init()
+        self.n_back_right.init()
         self.gyro.init()
 
         logger.info("initializing odometry", "[swerve_drivetrain]")
 
         self.node_translations = (
-            Translation2d(-.5 * self.track_width, -.5 * self.track_width),
-            Translation2d(-.5 * self.track_width, .5 * self.track_width),
+            Translation2d(.5 * self.track_width, .5 * self.track_width),
             Translation2d(.5 * self.track_width, -.5 * self.track_width),
-            Translation2d(.5 * self.track_width, .5 * self.track_width)
+            Translation2d(-.5 * self.track_width, .5 * self.track_width),
+            Translation2d(-.5 * self.track_width, -.5 * self.track_width)
         )
 
         self.kinematics = SwerveDrive4Kinematics(
             *self.node_translations
         )
 
-        self.swerve_positions = (
-            self.n_00.get_node_position(),
-            self.n_01.get_node_position(),
-            self.n_10.get_node_position(),
-            self.n_11.get_node_position()
+        self.node_positions = (
+            self.n_front_left.get_node_position(),
+            self.n_front_right.get_node_position(),
+            self.n_back_left.get_node_position(),
+            self.n_back_right.get_node_position()
         )
 
         self.odometry = SwerveDrive4Odometry(
             self.kinematics,
             self.get_heading(),
-            self.swerve_positions,
+            self.node_positions,
             self.start_pose
         )
         self.odometry_estimator = SwerveDrive4PoseEstimator(
             self.kinematics,
             self.get_heading(),
-            self.swerve_positions,
+            self.node_positions,
             self.start_pose
         )
 
@@ -255,54 +256,62 @@ class SwerveDrivetrain(Subsystem):
 
         if abs(vel[0]) < self.deadzone_velocity and abs(vel[1]) < self.deadzone_velocity and \
                 abs(angular_vel) < self.deadzone_angular_velocity:
-            self.n_00.set_motor_velocity(0)
-            self.n_01.set_motor_velocity(0)
-            self.n_10.set_motor_velocity(0)
-            self.n_11.set_motor_velocity(0)
+            self.n_front_left.set_motor_velocity(0)
+            self.n_front_right.set_motor_velocity(0)
+            self.n_back_left.set_motor_velocity(0)
+            self.n_back_right.set_motor_velocity(0)
         else:
-            self.n_00.set(*self._calculate_swerve_node(
+            self.n_front_left.set(*self._calculate_swerve_node(
                 -.5 * self.track_width, -.5 * self.track_width,
                 vel[0], vel[1], angular_vel
             ))
-            self.n_01.set(*self._calculate_swerve_node(
+            self.n_front_right.set(*self._calculate_swerve_node(
                 -.5 * self.track_width, .5 * self.track_width,
                 vel[0], vel[1], angular_vel
             ))
-            self.n_10.set(*self._calculate_swerve_node(
+            self.n_back_left.set(*self._calculate_swerve_node(
                 .5 * self.track_width, -.5 * self.track_width,
                 vel[0], vel[1], angular_vel
             ))
-            self.n_11.set(*self._calculate_swerve_node(
+            self.n_back_right.set(*self._calculate_swerve_node(
                 .5 * self.track_width, .5 * self.track_width,
                 vel[0], vel[1], angular_vel
             ))
 
-        module_states = (
-            self.n_00.get_node_state(),
-            self.n_01.get_node_state(),
-            self.n_10.get_node_state(),
-            self.n_11.get_node_state()
+        self.node_positions = (
+            self.n_front_left.get_node_position(),
+            self.n_front_right.get_node_position(),
+            self.n_back_left.get_node_position(),
+            self.n_back_right.get_node_position()
+        )
+
+        self.node_states = (
+            self.n_front_left.get_node_state(),
+            self.n_front_right.get_node_state(),
+            self.n_back_left.get_node_state(),
+            self.n_back_right.get_node_state(),
         )
 
         self.odometry.update(
             self.get_heading(),
-            *module_states
+            *self.node_positions
         )
 
         self.odometry_estimator.update(
             self.get_heading(),
-            module_states
+            self.node_positions
         )
-        self.chassis_speeds = self.kinematics.toChassisSpeeds(*module_states)
+
+        self.chassis_speeds = self.kinematics.toChassisSpeeds(*self.node_states)
 
     def stop(self):
         """
         Stop the drivetrain and all pods.
         """
-        self.n_00.set(0, 0)
-        self.n_01.set(0, 0)
-        self.n_10.set(0, 0)
-        self.n_11.set(0, 0)
+        self.n_front_left.set(0, 0)
+        self.n_front_right.set(0, 0)
+        self.n_back_left.set(0, 0)
+        self.n_back_right.set(0, 0)
 
     def get_heading(self) -> Rotation2d:
         """
