@@ -144,26 +144,57 @@ class SparkMax(PIDMotor):
         """
         return self._encoder.getVelocity()
 
-    def absolute_encoder(self, encoderType: _rev.SparkMaxAbsoluteEncoder.Type = _rev.SparkMaxAbsoluteEncoder.Type.kDutyCycle):
+    def absolute_encoder(self):
         """
         Gets an object the absolute encoder of the motor controller
-
-
 
         Returns:
             (object): An object for interfacing with the absolute encoder
         """
-        return self._motor.getAbsoluteEncoder(encoderType)
+        return self._motor.getAnalog()
 
-    def alternate_encoder(self, encoderType: _rev.SparkMaxAlternateEncoder.Type = _rev.SparkMaxAlternateEncoder.Type.kQuadrature):
+    def alternate_encoder(self):
         """
         Gets an object the alternate encoder of the motor controller
+        
+        WARNING -- WILL DISABLE FORWARD AND REVERSE LIMITS
 
         Returns:
             (object): An object for interfacing with the alternate encoder
         """
-        return self._motor.getAlternateEncoder(encoderType)
+        return self._motor.getAlternateEncoder(6)
+        
+    def forward_limit(self, polarity: bool = True):
+        """
+        Gets an object the forward limit of the motor controller
 
+        WARNING -- WILL DISABLE ALTERNATE ENCODER
+        
+        Returns:
+            (object): An object for interfacing with the forward limit
+        """
+        type: rev.LimitSwitchPolarity
+        if polarity:
+            type = rev.limitSwitchPolarity.kNormallyOpen
+        else: 
+            type = rev.limitSwitchPolarity.kNormallyClosed
+        return self._motor.getForwardLimitSwitch(type)
+    
+    def reverse_limit(self, polarity: bool = True):
+        """
+        Gets an object the reverse limit of the motor controller
+
+        WARNING -- WILL DISABLE ALTERNATE ENCODER
+
+        Returns:
+            (object): An object for interfacing with the reverse limit
+        """
+        type: rev.LimitSwitchPolarity
+        if polarity:
+            type = rev.limitSwitchPolarity.kNormallyOpen
+        else: 
+            type = rev.limitSwitchPolarity.kNormallyClosed
+        return self._motor.getReverseLimitSwitch(type)
     
 
     def _set_config(self, config: SparkMaxConfig):
