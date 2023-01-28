@@ -14,12 +14,12 @@ class GyroADIS16448(Gyro):
         self._gyro = ADIS16448_IMU()
         self.__offset = 0
 
-    def init(self):
+    def init(self, gyro_start_angle=0):
         """
         Initialize the gyro
         """
         self.reset_angle()
-        self.__offset = 0
+        self.__offset = gyro_start_angle
 
     def get_robot_heading(self) -> radians:
         """

@@ -18,11 +18,11 @@ class PigeonIMUGyro_Wrapper(Gyro):
         self._gyro = ctre.Pigeon2(port)
         self._gyro.configMountPose(0, 0, 0)
 
-    def init(self):
+    def init(self, gyro_start_angle=0):
         """
         Initialize gyro
         """
-        self.reset_angle()
+        self.reset_angle(gyro_start_angle)
 
     def get_robot_heading(self) -> radians:
         """
@@ -32,8 +32,8 @@ class PigeonIMUGyro_Wrapper(Gyro):
         return math.radians(self._gyro.getYaw())
 
     # reset the gyro
-    def reset_angle(self):
+    def reset_angle(self, angle=0):
         """
         Resets the gyro's yaw.
         """
-        self._gyro.setYaw(0)
+        self._gyro.setYaw(angle)

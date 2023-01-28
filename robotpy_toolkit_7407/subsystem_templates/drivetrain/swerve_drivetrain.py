@@ -138,7 +138,7 @@ class SwerveGyro:
     Extendable class for swerve gyro.
     """
 
-    def init(self):
+    def init(self, gyro_start_angle):
         """
         Initialize the swerve gyro. Overridden class.
         """
@@ -175,6 +175,7 @@ class SwerveDrivetrain(Subsystem):
     deadzone_velocity: meters_per_second = 0.05  # Does not run within this speed
     deadzone_angular_velocity: radians_per_second = (5 * deg / s).asNumber(rad / s)  # Will not turn within this speed
     start_pose: Pose2d = Pose2d(0, 0, 0)  # Starting pose of the robot from wpilib Pose (x, y, rotation)
+    gyro_start_angle: deg = 0
 
     def __init__(self):
         super().__init__()
@@ -197,7 +198,7 @@ class SwerveDrivetrain(Subsystem):
         self.n_front_right.init()
         self.n_back_left.init()
         self.n_back_right.init()
-        self.gyro.init()
+        self.gyro.init(self.gyro_start_angle)
 
         logger.info("initializing odometry", "[swerve_drivetrain]")
 

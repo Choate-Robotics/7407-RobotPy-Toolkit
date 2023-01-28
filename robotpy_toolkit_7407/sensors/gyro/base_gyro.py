@@ -6,7 +6,7 @@ class Gyro:
     Extendable class for swerve gyro.
     """
 
-    def init(self):
+    def init(self, gyro_start_angle=0):
         """
         Initialize the swerve gyro. Overridden class.
         """
