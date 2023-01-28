@@ -176,6 +176,7 @@ class SwerveDrivetrain(Subsystem):
     deadzone_angular_velocity: radians_per_second = (5 * deg / s).asNumber(rad / s)  # Will not turn within this speed
     start_pose: Pose2d = Pose2d(0, 0, 0)  # Starting pose of the robot from wpilib Pose (x, y, rotation)
     gyro_start_angle: deg = 0
+    gyro_offset: deg = 0
 
     def __init__(self):
         super().__init__()
@@ -321,7 +322,7 @@ class SwerveDrivetrain(Subsystem):
         Returns:
             Heading (Rotation2d): the robot heading
         """
-        return Rotation2d(self.gyro.get_robot_heading())
+        return Rotation2d(self.gyro.get_robot_heading() + self.gyro_offset)
 
     @staticmethod
     def _calculate_swerve_node(node_x: meters, node_y: meters, dx: meters_per_second, dy: meters_per_second,
