@@ -324,6 +324,40 @@ class SwerveDrivetrain(Subsystem):
         """
         return Rotation2d(self.gyro.get_robot_heading() + self.gyro_offset)
 
+    def refresh_positions_states(self):
+        self.node_positions = (
+            self.n_front_left.get_node_position(),
+            self.n_front_right.get_node_position(),
+            self.n_back_left.get_node_position(),
+            self.n_back_right.get_node_position()
+        )
+
+        self.node_states = (
+            self.n_front_left.get_node_state(),
+            self.n_front_right.get_node_state(),
+            self.n_back_left.get_node_state(),
+            self.n_back_right.get_node_state(),
+        )
+
+    def reset_odometry(self, pose: Pose2d):
+        """
+        Reset the odometry to a given pose.
+
+        Args:
+            pose (Pose2d): The pose to reset the odometry to.
+        """
+        self.refresh_positions_states()
+        self.odometry.resetPosition(
+            self.get_heading(),
+            pose,
+            *self.node_positions
+        )
+        self.odometry_estimator.resetPosition(
+            gyroAngle=self.get_heading(),
+            pose=pose,
+            modulePositions=self.node_positions
+        )
+
     @staticmethod
     def _calculate_swerve_node(node_x: meters, node_y: meters, dx: meters_per_second, dy: meters_per_second,
                                d_theta: radians_per_second) -> (meters_per_second, radians):
