@@ -1,7 +1,8 @@
 import math
 
 from wpimath.geometry import Rotation2d, Pose2d, Translation2d
-from wpimath.kinematics import SwerveDrive4Odometry, SwerveDrive4Kinematics, SwerveModuleState, ChassisSpeeds, SwerveModulePosition
+from wpimath.kinematics import SwerveDrive4Odometry, SwerveDrive4Kinematics, SwerveModuleState, ChassisSpeeds, \
+    SwerveModulePosition
 from wpimath.estimator import SwerveDrive4PoseEstimator
 
 from robotpy_toolkit_7407.oi.joysticks import JoystickAxis
@@ -161,10 +162,10 @@ class SwerveDrivetrain(Subsystem):
     """
     Swerve Drivetrain Extendable class. Contains driving functions.
     """
-    n_front_left: SwerveNode  # Top Left
-    n_front_right: SwerveNode  # Bottom Left
-    n_back_left: SwerveNode  # Top Right
-    n_back_right: SwerveNode  # Bottom Right
+    n_front_left: SwerveNode
+    n_front_right: SwerveNode
+    n_back_left: SwerveNode
+    n_back_right: SwerveNode
     gyro: SwerveGyro
     axis_dx: JoystickAxis
     axis_dy: JoystickAxis
@@ -187,8 +188,6 @@ class SwerveDrivetrain(Subsystem):
         self._omega: radians_per_second = 0
 
         self.node_translations: tuple[Translation2d] | None = None
-        self.node_positions: tuple[SwerveModulePosition] | None = None
-        self.node_states: tuple[SwerveModuleState] | None = None
 
     def init(self):
         """
@@ -214,13 +213,6 @@ class SwerveDrivetrain(Subsystem):
             *self.node_translations
         )
 
-        self.node_positions = (
-            self.n_front_left.get_node_position(),
-            self.n_front_right.get_node_position(),
-            self.n_back_left.get_node_position(),
-            self.n_back_right.get_node_position()
-        )
-
         self.odometry = SwerveDrive4Odometry(
             self.kinematics,
             self.get_heading(),
@@ -235,6 +227,30 @@ class SwerveDrivetrain(Subsystem):
         )
 
         logger.info("initialization complete", "[swerve_drivetrain]")
+
+    @property
+    def node_positions(self) -> tuple[SwerveModulePosition]:
+        """
+        Get the node positions.
+        """
+        return (
+            self.n_front_left.get_node_position(),
+            self.n_front_right.get_node_position(),
+            self.n_back_left.get_node_position(),
+            self.n_back_right.get_node_position()
+        )
+
+    @property
+    def node_states(self) -> tuple[SwerveModuleState]:
+        """
+        Get the node states.
+        """
+        return (
+            self.n_front_left.get_node_state(),
+            self.n_front_right.get_node_state(),
+            self.n_back_left.get_node_state(),
+            self.n_back_right.get_node_state()
+        )
 
     def set_driver_centric(self, vel: (meters_per_second, meters_per_second), angular_vel: radians_per_second):
         """
@@ -280,20 +296,6 @@ class SwerveDrivetrain(Subsystem):
                 vel[0], vel[1], angular_vel
             ))
 
-        self.node_positions = (
-            self.n_front_left.get_node_position(),
-            self.n_front_right.get_node_position(),
-            self.n_back_left.get_node_position(),
-            self.n_back_right.get_node_position()
-        )
-
-        self.node_states = (
-            self.n_front_left.get_node_state(),
-            self.n_front_right.get_node_state(),
-            self.n_back_left.get_node_state(),
-            self.n_back_right.get_node_state(),
-        )
-
         self.odometry.update(
             self.get_heading(),
             *self.node_positions
@@ -324,21 +326,6 @@ class SwerveDrivetrain(Subsystem):
         """
         return Rotation2d(self.gyro.get_robot_heading() + self.gyro_offset)
 
-    def refresh_positions_states(self):
-        self.node_positions = (
-            self.n_front_left.get_node_position(),
-            self.n_front_right.get_node_position(),
-            self.n_back_left.get_node_position(),
-            self.n_back_right.get_node_position()
-        )
-
-        self.node_states = (
-            self.n_front_left.get_node_state(),
-            self.n_front_right.get_node_state(),
-            self.n_back_left.get_node_state(),
-            self.n_back_right.get_node_state(),
-        )
-
     def reset_odometry(self, pose: Pose2d):
         """
         Reset the odometry to a given pose.
@@ -346,7 +333,6 @@ class SwerveDrivetrain(Subsystem):
         Args:
             pose (Pose2d): The pose to reset the odometry to.
         """
-        self.refresh_positions_states()
         self.odometry.resetPosition(
             self.get_heading(),
             pose,
