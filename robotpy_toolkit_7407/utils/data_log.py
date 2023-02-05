@@ -48,6 +48,3 @@ class Logger:
 
     def close(self):
         self.logfile.close()
-
-
-logger = Logger(debug=True)
