@@ -15,7 +15,7 @@ from photonvision._photonvision import RobotPoseEstimator, PoseStrategy
 from robotpy_toolkit_7407.sensors.photonvision.photon_target import PhotonTarget, AprilTag
 from robotpy_toolkit_7407.sensors.photonvision.photon_camera import PhotonCamera
 from robotpy_apriltag import AprilTagFieldLayout
-from robotpy_toolkit_7407.sensors.gyro import Gyro
+from robotpy_toolkit_7407.sensors.gyro import BaseGyro
 from wpimath.geometry import Pose3d, Translation3d, Rotation3d, Transform2d, Translation2d, Rotation2d, Transform3d
 
 
@@ -24,7 +24,7 @@ def LoadFieldLayout(json_path: str):
 
 
 class PhotonOdometry:
-    def __init__(self, camera: PhotonCamera, field_layout: dict, gyro: Gyro,
+    def __init__(self, camera: PhotonCamera, field_layout: dict, gyro: BaseGyro,
                  start_pose=Pose3d(Translation3d(0, 0, 0), Rotation3d(roll=0, pitch=0, yaw=0))):
         self.camera = camera
         self.field_layout = self.parse_field_layout(field_layout)

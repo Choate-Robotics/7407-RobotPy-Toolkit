@@ -6,6 +6,7 @@ from wpimath.kinematics import SwerveDrive4Odometry, SwerveDrive4Kinematics, Swe
 from wpimath.estimator import SwerveDrive4PoseEstimator
 
 from robotpy_toolkit_7407.oi.joysticks import JoystickAxis
+from robotpy_toolkit_7407.sensors.gyro import BaseGyro
 from robotpy_toolkit_7407.subsystem import Subsystem
 from robotpy_toolkit_7407.utils import logger
 from robotpy_toolkit_7407.utils.math import rotate_vector, bounded_angle_diff
@@ -128,28 +129,13 @@ class SwerveNode:
         return diff + initial_angle, False, 0
 
 
-class SwerveGyro:
+class SwerveGyro(BaseGyro):
     """
     Extendable class for swerve gyro.
     """
 
-    def init(self, gyro_start_angle):
-        """
-        Initialize the swerve gyro. Overridden class.
-        """
-        ...
-
-    def get_robot_heading(self) -> radians:
-        """
-        Get the robot heading in radians. Overridden class. Must return radians.
-        """
-        ...
-
-    def reset_angle(self):
-        """
-        Reset the robot heading. Overridden class.
-        """
-        ...
+    def __init__(self):
+        super().__init__()
 
 
 class SwerveDrivetrain(Subsystem):
@@ -170,7 +156,7 @@ class SwerveDrivetrain(Subsystem):
     deadzone_velocity: meters_per_second = 0.05  # Does not run within this speed
     deadzone_angular_velocity: radians_per_second = (5 * deg / s).asNumber(rad / s)  # Will not turn within this speed
     start_pose: Pose2d = Pose2d(0, 0, 0)  # Starting pose of the robot from wpilib Pose (x, y, rotation)
-    gyro_start_angle: deg = 0
+    gyro_start_angle: radians = 0
     gyro_offset: deg = 0
 
     def __init__(self):
@@ -223,7 +209,9 @@ class SwerveDrivetrain(Subsystem):
         logger.info("initialization complete", "[swerve_drivetrain]")
 
     @property
-    def node_positions(self) -> tuple[SwerveModulePosition]:
+    def node_positions(self) -> tuple[
+        SwerveModulePosition, SwerveModulePosition, SwerveModulePosition, SwerveModulePosition
+    ]:
         """
         Get the node positions.
         """
@@ -235,7 +223,7 @@ class SwerveDrivetrain(Subsystem):
         )
 
     @property
-    def node_states(self) -> tuple[SwerveModuleState]:
+    def node_states(self) -> tuple[SwerveModuleState, SwerveModuleState, SwerveModuleState, SwerveModuleState]:
         """
         Get the node states.
         """

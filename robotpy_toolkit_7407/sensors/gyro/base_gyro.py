@@ -1,14 +1,14 @@
 from robotpy_toolkit_7407.utils.units import radians
 
 
-class Gyro:
+class BaseGyro:
     """
-    Extendable class for swerve gyro.
+    Extendable class for gyro.
     """
 
     def init(self, gyro_start_angle=0):
         """
-        Initialize the swerve gyro. Overridden class.
+        Initialize the gyro. Overridden class.
         """
         ...
 
@@ -23,3 +23,4 @@ class Gyro:
         Reset the robot heading. Overridden class.
         """
         ...
+
