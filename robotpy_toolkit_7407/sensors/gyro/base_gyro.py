@@ -18,7 +18,7 @@ class Gyro:
         """
         ...
 
-    def reset_angle(self):
+    def reset_angle(self, angle: radians = 0):
         """
         Reset the robot heading. Overridden class.
         """

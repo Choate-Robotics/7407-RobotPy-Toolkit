@@ -28,8 +28,8 @@ class GyroADIS16448(Gyro):
         """
         return math.radians(self._gyro.getGyroAngleZ() + self.__offset)
 
-    def reset_angle(self):
+    def reset_angle(self, angle: radians = 0):
         """
         Resets the gyro's yaw.
         """
-        self.__offset = self.get_robot_heading()
+        self.__offset = self.get_robot_heading() - angle

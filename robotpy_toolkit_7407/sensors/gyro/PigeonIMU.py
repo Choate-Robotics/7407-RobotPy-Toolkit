@@ -32,8 +32,8 @@ class PigeonIMUGyro_Wrapper(Gyro):
         return math.radians(self._gyro.getYaw())
 
     # reset the gyro
-    def reset_angle(self, angle=0):
+    def reset_angle(self, angle: radians = 0):
         """
         Resets the gyro's yaw.
         """
-        self._gyro.setYaw(angle)
+        self._gyro.setYaw(math.degrees(angle))
