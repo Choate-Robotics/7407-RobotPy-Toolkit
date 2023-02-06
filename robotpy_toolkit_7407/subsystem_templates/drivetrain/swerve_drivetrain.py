@@ -34,7 +34,7 @@ class SwerveNode:
             vel (meters_per_second): velocity of the swerve node
             angle_radians (radians_per_second): turning swerve node velocity in radians per second
         """
-        self._set_angle(angle_radians, self.get_current_motor_angle() + self.motor_sensor_offset)
+        self._set_angle(angle_radians, self.get_turn_motor_angle() + self.motor_sensor_offset)
         self.set_motor_velocity(vel if not self.motor_reversed else -vel)
 
     # OVERRIDDEN FUNCTIONS
@@ -47,7 +47,7 @@ class SwerveNode:
         """
         ...
 
-    def get_current_motor_angle(self) -> radians:
+    def get_turn_motor_angle(self) -> radians:
         """
         Get the current angle of the swerve node. Must be overridden. Must return radians.
         """
@@ -73,12 +73,6 @@ class SwerveNode:
         """
         ...
 
-    def get_turn_motor_angle(self) -> radians:
-        """
-        Get the distance traveled by the turning motor. Must be overridden. Must return radians. (0, 2π)
-        """
-        ...
-
     def get_node_position(self) -> SwerveModulePosition:
         """
         Get the position of the swerve node.
@@ -99,7 +93,7 @@ class SwerveNode:
         """
         return SwerveModuleState(
             self.get_motor_velocity(),
-            Rotation2d(self.get_current_motor_angle())
+            Rotation2d(self.get_turn_motor_angle())
         )
 
     # 0 degrees is facing right | "ethan is our FRC lord and saviour" - sid
