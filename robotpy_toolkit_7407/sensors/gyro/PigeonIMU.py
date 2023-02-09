@@ -31,6 +31,20 @@ class PigeonIMUGyro_Wrapper(BaseGyro):
         """
         return math.radians(self._gyro.getYaw())
 
+    def get_robot_pitch(self) -> radians:
+        """
+        Returns the angle of the robot's pitch in radians
+        :return: Robot pitch (radians)
+        """
+        return math.radians(self._gyro.getPitch())
+
+    def get_robot_roll(self) -> radians:
+        """
+        Returns the angle of the robot's roll in radians
+        :return: Robot roll (radians)
+        """
+        return math.radians(self._gyro.getRoll())
+
     # reset the gyro
     def reset_angle(self, angle: radians = 0):
         """
