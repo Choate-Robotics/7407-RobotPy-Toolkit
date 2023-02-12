@@ -28,6 +28,20 @@ class GyroADIS16448(BaseGyro):
         """
         return math.radians(self._gyro.getGyroAngleZ() + self.__offset)
 
+    def get_robot_pitch(self) -> radians:
+        """
+        Returns the angle of the robot's pitch in radians
+        :return: Robot pitch (radians)
+        """
+        return math.radians(self._gyro.getGyroAngleX())
+
+    def get_robot_roll(self) -> radians:
+        """
+        Returns the angle of the robot's roll in radians
+        :return: Robot roll (radians)
+        """
+        return math.radians(self._gyro.getGyroAngleY())
+
     def reset_angle(self, angle: radians = 0):
         """
         Resets the gyro's yaw.
