@@ -51,7 +51,7 @@ class SparkMax(PIDMotor):
     """
     motor: CANSparkMax
     encoder: SparkMaxRelativeEncoder
-    __pid_controller: SparkMaxPIDController
+    pid_controller: SparkMaxPIDController
 
     def __init__(self, can_id: int, inverted: bool = True, brushless: bool = True, config: SparkMaxConfig = None):
         """
@@ -77,7 +77,7 @@ class SparkMax(PIDMotor):
             CANSparkMax.MotorType.kBrushless if self._brushless else CANSparkMax.MotorType.kBrushed
         )
         self.motor.setInverted(self._inverted)
-        self.__pid_controller = self.motor.getPIDController()
+        self.pid_controller = self.motor.getPIDController()
         self.encoder = self.motor.getEncoder()
         self._set_config(self._config)
 
@@ -97,7 +97,7 @@ class SparkMax(PIDMotor):
         Args:
             pos (float): The target position of the motor controller in rotations
         """
-        self.__pid_controller.setReference(pos, CANSparkMax.ControlType.kPosition)
+        self.pid_controller.setReference(pos, CANSparkMax.ControlType.kPosition)
 
     def set_target_velocity(self, vel: rotations_per_second):  # Rotations per minute??
         """
@@ -106,7 +106,7 @@ class SparkMax(PIDMotor):
         Args:
             vel (float): The target velocity of the motor controller in rotations per second
         """
-        self.__pid_controller.setReference(vel, CANSparkMax.ControlType.kVelocity)
+        self.pid_controller.setReference(vel, CANSparkMax.ControlType.kVelocity)
 
     def get_sensor_position(self) -> rotations:
         """
@@ -139,14 +139,14 @@ class SparkMax(PIDMotor):
         if config is None:
             return
         if config.k_P is not None:
-            self.__pid_controller.setP(config.k_P)
+            self.pid_controller.setP(config.k_P)
         if config.k_I is not None:
-            self.__pid_controller.setI(config.k_I)
+            self.pid_controller.setI(config.k_I)
         if config.k_D is not None:
-            self.__pid_controller.setD(config.k_D)
+            self.pid_controller.setD(config.k_D)
         if config.k_F is not None:
-            self.__pid_controller.setFF(config.k_F)
+            self.pid_controller.setFF(config.k_F)
         if config.output_range is not None:
-            self.__pid_controller.setOutputRange(config.output_range[0], config.output_range[1])
+            self.pid_controller.setOutputRange(config.output_range[0], config.output_range[1])
         if config.idle_mode is not None:
             self.motor.setIdleMode(config.idle_mode)
