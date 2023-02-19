@@ -6,7 +6,7 @@ DRIVER_CONTROLLER_ID = 0
 OPERATOR_CONTROLLER_ID = 1
 
 
-class _Joysticks:
+class Joysticks:
     joysticks: list[wpilib.Joystick] = [
         wpilib.Joystick(DRIVER_CONTROLLER_ID),
         wpilib.Joystick(OPERATOR_CONTROLLER_ID)
@@ -29,4 +29,4 @@ class JoystickAxis:
         Returns:
             float: The value between -1 and 1 as a float
         """
-        return _Joysticks.joysticks[self.controller_id].getRawAxis(self.axis_id)
+        return Joysticks.joysticks[self.controller_id].getRawAxis(self.axis_id)

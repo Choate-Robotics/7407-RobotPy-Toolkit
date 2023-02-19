@@ -37,11 +37,14 @@ class Logger:
         line_no = str(frame.f_lineno)
 
         if self.file_on:
-            self.logfile = open(self.filename, "a")
-            self.logfile.write(
-                f"[{str(datetime.datetime.now() - self.start_time) + ']'} [{file_name + ':' + line_no + ']' : <19} [{system + ']'  : <15} ~ {message  : <20}\n"
-            )
-            self.logfile.close()
+            try:
+                self.logfile = open(self.filename, "a")
+                self.logfile.write(
+                    f"[{str(datetime.datetime.now() - self.start_time) + ']'} [{file_name + ':' + line_no + ']' : <19} [{system + ']'  : <15} ~ {message  : <20}\n"
+                )
+                self.logfile.close()
+            except Exception
+                ...
 
         lg.info(message, system, frame)
 
