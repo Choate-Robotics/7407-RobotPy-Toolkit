@@ -43,7 +43,7 @@ class Logger:
                     f"[{str(datetime.datetime.now() - self.start_time) + ']'} [{file_name + ':' + line_no + ']' : <19} [{system + ']'  : <15} ~ {message  : <20}\n"
                 )
                 self.logfile.close()
-            except Exception
+            except Exception:
                 ...
 
         lg.info(message, system, frame)
