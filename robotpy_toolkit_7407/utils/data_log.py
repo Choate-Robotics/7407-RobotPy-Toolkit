@@ -36,17 +36,20 @@ class Logger:
         file_name = os.path.basename(frame.f_code.co_filename)
         line_no = str(frame.f_lineno)
 
+        message = f"[{str(datetime.datetime.now() - self.start_time) + ']'} [{file_name + ':' + line_no + ']' : <19} [{system + ']'  : <15} ~ {message  : <20}\n"
+
         if self.file_on:
             try:
                 self.logfile = open(self.filename, "a")
                 self.logfile.write(
-                    f"[{str(datetime.datetime.now() - self.start_time) + ']'} [{file_name + ':' + line_no + ']' : <19} [{system + ']'  : <15} ~ {message  : <20}\n"
+                    message
                 )
                 self.logfile.close()
             except Exception:
                 ...
 
-        lg.info(message, system, frame)
+        # lg.info(message, system, frame)
+        print(message)
 
     def debug(self, system: str, message: str):
         """
