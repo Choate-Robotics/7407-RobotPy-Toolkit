@@ -1,3 +1,5 @@
+from abc import abstractmethod
+
 from robotpy_toolkit_7407.utils.units import radians
 
 
@@ -12,12 +14,14 @@ class BaseGyro:
         """
         ...
 
+    @abstractmethod
     def get_robot_heading(self) -> radians:
         """
         Get the robot heading in radians. Overridden class. Must return radians.
         """
         ...
 
+    @abstractmethod
     def get_robot_pitch(self) -> radians:
         """
         Returns the angle of the robot's pitch in radians. Overridden class. Must return radians.
@@ -25,12 +29,14 @@ class BaseGyro:
         """
         ...
 
+    @abstractmethod
     def get_robot_roll(self) -> radians:
         """
         Returns the angle of the robot's roll in radians. Overridden class. Must return radians.
         :return: Robot roll (radians)
         """
 
+    @abstractmethod
     def reset_angle(self, angle: radians = 0):
         """
         Reset the robot heading. Overridden class.

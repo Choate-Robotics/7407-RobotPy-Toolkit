@@ -1,11 +1,13 @@
 import datetime
 import inspect
 import os
+from typing import IO, Optional
 
 import robotpy_toolkit_7407.utils.logger as lg
 
 
 class Logger:
+
     """
     Custom logger utility for logging to console and a custom log file.
     """
@@ -16,7 +18,7 @@ class Logger:
         filename: str = f"custom_logs/custom_logging_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log",
     ):
         self.filename: str = filename
-        self.logfile = None
+        self.logfile: Optional[IO] = None
         self.debug_on = debug
         self.file_on = use_file
 

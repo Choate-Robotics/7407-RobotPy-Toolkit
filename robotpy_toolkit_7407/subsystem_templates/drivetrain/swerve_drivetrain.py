@@ -1,4 +1,6 @@
 import math
+from abc import abstractmethod
+from typing import Optional, Tuple
 
 from wpimath.geometry import Rotation2d, Pose2d, Translation2d
 from wpimath.kinematics import SwerveDrive4Odometry, SwerveDrive4Kinematics, SwerveModuleState, ChassisSpeeds, \
@@ -39,6 +41,7 @@ class SwerveNode:
         self.set_motor_velocity(vel if not self.motor_reversed else -vel)
 
     # OVERRIDDEN FUNCTIONS
+    @abstractmethod
     def set_motor_angle(self, pos: radians):
         """
         Set the angle of the swerve node. Must be overridden.
@@ -48,12 +51,14 @@ class SwerveNode:
         """
         ...
 
+    @abstractmethod
     def get_turn_motor_angle(self) -> radians:
         """
         Get the current angle of the swerve node. Must be overridden. Must return radians.
         """
         ...
 
+    @abstractmethod
     def set_motor_velocity(self, vel: meters_per_second):
         """
         Set the velocity of the swerve node. Must be overridden.
@@ -62,12 +67,14 @@ class SwerveNode:
         """
         ...
 
+    @abstractmethod
     def get_motor_velocity(self) -> meters_per_second:
         """
         Get the velocity of the swerve node. Must be overridden. Must return meters per second.
         """
         ...
 
+    @abstractmethod
     def get_drive_motor_traveled_distance(self) -> meters:
         """
         Get the distance traveled by the drive motor. Must be overridden. Must return meters.
@@ -158,13 +165,13 @@ class SwerveDrivetrain(Subsystem):
     start_pose: Pose2d = Pose2d(0, 0, 0)  # Starting pose of the robot from wpilib Pose (x, y, rotation)
     gyro_start_angle: radians = 0
     gyro_offset: deg = 0
+    kinematics: SwerveDrive4Kinematics
+    odometry: SwerveDrive4Odometry
+    odometry_estimator: SwerveDrive4PoseEstimator
+    chassis_speeds: ChassisSpeeds
 
     def __init__(self):
         super().__init__()
-        self.kinematics: SwerveDrive4Kinematics | None = None
-        self.odometry: SwerveDrive4Odometry | None = None
-        self.odometry_estimator: SwerveDrive4PoseEstimator | None = None
-        self.chassis_speeds: ChassisSpeeds | None = None
         self._omega: radians_per_second = 0
 
         self.node_translations: tuple[Translation2d] | None = None
@@ -234,7 +241,7 @@ class SwerveDrivetrain(Subsystem):
             self.n_back_right.get_node_state()
         )
 
-    def set_driver_centric(self, vel: (meters_per_second, meters_per_second), angular_vel: radians_per_second):
+    def set_driver_centric(self, vel: Tuple[meters_per_second, meters_per_second], angular_vel: radians_per_second):
         """
         Set the driver centric velocity and angular velocity. Driver centric runs with perspective of driver.
 
@@ -245,7 +252,7 @@ class SwerveDrivetrain(Subsystem):
         vel = rotate_vector(vel[0], vel[1], -self.gyro.get_robot_heading())
         self.set_robot_centric(vel, angular_vel)
 
-    def set_robot_centric(self, vel: (meters_per_second, meters_per_second), angular_vel: radians_per_second):
+    def set_robot_centric(self, vel: Tuple[meters_per_second, meters_per_second], angular_vel: radians_per_second):
         """
         Set the robot centric velocity and angular velocity. Robot centric runs with perspective of robot.
         Args:
@@ -328,7 +335,7 @@ class SwerveDrivetrain(Subsystem):
 
     @staticmethod
     def _calculate_swerve_node(node_x: meters, node_y: meters, dx: meters_per_second, dy: meters_per_second,
-                               d_theta: radians_per_second) -> (meters_per_second, radians):
+                               d_theta: radians_per_second) -> Tuple[meters_per_second, radians]:
         tangent_x, tangent_y = -node_y, node_x
         tangent_m = math.sqrt(tangent_x ** 2 + tangent_y ** 2)
         tangent_x /= tangent_m

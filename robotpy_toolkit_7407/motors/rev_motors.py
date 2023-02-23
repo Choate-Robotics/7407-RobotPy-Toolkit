@@ -8,7 +8,7 @@ from robotpy_toolkit_7407.motor import PIDMotor
 from robotpy_toolkit_7407.utils.units import rev, minute, radians, radians_per_second, rad, s, rotations_per_second, \
     rotations
 
-from robotpy_toolkit_7407.unum import Unum
+from unum import Unum
 
 from robotpy_toolkit_7407.motors.ctre_motors import hundred_ms
 
@@ -53,7 +53,7 @@ class SparkMax(PIDMotor):
     encoder: SparkMaxRelativeEncoder
     pid_controller: SparkMaxPIDController
 
-    def __init__(self, can_id: int, inverted: bool = True, brushless: bool = True, config: SparkMaxConfig = None):
+    def __init__(self, can_id: int, inverted: bool = True, brushless: bool = True, config: Optional[SparkMaxConfig] = None):
         """
 
         Args:

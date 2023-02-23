@@ -1,5 +1,5 @@
 import photonvision
-from robotpy_apriltag import AprilTag
+from robotpy_apriltag import AprilTag as RobotPyAprilTag
 from wpimath.geometry import Pose3d
 
 
@@ -12,7 +12,7 @@ class PhotonTarget:
         self.yaw = self.raw_target.getYaw()
 
 
-class AprilTag(AprilTag):
+class AprilTag(RobotPyAprilTag):
     def __init__(self, ID: int, pose: Pose3d):
         super().__init__()
         self.ID = ID

@@ -8,8 +8,10 @@ IMPORTANT:
 """
 
 import math
+from typing import Optional, Sequence
 
 from photonvision import PhotonUtils
+from robotpy_apriltag import AprilTag as RobotPyAprilTag
 from photonvision._photonvision import RobotPoseEstimator, PoseStrategy
 
 from robotpy_toolkit_7407.sensors.photonvision.photon_target import PhotonTarget, AprilTag
@@ -35,7 +37,7 @@ class PhotonOdometry:
         self.camera.refresh()
         self.pose_estimate = self.getRobotPose()
 
-    def getRobotPose(self, target: PhotonTarget = None):
+    def getRobotPose(self, target: Optional[PhotonTarget] = None):
 
         if target is None:
             target = self.camera.latest_best_target
@@ -62,16 +64,17 @@ class PhotonOdometry:
 
         field_to_target = self.field_layout.getTagPose(target.ID).toPose2d()
 
-        estimated_field_to_robot_pose = PhotonUtils.estimateFieldToRobot(
-            cameraToTarget=camera_to_target_TRANSFORM,
-            cameraToRobot=camera_to_robot_TRANSFORM,
-            fieldToTarget=field_to_target,
-        )
+        # TODO remove this?
+        # estimated_field_to_robot_pose = PhotonUtils.estimateFieldToRobot(
+        #     cameraToTarget=camera_to_target_TRANSFORM,
+        #     cameraToRobot=camera_to_robot_TRANSFORM,
+        #     fieldToTarget=field_to_target,
+        # )
 
         estimated_field_to_robot_pose = RobotPoseEstimator(
-            self.field_layout,
-            PoseStrategy.CLOSEST_TO_REFERENCE_POSE,
-            [
+            aprilTags=self.field_layout,
+            strategy=PoseStrategy.CLOSEST_TO_REFERENCE_POSE,
+            cameras=[
                 (
                     self.camera,
                     Transform3d(
@@ -104,10 +107,12 @@ class PhotonOdometry:
         return field_to_robot
 
     def parse_field_layout(self, field_layout: dict):
-        new_layout: AprilTagFieldLayout = None
-        april_tags: list[AprilTag] = []
-        length: float = None  # meters
-        width: float = None  # meters
+        new_layout: Optional[AprilTagFieldLayout] = None
+        # Define the list in terms of the robotpy superclass because that's what
+        # AprilTagFieldLayout tells mypy it expects
+        april_tags: list[RobotPyAprilTag] = []
+        length: float = 0  # meters
+        width: float = 0  # meters
 
         for i in field_layout['apriltags'].keys():
             april_tags.append(

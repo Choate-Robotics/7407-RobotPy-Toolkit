@@ -1,0 +1,22 @@
+
+name: mypy
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: run mypy
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python 3.11.2
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.11.2
+    - name: Install Dependencies
+      run: |
+        pip install poetry
+        poetry install
+    - name: run mypy
+      run: |
+        poetry run mypy robotpy_toolkit_7407/

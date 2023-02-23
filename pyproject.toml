@@ -13,7 +13,18 @@ robotpy-apriltag = "^2023.1.1.0"
 robotpy = {extras = ["commands2"], version = "^2023.1.1"}
 pynetworktables = "^2021.0.0"
 m2r2 = "^0.3.3"
+mypy = "^1.0.1"
+unum = "^4.2.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+# Ignore a handful of "Optional[FrameType]" has no attribute "f_back"  [union-attr]
+[[tool.mypy.overrides]]
+module = "robotpy_toolkit_7407.utils.logger"
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "unum"
+ignore_missing_imports  = true

@@ -10,7 +10,8 @@ from robotpy_toolkit_7407.oi.joysticks import Joysticks
 class Button:
     controller_id: int
 
-    def __call__(self) -> commands.button.Button: ...
+    # mypy is not happy about this not returning anything. How was it intended to be used?
+    def __call__(self) -> commands.button.Button: ...  # type: ignore
 
 
 @dataclass

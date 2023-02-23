@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 import ctre
-from robotpy_toolkit_7407.unum import Unum
+from unum import Unum
 
 from robotpy_toolkit_7407.motor import PIDMotor
 from robotpy_toolkit_7407.utils.units import rad, rev, s, radians_per_second, radians_per_second_squared, radians
@@ -51,7 +51,7 @@ k_rad_per_sec_sq_to_sensor_accel = (rad / (s * s)).asNumber(talon_sensor_unit / 
 class _Talon(PIDMotor):
     _motor: ctre.BaseTalon
 
-    def __init__(self, can_id: int, inverted: bool = False, config: TalonConfig = None):
+    def __init__(self, can_id: int, inverted: bool = False, config: Optional[TalonConfig] = None):
         super().__init__()
         self._can_id = can_id
         self._config = config
@@ -151,7 +151,7 @@ class TalonGroup(PIDMotor):
     """
     motors: list[_Talon]
 
-    def __init__(self, *motors: _Talon, config: TalonConfig = None, leader_idx: int = 0):
+    def __init__(self, *motors: _Talon, config: Optional[TalonConfig] = None, leader_idx: int = 0):
         super().__init__()
         self.motors = list(motors)
         for m in self.motors:
