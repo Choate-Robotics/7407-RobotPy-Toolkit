@@ -1,3 +1,5 @@
+from typing import Optional
+
 from robotpy_toolkit_7407.unum import Unum
 
 from robotpy_toolkit_7407.motor import PIDMotor
@@ -16,10 +18,10 @@ class DifferentialDrivetrain(Subsystem):
         axis_y: y-axis of the joystick
         gear_ratio: gear ratio of the drivetrain
     """
-    m_left: PIDMotor = None
-    m_right: PIDMotor = None
-    axis_x: JoystickAxis = None
-    axis_y: JoystickAxis = None
+    m_left: Optional[PIDMotor] = None
+    m_right: Optional[PIDMotor] = None
+    axis_x: Optional[JoystickAxis] = None
+    axis_y: Optional[JoystickAxis] = None
     gear_ratio: radians_per_meter
 
     def init(self):

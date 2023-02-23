@@ -13,7 +13,7 @@ class Button:
     def __call__(self) -> commands.button.Button: ...
 
 
-@dataclass
+@dataclassoi
 class DefaultButton(Button):
     """
     Wrapper for wpilib button

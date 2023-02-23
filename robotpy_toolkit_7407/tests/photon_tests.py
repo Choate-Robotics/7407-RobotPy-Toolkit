@@ -12,17 +12,24 @@ camera = PhotonCamera("globalshuttercamera",
                              Rotation3d(roll=0, pitch=0, yaw=0)),
                       scale_constant=1)
 
+# TODO what does it look like if we use None instead of a fake target?
 current_target = PhotonTarget(
     PhotonTrackedTarget(
-        1, 1, 1, 1, 1,
-        Transform3d(
+        yaw=1,
+        pitch=1,
+        area=1,
+        skew=1,
+        fiducialID=1,
+        pose=Transform3d(
             Pose3d(0, 0, 0, Rotation3d(0, 0, 0)),
             Pose3d(1, 1, 1, Rotation3d(0, 0, 0))),
-        Transform3d(
+        alternatePose=Transform3d(
             Pose3d(1, 1, 1, Rotation3d(1, 1, 1)),
             Pose3d(0, 0, 0, Rotation3d(0, 0, 0))),
-        .1,
-        [(1, 1), (1, 1), (1, 1), (1, 1)]))
+        ambiguity=.1,
+        corners=[(1, 1), (1, 1), (1, 1), (1, 1)],
+        detectedCorners=[(1, 1), (1, 1), (1, 1), (1, 1)]
+))
 
 field_layout = {
     'apriltags': {

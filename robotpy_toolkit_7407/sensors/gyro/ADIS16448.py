@@ -12,7 +12,7 @@ class GyroADIS16448(BaseGyro):
     """
     def __init__(self) -> None:
         self._gyro = ADIS16448_IMU()
-        self.__offset = 0
+        self.__offset = 0.0
 
     def init(self, gyro_start_angle=0):
         """

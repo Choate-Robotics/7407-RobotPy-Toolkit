@@ -53,7 +53,7 @@ class SparkMax(PIDMotor):
     encoder: SparkMaxRelativeEncoder
     pid_controller: SparkMaxPIDController
 
-    def __init__(self, can_id: int, inverted: bool = True, brushless: bool = True, config: SparkMaxConfig = None):
+    def __init__(self, can_id: int, inverted: bool = True, brushless: bool = True, config: Optional[SparkMaxConfig] = None):
         """
 
         Args:

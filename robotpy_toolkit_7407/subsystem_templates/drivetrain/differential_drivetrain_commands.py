@@ -13,7 +13,7 @@ class DriveArcade(SubsystemCommand[DifferentialDrivetrain]):
     """
     Arcade drive command for differential drivetrain.
     """
-    def __init__(self, subsystem: T, track_width_inches: float):
+    def __init__(self, subsystem: DifferentialDrivetrain, track_width_inches: float):
         """
 
         Args:
@@ -81,7 +81,7 @@ class DriveArcade(SubsystemCommand[DifferentialDrivetrain]):
             turn_radius = 0
 
         if x_axis == 0:
-            velocity_difference = 0
+            velocity_difference = 0.0
         elif target_velocity == 0 or turn_radius == 0:
             velocity_difference = talon_sensor_units_to_inches(-18000.0 * x_axis, True)
         else:

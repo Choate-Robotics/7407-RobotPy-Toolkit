@@ -2,6 +2,10 @@
 
 # TODO: consider alternatives to unum and see how they compare.
 """
+from typing import Union
+
+import Unum as Unum
+
 
 class ShouldBeUnitlessError(TypeError):
     """An operation on a Unum failed because it had units unexpectedly."""
@@ -131,7 +135,8 @@ class Unum(object):
                 conv_unum._normal = True
             Unum._unitTable[unit_key] = conv_unum, level, name
 
-    def unit(cls, symbol, conv=0, name=''):
+    @classmethod
+    def unit(cls, symbol: str, conv: Union[int, Unum] = 0, name=''):
         """Return a new unit represented by the string symbol.
         
         If conv is 0, the new unit is a base unit.
@@ -141,7 +146,6 @@ class Unum(object):
         >>> MB = Unum.defineUnit("MB", 1000*KB, "megabyte")
         """
         return cls({symbol:1}, 1, conv, name)
-    unit = classmethod(unit)
     
     def reset(cls, unitTable=None):
         """Clear the unit table, replacing it with the new one if provided.

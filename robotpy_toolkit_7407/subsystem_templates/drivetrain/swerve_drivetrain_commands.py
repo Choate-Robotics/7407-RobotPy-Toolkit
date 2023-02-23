@@ -26,8 +26,10 @@ class DriveSwerve(SubsystemCommand[SwerveDrivetrain]):
         """
         dx, dy, d_theta = self.subsystem.axis_dx.value, self.subsystem.axis_dy.value, self.subsystem.axis_rotation.value
 
-        dx *= self.subsystem.max_vel.asUnit(m / s)
-        dy *= -self.subsystem.max_vel.asUnit(m / s)
+        # TODO update this code so it support subsystemn.max_vel being a float not a unum
+        # for now just tell mypy to ignore this
+        dx *= self.subsystem.max_vel.asUnit(m / s)  # type: ignore
+        dy *= -self.subsystem.max_vel.asUnit(m / s)  # type: ignore
 
         self.subsystem.set_driver_centric((dx, dy), -d_theta * self.subsystem.max_angular_vel)
 
@@ -58,8 +60,8 @@ class FollowPath(SubsystemCommand[SwerveDrivetrain]):
                 ), period
             )
         )
-        self.start_time = 0
-        self.t = 0
+        self.start_time = 0.0
+        self.t = 0.0
         self.duration = trajectory.totalTime()
         self.theta_i = trajectory.initialPose().rotation().radians()
         self.theta_f = trajectory.sample(self.duration).pose.rotation().radians()

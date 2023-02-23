@@ -22,7 +22,23 @@ build-backend = "poetry.core.masonry.api"
 # Mypy config docs
 # https://mypy.readthedocs.io/en/stable/config_file.html#example-pyproject-toml
 
-# Ignore fixing unum for now since we don't use it
+# Here's some things I didn't find usage of that have errors
+# that are not trival to fix so I'm ignoring them for now.
+# We should take another look at these and decide if we want to revamp
+# or deprecate them.
+#[[tool.mypy.overrides]]
+#module = "robotpy_toolkit_7407.unum.*"
+#ignore_errors = true
+
 [[tool.mypy.overrides]]
-module = "robotpy_toolkit_7407.unum.*"
+module = "robotpy_toolkit_7407.oi.buttons"
+ignore_errors = true
+
+
+[[tool.mypy.overrides]]
+module = "robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain"
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands"
 ignore_errors = true

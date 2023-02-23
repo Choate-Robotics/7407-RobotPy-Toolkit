@@ -1,4 +1,6 @@
 import math
+from typing import Optional, Tuple
+
 from networktables import NetworkTables
 from wpimath.geometry import Pose3d, Translation3d, Rotation3d
 
@@ -14,7 +16,7 @@ class Limelight:
     Connect, get, and modify limelight values and settings through the NetworkTables interface.
     """
 
-    def __init__(self, cam_height: float, cam_angle: float, target_height: float = None, robot_ip: str = "10.74.07.2"):
+    def __init__(self, cam_height: float, cam_angle: float, target_height: Optional[float] = None, robot_ip: str = "10.74.07.2"):
         """
         Args:
             cam_height (float): Height of the limelight camera from the ground in meters.
@@ -90,7 +92,7 @@ class Limelight:
         """
         return math.radians(self.tx)
 
-    def get_bot_pose(self, round_to: int = None) -> list | None:
+    def get_bot_pose(self, round_to: Optional[int] = None) -> list | None:
         """
         Get the robot's pose from the limelight's perspective.
         """
@@ -105,7 +107,7 @@ class LimelightController(VisionEstimator):
         super().__init__()
         self.limelights = limelight_list
 
-    def get_estimated_robot_pose(self) -> list[Pose3d, float] | None:
+    def get_estimated_robot_pose(self) -> list[Tuple[Pose3d, float]] | None:
         """
         Returns the robot's pose relative to the field, estimated by the limelight.
         :return: Limelight estimate of robot pose.
