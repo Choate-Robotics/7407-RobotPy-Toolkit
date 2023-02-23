@@ -1,5 +1,5 @@
 
-name: Pytest
+name: Mypy
 
 on: [push]
 
@@ -19,4 +19,4 @@ jobs:
         poetry install
     - name: mypy
       run: |
-        pytest robotpy_toolkit_7407/
+        mypy robotpy_toolkit_7407/
