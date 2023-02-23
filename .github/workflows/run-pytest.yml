@@ -19,4 +19,4 @@ jobs:
         poetry install
     - name: run pytest
       run: |
-        poetry run pytest robotpy_toolkit_7407/
+        poetry run pytest
