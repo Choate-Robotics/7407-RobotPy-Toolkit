@@ -944,6 +944,17 @@ files = [
 ]
 
 [[package]]
+name = "unum"
+version = "4.2.1"
+description = "Units in Python"
+category = "main"
+optional = false
+python-versions = ">=2.4, <4"
+files = [
+    {file = "Unum-4.2.1.tar.gz", hash = "sha256:96591615235eb1ef08434c8221fb042c6999a519b0a7d4f57d49cd2d39ef21e5"},
+]
+
+[[package]]
 name = "wpilib"
 version = "2023.2.1.1"
 description = "Binary wrapper for FRC WPILib"
@@ -978,4 +989,4 @@ robotpy-wpiutil = ">=2023.2.1,<2023.3.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">3.9,<3.12"
-content-hash = "d334f863bcc169332ae746183b394009f06598d10275b286732a5bd084b66eb5"
+content-hash = "3fd31ed323c9e1987e0174b47f349493d4dfd42b3af6a3cd5c21d98d81275d45"
