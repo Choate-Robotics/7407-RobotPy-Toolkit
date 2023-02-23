@@ -1,5 +1,5 @@
 from robotpy_toolkit_7407.motors import ctre_motors
-from robotpy_toolkit_7407.unum import Unum
+from unum import Unum
 
 from robotpy_toolkit_7407.command import SubsystemCommand, T
 from robotpy_toolkit_7407.motors.ctre_motors import talon_sensor_vel_unit
