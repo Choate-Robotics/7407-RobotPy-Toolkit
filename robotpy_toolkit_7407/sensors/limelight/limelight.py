@@ -117,6 +117,7 @@ class LimelightController(VisionEstimator):
 
         for limelight in self.limelights:
             est_pose = limelight.get_bot_pose()
+            if not est_pose: return None
 
             pose_list.append(
                 (
@@ -125,7 +126,7 @@ class LimelightController(VisionEstimator):
                         Rotation3d(est_pose[3], est_pose[4], est_pose[5])
                     ),
                     Timer.getFPGATimestamp()
-                ) if est_pose else (None, None)
+                )
             )
 
         return pose_list if pose_list else None

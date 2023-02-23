@@ -42,3 +42,7 @@ ignore_errors = true
 [[tool.mypy.overrides]]
 module = "robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands"
 ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "inspect"
+ignore_errors = true
