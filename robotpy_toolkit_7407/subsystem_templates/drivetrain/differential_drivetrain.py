@@ -18,10 +18,10 @@ class DifferentialDrivetrain(Subsystem):
         axis_y: y-axis of the joystick
         gear_ratio: gear ratio of the drivetrain
     """
-    m_left: Optional[PIDMotor] = None
-    m_right: Optional[PIDMotor] = None
-    axis_x: Optional[JoystickAxis] = None
-    axis_y: Optional[JoystickAxis] = None
+    m_left: PIDMotor
+    m_right: PIDMotor
+    axis_x: JoystickAxis
+    axis_y: JoystickAxis
     gear_ratio: radians_per_meter
 
     def init(self):

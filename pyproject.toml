@@ -19,30 +19,8 @@ mypy = "^1.0.1"
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-# Mypy config docs
-# https://mypy.readthedocs.io/en/stable/config_file.html#example-pyproject-toml
-
-# Here's some things I didn't find usage of that have errors
-# that are not trival to fix so I'm ignoring them for now.
-# We should take another look at these and decide if we want to revamp
-# or deprecate them.
-#[[tool.mypy.overrides]]
-#module = "robotpy_toolkit_7407.unum.*"
-#ignore_errors = true
-
+# Ignore a handful of "Optional[FrameType]" has no attribute "f_back"  [union-attr]
 [[tool.mypy.overrides]]
-module = "robotpy_toolkit_7407.oi.buttons"
+module = "robotpy_toolkit_7407.utils.logger"
 ignore_errors = true
 
-
-[[tool.mypy.overrides]]
-module = "robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain"
-ignore_errors = true
-
-[[tool.mypy.overrides]]
-module = "robotpy_toolkit_7407.subsystem_templates.drivetrain.differential_drivetrain_commands"
-ignore_errors = true
-
-[[tool.mypy.overrides]]
-module = "inspect"
-ignore_errors = true
