@@ -6,17 +6,20 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Mypy
+    name: Pytest
     steps:
     - uses: actions/checkout@v1
-    - name: Set up Python 3.8
+    - name: Set up Python 3.12
       uses: actions/setup-python@v1
       with:
-        python-version: 3.8
+        python-version: 3.12
     - name: Install Dependencies
       run: |
         pip install poetry
+        poetry list
         poetry install
+        poetry list
     - name: mypy
       run: |
+        poetry list
         pytest mypy robotpy_toolkit_7407/
