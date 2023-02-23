@@ -1,11 +1,12 @@
 
+name: mypy
 
 on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Mypy
+    name: run mypy
     steps:
     - uses: actions/checkout@v1
     - name: Set up Python 3.11.2
@@ -16,6 +17,6 @@ jobs:
       run: |
         pip install poetry
         poetry install
-    - name: mypy
+    - name: run mypy
       run: |
         poetry run mypy robotpy_toolkit_7407/

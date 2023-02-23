@@ -1,12 +1,12 @@
 
-name: Pytest
+name: pytest
 
 on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Pytest
+    name: run pytest
     steps:
     - uses: actions/checkout@v1
     - name: Set up Python 3.11.2
@@ -17,6 +17,6 @@ jobs:
       run: |
         pip install poetry
         poetry install
-    - name: mypy
+    - name: run pytest
       run: |
-        poetry run pytest mypy robotpy_toolkit_7407/
+        poetry run pytest robotpy_toolkit_7407/
