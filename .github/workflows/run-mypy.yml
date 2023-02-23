@@ -1,5 +1,4 @@
 
-name: Mypy2
 
 on: [push]
 
