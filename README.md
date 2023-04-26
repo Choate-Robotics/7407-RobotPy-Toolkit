@@ -32,5 +32,7 @@
 ### In Progress: Swerve Simulation
 
 ## TO BUILD AND DEPLOY:
+ - Delete old build files in the dist/ folder.
+ - Edit the pyproject.toml file for the new version number.
  - python -m build .
  - twine upload dist/*
