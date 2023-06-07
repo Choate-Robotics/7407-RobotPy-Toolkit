@@ -116,7 +116,7 @@ class SwerveNode:
         :param initial_angle: Initial node sensor angle
         :return: (target_sensor_angle, flipped, flip_sensor_offset)
         """
-
+        # TODO This function only has one client function. Rewrite or integrate into _calculate_swerve_node
         # Actual angle difference in radians
         diff = bounded_angle_diff(initial_angle, target_angle)
 
@@ -131,12 +131,14 @@ class SwerveNode:
 
 class SwerveGyro(BaseGyro):
     """
+    LEGACY VERSION OF THIS CLASS. HERE FOR BACKWARDS COMPATIBILITY WITH
+    OLD CODE. PLEASE ONLY UPDATE robotpy_toolkit_7407.sensors.gyro.swerve_gyro
+
     Extendable class for swerve gyro.
     """
 
     def __init__(self):
         super().__init__()
-
 
 class SwerveDrivetrain(Subsystem):
     """
@@ -329,6 +331,23 @@ class SwerveDrivetrain(Subsystem):
     @staticmethod
     def _calculate_swerve_node(node_x: meters, node_y: meters, dx: meters_per_second, dy: meters_per_second,
                                d_theta: radians_per_second) -> (meters_per_second, radians):
+        '''
+        This is a helper method to determine the direction and speed to set the nodes
+        ONLY WORKS WITH A SQUARE ROBOT!!!
+        This should really be a node method.
+        Args:
+            node_x: x Position of a node
+            node_y: y Position of a node
+            dx: change in x desired
+            dy: change in y desired
+            d_theta: change in theta desired
+
+        Returns:
+            a tuple of the magnitude and the direction
+
+        '''
+        # TODO move this function to SwerveNode
+        # TODO Rewrite function so that the robot doesn't need to be square
         tangent_x, tangent_y = -node_y, node_x
         tangent_m = math.sqrt(tangent_x ** 2 + tangent_y ** 2)
         tangent_x /= tangent_m
