@@ -1,4 +1,4 @@
-import ctre
+from ctre.sensors import Pigeon2
 import math
 
 from robotpy_toolkit_7407.utils.units import radians
@@ -15,7 +15,7 @@ class PigeonIMUGyro_Wrapper(BaseGyro):
         Args:
             port (int): CAN ID of the Pigeon gyro
         """
-        self._gyro = ctre.Pigeon2(port)
+        self._gyro = Pigeon2(port)
         self._gyro.configMountPose(0, 0, 0)
 
     def init(self, gyro_start_angle=0):
